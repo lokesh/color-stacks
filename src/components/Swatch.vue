@@ -2,7 +2,6 @@
   <div
     class="swatch"
     :class="{
-      'clipped': superClipped,
       'not-compliant': !aaCompliant
     }"
     :style="`
@@ -109,12 +108,11 @@ export default {
 <style scoped>
 .swatch {
   position: relative;
-  width: 6rem;
-  height: 2.5rem;
+  width: 10em;
+  height: 4.5em;
+  margin-bottom: var(--swatch-gap);
   padding: 8px;
-  border-radius: var(--border-radius);
   font-size: 11px;
-  font-family: var(--monospace);
 }
 
 .swatch-name {

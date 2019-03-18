@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="palette">
+    <input :value="hue" style="width: 100%">
+    <br>
+    <button label="delete" type="button"/>
     <swatch
       v-for="(step, index) in steps"
       :key="index"

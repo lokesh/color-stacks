@@ -1,45 +1,18 @@
 <template>
-  <div>
+  <div class="app">
     <section class="app-controls">
-      Hues (Columns):
-      <input type="range" min="1" max="18" step="1" v-model.number="hues">
-      {{ hues }}
-      <br>Steps (Rows):
-      <input type="range" min="1" max="20" step="1" v-model.number="steps">
-      {{ steps }}
-      <br>Start Chroma:
-      <input type="range" min="1" max="150" v-model.number="startChroma">
-      {{ startChroma }}
-      <br>End Chroma:
-      <input type="range" min="1" max="150" v-model.number="endChroma">
-      {{ endChroma }}
-      <br>Start luminance:
-      <input type="range" min="1" max="150" v-model.number="startLuma">
-      {{ startLuma }}
-      <br>End luminance:
-      <input type="range" min="1" max="150" v-model.number="endLuma">
-      {{ endLuma }}
-      <br>
-      <label class="checkbox-label">
-        Show swatch labels:
-        <input type="checkbox" v-model="showLabels" class="checkbox">
-        <br>
-      </label>
-      <label class="checkbox-label">
-        Dark mode:
-        <input type="checkbox" v-model="darkMode" class="checkbox">
-        <br>
-      </label>
+      <control-panel/>Hues (Columns):
     </section>
-    <section>
+
+    <section class="app-output">
       <div class="palettes">
         <palette
           class="palette"
           :steps="steps"
           :start-chroma="0"
           :end-chroma="0"
-          :start-luma="startLuma"
-          :end-luma="endLuma"
+          :start-luma="lumaStart - 4"
+          :end-luma="lumaEnd"
         ></palette>
 
         <palette
@@ -48,10 +21,10 @@
           class="palette"
           :hue="((n - 1) / hues) * 360"
           :steps="steps"
-          :start-chroma="startChroma"
-          :end-chroma="endChroma"
-          :start-luma="startLuma"
-          :end-luma="endLuma"
+          :start-chroma="chromaStart"
+          :end-chroma="chromaEnd"
+          :start-luma="lumaStart"
+          :end-luma="lumaEnd"
         ></palette>
       </div>
     </section>
@@ -59,61 +32,93 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import ControlPanel from "./components/ControlPanel.vue";
 import Palette from "./components/Palette.vue";
 
 export default {
   name: "app",
   components: {
+    ControlPanel,
     Palette
   },
   data() {
     return {
-      darkMode: false,
-      showLabels: true,
-
-      hues: 18,
-      steps: 5,
-      startChroma: 30,
-      endChroma: 120,
-      startLuma: 90,
-      endLuma: 20
+      hues: 18
     };
   },
-  methods: {
-    getHCL(n) {
-      let c = chroma.hcl((n - 1) * 40, 20, 90);
-      return c;
-    }
-  },
-
-  watch: {
-    darkMode() {
-      const body = document.querySelector("body");
-      body.classList.toggle("dark-mode");
-    }
+  computed: {
+    ...mapState(["chromaStart", "chromaEnd", "lumaStart", "lumaEnd", "steps"])
   }
+  // methods: {
+  //   getHCL(n) {
+  //     // let c = chroma.hcl((n - 1) * 40, 20, 90);
+  //     return c;
+  //   }
+  // },
+  // watch: {
+  //   darkMode() {
+  //     const body = document.querySelector("body");
+  //     body.classList.toggle("dark-mode");
+  //   }
+  // }
 };
 </script>
 
 <style>
+:root {
+  --color: #444;
+  --bg-color: #fff;
+
+  --border-color: #d4d4d4;
+  --border: 1px solid var(--border-color);
+
+  --palette-gap: 16px;
+  --swatch-gap: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  color: var(--color);
+  background-color: var(--bg-color);
   font-family: menlo, "Courier New", Courier, monospace;
   font-size: 11px;
 }
 </style>
 
 <style scoped>
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .app-controls {
+  flex: 0 0 auto;
+  padding: 16px;
   font-family: var(--monospace);
   font-size: 13px;
+  border-bottom: var(--border);
+}
+
+.app-output {
+  flex: 1 1 auto;
+  width: 100vw;
+  overflow-x: scroll;
 }
 
 .palettes {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  padding: 16px;
 }
 
 .palette {
-  margin: 0 16px 16px 0;
+  margin-right: var(--palette-gap);
 }
 </style>
