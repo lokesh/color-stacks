@@ -2,6 +2,7 @@
   <div>
     <!-- <input type="range" min="1" max="18" step="1" v-model.number="hues">
     {{ hues }}-->
+    <button type="button" @click="addHue">Add Hue</button>
     <br>Steps (Rows):
     <input
       type="range"
@@ -106,6 +107,11 @@ export default {
       set: function(val) {
         this.$store.commit("setSteps", val);
       }
+    }
+  },
+  methods: {
+    addHue() {
+      this.$store.commit("addHue");
     }
   }
 };

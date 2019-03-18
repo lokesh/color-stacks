@@ -1,8 +1,15 @@
 <template>
   <div class="palette">
-    <input :value="hue" style="width: 100%">
+    <input
+      type="number"
+      class="hue-input"
+      :min="hueMin"
+      :max="hueMax"
+      v-model.number="hueInput"
+      @keydown.shift="onKeydownWithShift"
+    >
     <br>
-    <button label="delete" type="button"/>
+    <button type="button" @click="remove">Remove</button>
     <swatch
       v-for="(step, index) in steps"
       :key="index"
@@ -15,6 +22,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Swatch from "./Swatch.vue";
 
 export default {
@@ -23,15 +31,56 @@ export default {
     Swatch
   },
   props: {
-    steps: { type: Number, default: 10 },
+    arrayIndex: Number,
+    steps: Number,
     hue: { type: Number, default: 0 },
-    startChroma: { type: Number, default: 60 },
-    endChroma: { type: Number, default: 60 },
-    startLuma: { type: Number, default: 20 },
-    endLuma: { type: Number, default: 120 }
+    startChroma: Number,
+    endChroma: Number,
+    startLuma: Number,
+    endLuma: Number
+  },
+  data() {
+    return {
+      hueInput: this.hue
+    };
+  },
+  computed: {
+    ...mapState(["hueMin", "hueMax"])
+  },
+  watch: {
+    hueInput(val) {
+      this.$store.commit("updateHue", {
+        index: this.arrayIndex,
+        hue: val
+      });
+    }
+  },
+
+  methods: {
+    onKeydownWithShift(event) {
+      if (event.key === "ArrowUp") {
+        this.hueInput += 10;
+        if (this.hueInput > this.hueMax) {
+          this.hueInput = this.hueMax;
+        }
+        event.preventDefault();
+      } else if (event.key === "ArrowDown") {
+        this.hueInput -= 10;
+        if (this.hueInput < this.hueMin) {
+          this.hueInput = this.hueMin;
+        }
+        event.preventDefault();
+      }
+    },
+    remove() {
+      this.$store.commit("removeHue", this.arrayIndex);
+    }
   }
 };
 </script>
 
 <style scoped>
+.hue-input {
+  width: 6em;
+}
 </style>

@@ -10,7 +10,11 @@ const set = key => (state, val) => {
 
 export default new Vuex.Store({
   state: {
-    stepsMin: 1,
+    hues: [0, 30, 60, 90],
+    hueMin: 0,
+    hueMax: 360,
+
+    stepsMin: 2,
     stepsMax: 20,
     steps: 10,
 
@@ -28,6 +32,18 @@ export default new Vuex.Store({
     showLabels: true
   },
   mutations: {
+    addHue(state, hue) {
+      if (typeof hue === "undefined") {
+        hue = Math.floor(Math.random() * 360);
+      }
+      state.hues.push(hue);
+    },
+    updateHue(state, { index, hue }) {
+      Vue.set(state.hues, index, hue);
+    },
+    removeHue(state, index) {
+      state.hues.splice(index, 1);
+    },
     setSteps: set("steps"),
     setChromaStart: set("chromaStart"),
     setChromaEnd: set("chromaEnd"),

@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <section class="app-controls">
-      <control-panel/>Hues (Columns):
+      <control-panel/>
     </section>
 
     <section class="app-output">
@@ -16,10 +16,11 @@
         ></palette>
 
         <palette
-          v-for="(n, index) in hues"
+          v-for="(hue, index) in hues"
           :key="index"
           class="palette"
-          :hue="((n - 1) / hues) * 360"
+          :array-index="index"
+          :hue="hue"
           :steps="steps"
           :start-chroma="chromaStart"
           :end-chroma="chromaEnd"
@@ -42,13 +43,20 @@ export default {
     ControlPanel,
     Palette
   },
-  data() {
-    return {
-      hues: 18
-    };
-  },
+  // data() {
+  //   return {
+  //     hues: 18
+  //   };
+  // },
   computed: {
-    ...mapState(["chromaStart", "chromaEnd", "lumaStart", "lumaEnd", "steps"])
+    ...mapState([
+      "hues",
+      "chromaStart",
+      "chromaEnd",
+      "lumaStart",
+      "lumaEnd",
+      "steps"
+    ])
   }
   // methods: {
   //   getHCL(n) {
@@ -68,10 +76,12 @@ export default {
 <style>
 :root {
   --color: #444;
-  --bg-color: #fff;
+  --bg-color: #f3f3f3;
 
   --border-color: #d4d4d4;
   --border: 1px solid var(--border-color);
+
+  --focus-color: #18bdff;
 
   --palette-gap: 16px;
   --swatch-gap: 0;
@@ -86,8 +96,21 @@ export default {
 body {
   color: var(--color);
   background-color: var(--bg-color);
-  font-family: menlo, "Courier New", Courier, monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 11px;
+}
+
+input[type="number"] {
+  padding: 4px 8px;
+  border: var(--border);
+  border-radius: 3px;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 1px var(--focus-color);
 }
 </style>
 
@@ -101,6 +124,7 @@ body {
 .app-controls {
   flex: 0 0 auto;
   padding: 16px;
+  background: white;
   font-family: var(--monospace);
   font-size: 13px;
   border-bottom: var(--border);
