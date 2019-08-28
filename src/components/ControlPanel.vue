@@ -25,6 +25,8 @@
     <input type="range" :min="lumaMin" :max="lumaMax" v-model.number="lumaEnd">
     {{ lumaEnd }}
     <br>
+    Cast - Cool to Warm<br>
+
     <label class="checkbox-label">
       Show swatch labels:
       <input type="checkbox" v-model="showLabels" class="checkbox">
