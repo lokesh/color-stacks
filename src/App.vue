@@ -3,16 +3,27 @@
     <section class="app-controls">
       <control-panel/>
     </section>
+    <vue-slider
+      v-model="grayLumas"
+      direction="ttb"
+      :min="lumaMin"
+      :max="lumaMax"
+      :duration="0.25"
+      :dot-size="24"
+      :height="200" 
+    ></vue-slider>
+
+    <stepper />
 
     <section class="app-output">
       <div class="palettes">
         <palette
           class="palette"
-          :steps="steps"
+          :steps="graySteps"
           :start-chroma="0"
           :end-chroma="0"
-          :start-luma="lumaStart - 4"
-          :end-luma="lumaEnd"
+          :start-luma="grayLumaStart"
+          :end-luma="grayLumaEnd"
         ></palette>
 
         <palette
@@ -36,28 +47,55 @@
 import { mapState } from "vuex";
 import ControlPanel from "./components/ControlPanel.vue";
 import Palette from "./components/Palette.vue";
+import Stepper from "./components/Stepper.vue";
+
+import VueSlider from 'vue-slider-component'
+
+import 'vue-slider-component/theme/material.css'
 
 export default {
   name: "app",
   components: {
     ControlPanel,
-    Palette
+    Palette,
+    Stepper,
+    VueSlider,
   },
-  // data() {
-  //   return {
-  //     hues: 18
-  //   };
-  // },
+
+  data() {
+    return {
+      // grayLumas: [0, 50],
+    };
+  },
+
   computed: {
     ...mapState([
+      "lumaMin",
+      "lumaMax",
+
+      "graySteps",
+      "grayLumaStart",
+      "grayLumaEnd",
+
+
       "hues",
       "chromaStart",
       "chromaEnd",
       "lumaStart",
       "lumaEnd",
       "steps"
-    ])
-  }
+    ]),
+    grayLumas: {
+      get() {
+        return [this.grayLumaStart, this.grayLumaEnd];
+      },
+      set(val) {
+        this.$store.commit('setGrayLumaStart', val[0]);
+        this.$store.commit('setGrayLumaEnd', val[1]);        
+      },
+    }
+  },
+
   // methods: {
   //   getHCL(n) {
   //     // let c = chroma.hcl((n - 1) * 40, 20, 90);
@@ -76,10 +114,11 @@ export default {
 <style>
 :root {
   --color: #444;
-  --bg-color: #f3f3f3;
+  --bg-color: #fff;
 
   --border-color: #d4d4d4;
   --border: 1px solid var(--border-color);
+  --radius: 8px;
 
   --focus-color: #18bdff;
 
@@ -88,17 +127,21 @@ export default {
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  color: var(--color);
+  margin: 0;
+  padding: 0;
   background-color: var(--bg-color);
+}
+
+body,
+button,
+input {
+  color: var(--color);  
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 11px;
 }
 
 input[type="number"] {

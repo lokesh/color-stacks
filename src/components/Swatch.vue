@@ -26,7 +26,6 @@ export default {
     h: { type: Number, required: true },
     c: { type: Number, required: true },
     l: { type: Number, required: true },
-    paletteSize: { type: Number }
   },
   data() {
     return {
@@ -108,18 +107,28 @@ export default {
 <style scoped>
 .swatch {
   position: relative;
-  width: 10em;
-  height: 4.5em;
+  width: 8em;
+  height: 3em;
   margin-bottom: var(--swatch-gap);
   padding: 8px;
   font-size: 11px;
 }
 
 .swatch-name {
+  display: none;
   font-weight: 600;
 }
 
+.swatch-hex {
+  display: none;
+}
+
+.swatch-wcag {
+  display: none;
+}
+
 .not-compliant::after {
+  display: none;
   position: absolute;
   content: "AA";
   right: 8px;

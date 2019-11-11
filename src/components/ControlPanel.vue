@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- <input type="range" min="1" max="18" step="1" v-model.number="hues">
-    {{ hues }}-->
+    <!--  <input type="range" min="1" max="18" step="1" v-model.number="hues">
+    {{ hues }} -->
     <button type="button" @click="addHue">Add Hue</button>
     <br>Steps (Rows):
     <input
@@ -59,7 +59,8 @@ export default {
         return this.$store.state.chromaStart;
       },
       set: function(val) {
-        this.$store.commit("setChromaStart", val);
+        this.$store.dispatch('options', { 'chromaStart': val});
+        // this.$store.commit("setChromaStart", val);
       }
     },
     chromaEnd: {
@@ -67,7 +68,8 @@ export default {
         return this.$store.state.chromaEnd;
       },
       set: function(val) {
-        this.$store.commit("setChromaEnd", val);
+        this.$store.dispatch('options', { 'chromaEnd': val});
+        // this.$store.commit("setChromaEnd", val);
       }
     },
     darkMode: {
