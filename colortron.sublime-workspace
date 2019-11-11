@@ -1,0 +1,1102 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"publ",
+				"publish-date"
+			],
+			[
+				"bg-",
+				"hover-bg-color"
+			],
+			[
+				"fon",
+				"font-weight\tproperty"
+			],
+			[
+				"no",
+				"nowrap\twhite-space"
+			],
+			[
+				"ui",
+				"uiTextCase"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/lokesh/Projects/colortron/src/store.js",
+			"settings":
+			{
+				"buffer_size": 2015,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\n# TODO\n- [ ] Color name and rgb in store\n\n- [ ] Updating chroma, luma, steps, etc. should regenerate all hexes in the store?s\nstore action that takes in prop and val array\n\n\nFormat for colors:\n\nCOLOR\n{\n\tname: 'GENERATED',\n\th: NUM,\n\tc: NUM,\n\tl: NUM,\n\thex: NUM\n},\n\nHUE\n[ color, color, color ]\n\nCOLORS\n[ HUE, HUE, HUE ]\n\nmutations: {\n\tgenerateColors() {\n\t\t// Loop on hue count\n\t\t\t// Loop on steps\n\t\t\t\tCalc chroma\n\t\t\t\tCalc luma\n\t\t\t\tOptional Cast\n\t\t\t\tContrast check?\n\t\t\t\tName\n\t}\n}\n\nactions: {\n\tupdateOptions({ commit },options) {\n    \t// For each option, commit\n    \tcommit(\"setName\", val);\n\n    \t// Regen color values\n\n    \tcommit(\"setColor\")\n    \t\n    }\n}\n\n",
+			"settings":
+			{
+				"buffer_size": 655,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Swatch.vue",
+			"settings":
+			{
+				"buffer_size": 2983,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "SwatchSimple.vue",
+			"settings":
+			{
+				"buffer_size": 1509,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Palette.vue",
+			"settings":
+			{
+				"buffer_size": 1776,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "PaletteSimple.vue",
+			"settings":
+			{
+				"buffer_size": 1520,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"theme",
+				"UI: Select Color Scheme"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"prettier",
+				"JsPrettier: Format Code"
+			],
+			[
+				"jspre",
+				"JsPrettier: Format Code"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/lokesh/Projects/colortron",
+		"/Users/lokesh/Projects/colortron/src",
+		"/Users/lokesh/Projects/colortron/src/assets",
+		"/Users/lokesh/Projects/colortron/src/components"
+	],
+	"file_history":
+	[
+		"/Users/lokesh/Projects/colortron/src/components/ControlPanel.vue",
+		"/Users/lokesh/Projects/colortron/src/utils.js",
+		"/Users/lokesh/Projects/colortron/src/components/Palette.vue",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/css/main.css",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/primary.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/american-factory.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/digital-gold.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/layouts/page.njk",
+		"/Users/lokesh/Projects/lokesh-dhakar/dist/css/main.css",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/running.md",
+		"/Users/lokesh/Projects/color-thief-site/css/main.css",
+		"/Users/lokesh/Projects/color-thief-site/index.html",
+		"/Users/lokesh/Projects/color-thief-site/js/demo.js",
+		"/Users/lokesh/Projects/color-thief-site/js/github.js",
+		"/Users/lokesh/Projects/color-thief-site/build/github.js",
+		"/Users/lokesh/Projects/color-thief-site/css/prism.css",
+		"/Users/lokesh/Projects/color-thief-site/js/prism.min.js",
+		"/Users/lokesh/Projects/color-thief/CONTRIBUTING.md",
+		"/Users/lokesh/Projects/color-thief/README.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/three-body-problem.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/of-fathers-and-sons.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/the-jungle.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/neither-wolf-nor-dog.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/cold-war.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/salad-days.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/purple-mountains.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/README.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/hatching-twitter.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/package.json",
+		"/Users/lokesh/Projects/lokesh-dhakar/build.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/node_modules/.bin/metalsmith",
+		"/Users/lokesh/Projects/color-thief-site/package.json",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/data/notes.json",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/stranger-than-paradise.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/js/timeago.min.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/blade-runner.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/blue-bottle.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/isle-of-dogs.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/slacker.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/tokyo-story.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/dist/data/notes.json",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/javascript-loops.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/css/stripe.css",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/inspiration.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/dev-202.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/gdp-histomap.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/node_modules/moment/locale/te.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/media/icons/book.svg",
+		"/Users/lokesh/Projects/lokesh-dhakar/node_modules/optimist/example/line_count.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/media/icons/film.svg",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/blog.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/my-book-stack.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/media/icons/music.svg",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/media/icons/movie.svg",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/purple-mountain.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/blade-runner.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/hatching-twitter.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/isle-of-dogs.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/cold-war.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/build/strava.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/build/notes.sh",
+		"/Users/lokesh/Projects/lokesh-dhakar/node_modules/markdown-json/lib/generator.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/notes-to-json.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/refresh-data.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/node_modules/resolve/lib/node-modules-paths.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/build/refresh-data.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/build/notes-to-json.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/build/add-vid-to-json.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/notes.json",
+		"/Users/lokesh/Projects/lokesh-dhakar/build/notes-json.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/test.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/notes-json.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/dev-101.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/dev-201.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/color-systems-in-hcl.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/biking-dc-mashup.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/baltimore-travelogue.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/dist/layouts/post.njk",
+		"/Users/lokesh/Projects/lokesh-dhakar/dist/layouts/blog.njk",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/layouts/blog.njk",
+		"/Users/lokesh/Projects/lokesh-dhakar/add-vid-to-json.js",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/new-book-stack.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/lokeshdhakar-dot-com-launched.md",
+		"/Users/lokesh/Projects/lokesh-dhakar/src/posts/lightbox-203-released.md",
+		"/Users/lokesh/Projects/color-thief-site/js/github.json",
+		"/Users/lokesh/Projects/color-thief-site/js/github.mjs",
+		"/Users/lokesh/Projects/color-thief-site/css/screen.css",
+		"/Users/lokesh/Projects/color-thief-site/build/deploy.js",
+		"/Users/lokesh/Projects/color-thief-site/.host.json",
+		"/Users/lokesh/Projects/color-thief-site/.gitignore",
+		"/Users/lokesh/Projects/color-thief-site/README.md",
+		"/Users/lokesh/Projects/color-thief-site/css/legacy.css",
+		"/Users/lokesh/Projects/color-thief-site/js/prism.js",
+		"/Users/lokesh/Projects/color-thief-site/src/sass/screen.sass",
+		"/Users/lokesh/Projects/color-thief-site/src/sass/_normalize.sass",
+		"/Users/lokesh/Projects/color-thief-site/Gruntfile.js",
+		"/Users/lokesh/Projects/color-thief-site/src/index.html",
+		"/Users/lokesh/Projects/lightbox2-site/css/prism.css",
+		"/Users/lokesh/Projects/lightbox2-site/index.html",
+		"/Users/lokesh/Projects/lightbox2-site/css/screen.css",
+		"/Users/lokesh/Projects/lightbox2-site/images/picture.svg",
+		"/Users/lokesh/Projects/lightbox2-site/node_modules/async/dist/async.min.js",
+		"/Users/lokesh/Projects/lightbox2-site/package.json",
+		"/Users/lokesh/Projects/color-thief/src/color-thief.js",
+		"/Users/lokesh/Projects/vue-theming/src/views/Home.vue",
+		"/Users/lokesh/Projects/vue-theming/src/router.js",
+		"/Users/lokesh/Projects/vue-theming/src/main.js",
+		"/Users/lokesh/Projects/vue-theming/src/App.vue",
+		"/Users/lokesh/Projects/vue-theming/README.md",
+		"/Users/lokesh/Projects/vue-theming/src/store.js",
+		"/Users/lokesh/Projects/vue-theming/src/elements/BaseButton.vue",
+		"/Users/lokesh/Projects/vue-theming/src/views/About.vue",
+		"/Users/lokesh/Projects/vue-theming/vue-theming.sublime-project",
+		"/Users/lokesh/Projects/vue-theming/.editorconfig",
+		"/Users/lokesh/Projects/vue-theming/babel.config.js",
+		"/Users/lokesh/Projects/vue-theming/package-lock.json",
+		"/Users/lokesh/Projects/vue-theming/package.json",
+		"/Users/lokesh/Projects/vue-theming/postcss.config.js",
+		"/Users/lokesh/Projects/vue-theming/.eslintrc.js",
+		"/Users/lokesh/Projects/vue-theming/src/elements/ThemeSwitcher.vue",
+		"/Users/lokesh/Library/Application Support/Sublime Text 3/Packages/JsPrettier/JsPrettier.sublime-settings",
+		"/Users/lokesh/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/lokesh/Projects/vue-theming/src/components/Button.vue",
+		"/Users/lokesh/Projects/color-thief/cypress/integration/api_spec.js",
+		"/Users/lokesh/Projects/color-thief/dist/color-thief.mjs",
+		"/Users/lokesh/Projects/color-thief/src/color-thief-node.js",
+		"/Users/lokesh/Projects/color-thief/test/node-test.js"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+			"*, -node_modules/*",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"clipped",
+			"chromava",
+			"chromaval",
+			"case",
+			"switch",
+			"chromast",
+			"set",
+			"size",
+			"pale",
+			"palettesize"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/lokesh/Projects/colortron/src/store.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2015,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1616,
+								1616
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 885.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 655,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								318,
+								318
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Swatch.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2983,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								2983
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vue Syntax Highlight/Vue Component.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "SwatchSimple.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1509,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								234,
+								234
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vue Syntax Highlight/Vue Component.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Palette.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1776,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vue Syntax Highlight/Vue Component.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "PaletteSimple.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1520,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								161,
+								161
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vue Syntax Highlight/Vue Component.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "colortron.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"palete",
+				"src/components/Palette.vue"
+			],
+			[
+				"panel.",
+				"src/components/ControlPanel.vue"
+			],
+			[
+				"swatch",
+				"src/components/Swatch.vue"
+			],
+			[
+				"american",
+				"src/notes/american-factory.md"
+			],
+			[
+				"main.",
+				"src/css/main.css"
+			],
+			[
+				"notes.md",
+				"src/notes.md"
+			],
+			[
+				"primary.",
+				"src/notes/primary.md"
+			],
+			[
+				"american f",
+				"src/notes/american-factory.md"
+			],
+			[
+				"notes md",
+				"src/notes.md"
+			],
+			[
+				"runn",
+				"src/running.md"
+			],
+			[
+				"main",
+				"css/main.css"
+			],
+			[
+				"github.j",
+				"build/github.js"
+			],
+			[
+				"github.js",
+				"build/github.js"
+			],
+			[
+				"demo.j",
+				"js/demo.js"
+			],
+			[
+				"contribut",
+				"CONTRIBUTING.md"
+			],
+			[
+				"notes.",
+				"src/notes.md"
+			],
+			[
+				"neither",
+				"src/notes/neither-wolf-nor-dog.md"
+			],
+			[
+				"the jun",
+				"src/notes/the-jungle.md"
+			],
+			[
+				"of fath",
+				"src/notes/of-fathers-and-sons.md"
+			],
+			[
+				"cold war",
+				"src/notes/cold-war.md"
+			],
+			[
+				"salad d",
+				"src/notes/salad-days.md"
+			],
+			[
+				"three bod",
+				"src/notes/three-body-problem.md"
+			],
+			[
+				"digital g",
+				"src/notes/digital-gold.md"
+			],
+			[
+				"purple ",
+				"src/notes/purple-mountains.md"
+			],
+			[
+				"digi",
+				"src/notes/digital-gold.md"
+			],
+			[
+				"of father",
+				"src/notes/of-fathers-and-sons.md"
+			],
+			[
+				"purple m",
+				"src/notes/purple-mountains.md"
+			],
+			[
+				"metal",
+				"node_modules/.bin/metalsmith"
+			],
+			[
+				"paca",
+				"package.json"
+			],
+			[
+				"scree",
+				"css/screen.css"
+			],
+			[
+				"strange",
+				"src/notes/stranger-than-paradise.md"
+			],
+			[
+				"salad",
+				"src/notes/salad-days.md"
+			],
+			[
+				"notes",
+				"src/data/notes.json"
+			],
+			[
+				"three bo",
+				"src/notes/three-body-problem.md"
+			],
+			[
+				"notes.js",
+				"src/data/notes.json"
+			],
+			[
+				"java",
+				"src/posts/javascript-loops.md"
+			],
+			[
+				"note.md",
+				"src/notes.md"
+			],
+			[
+				"strip.",
+				"src/css/stripe.css"
+			],
+			[
+				"inspira",
+				"src/inspiration.md"
+			],
+			[
+				"slack",
+				"src/notes/slacker.md"
+			],
+			[
+				"blade ru",
+				"src/notes/blade-runner.md"
+			],
+			[
+				"the jung",
+				"src/notes/the-jungle.md"
+			],
+			[
+				"cold wa",
+				"src/notes/cold-war.md"
+			],
+			[
+				"isle of do",
+				"src/notes/isle-of-dogs.md"
+			],
+			[
+				"hatci",
+				"src/notes/hatching-twitter.md"
+			],
+			[
+				"blue bo",
+				"src/notes/blue-bottle.md"
+			],
+			[
+				"tokyo",
+				"src/notes/tokyo-story.md"
+			],
+			[
+				"gd hist",
+				"src/posts/gdp-histomap.md"
+			],
+			[
+				"tokyo md",
+				"src/notes/tokyo-story.md"
+			],
+			[
+				"note.js",
+				"node_modules/moment/locale/te.js"
+			],
+			[
+				"gdp",
+				"src/posts/gdp-histomap.md"
+			],
+			[
+				"inspir",
+				"src/inspiration.md"
+			],
+			[
+				"running",
+				"src/running.md"
+			],
+			[
+				"my book",
+				"src/posts/my-book-stack.md"
+			],
+			[
+				"runnin",
+				"src/running.md"
+			],
+			[
+				"inspiration",
+				"src/inspiration.md"
+			],
+			[
+				"readme",
+				"README.md"
+			],
+			[
+				"202 md",
+				"src/posts/dev-202.md"
+			],
+			[
+				"runni",
+				"src/running.md"
+			],
+			[
+				"hatchig",
+				"src/notes/hatching-twitter.md"
+			],
+			[
+				"readm",
+				"README.md"
+			],
+			[
+				"buildjs",
+				"build.js"
+			],
+			[
+				"metalsmi",
+				"node_modules/.bin/metalsmith"
+			],
+			[
+				"packa.",
+				"package.json"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"refres",
+				"refresh-data.js"
+			],
+			[
+				"generator",
+				"node_modules/markdown-json/lib/generator.js"
+			],
+			[
+				"package",
+				"package.json"
+			],
+			[
+				"dev-201",
+				"src/posts/dev-201.md"
+			],
+			[
+				"dev-",
+				"src/posts/dev-202.md"
+			],
+			[
+				"baltimo",
+				"src/posts/baltimore-travelogue.md"
+			],
+			[
+				"dev 201",
+				"src/posts/dev-201.md"
+			],
+			[
+				"hcl",
+				"src/posts/color-systems-in-hcl.md"
+			],
+			[
+				"biking",
+				"src/posts/biking-dc-mashup.md"
+			],
+			[
+				"main.cs",
+				"src/css/main.css"
+			],
+			[
+				"post.n",
+				"dist/layouts/post.njk"
+			],
+			[
+				"blog.n",
+				"dist/layouts/blog.njk"
+			],
+			[
+				"page.njk",
+				"src/layouts/page.njk"
+			],
+			[
+				"insp",
+				"src/inspiration.md"
+			],
+			[
+				"inspirat",
+				"src/inspiration.md"
+			],
+			[
+				"dc b",
+				"src/posts/biking-dc-mashup.md"
+			],
+			[
+				"add-vi",
+				"add-vid-to-json.js"
+			],
+			[
+				"lightbox 2.0",
+				"src/posts/lightbox-203-released.md"
+			],
+			[
+				"lokeshdhakar",
+				"src/posts/lokeshdhakar-dot-com-launched.md"
+			],
+			[
+				"new boo",
+				"src/posts/new-book-stack.md"
+			],
+			[
+				"main.css",
+				"src/css/main.css"
+			],
+			[
+				"main.c",
+				"dist/css/main.css"
+			],
+			[
+				"demo",
+				"js/demo.js"
+			],
+			[
+				"screen",
+				"css/screen.css"
+			],
+			[
+				"index.",
+				"index.html"
+			],
+			[
+				"demo.js",
+				"js/demo.js"
+			],
+			[
+				"demo.",
+				"js/demo.js"
+			],
+			[
+				"legacy",
+				"css/legacy.css"
+			],
+			[
+				"prism",
+				"css/prism.css"
+			],
+			[
+				"screen.",
+				"css/screen.css"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"color thief",
+				"src/color-thief.js"
+			],
+			[
+				"basebut",
+				"src/elements/BaseButton.vue"
+			],
+			[
+				"app.",
+				"src/App.vue"
+			],
+			[
+				"color-thief",
+				"src/color-thief.js"
+			],
+			[
+				"color-thi",
+				"dist/color-thief.mjs"
+			],
+			[
+				"read",
+				"README.md"
+			],
+			[
+				"node",
+				"test/node-test.js"
+			],
+			[
+				"color thi",
+				"src/color-thief.js"
+			],
+			[
+				"contrib",
+				"CONTRIBUTING.md"
+			],
+			[
+				"readme.md",
+				"README.md"
+			],
+			[
+				"packag",
+				"package.json"
+			],
+			[
+				"package.",
+				"package.json"
+			],
+			[
+				"node.js",
+				"node.js"
+			],
+			[
+				"webpa",
+				"webpack.config.js"
+			],
+			[
+				"color thief no",
+				"src/color-thief-node.js"
+			],
+			[
+				"color thief node",
+				"dist/color-thief-node.js"
+			],
+			[
+				"node pixe",
+				"node_modules/get-pixels/node-pixels.js"
+			],
+			[
+				"core.j",
+				"src/core.js"
+			],
+			[
+				"color thie",
+				"src/color-thief.js"
+			],
+			[
+				"core node",
+				"src/core-node.js"
+			],
+			[
+				"core",
+				"src/core.js"
+			],
+			[
+				"api spe",
+				"cypress/integration/api_spec.js"
+			],
+			[
+				"quantize es",
+				"node_modules/quantize/src/quantize.js"
+			],
+			[
+				"es6.js",
+				"node_modules/es-abstract/es6.js"
+			],
+			[
+				"quanti",
+				"node_modules/quantize/quantize.js"
+			],
+			[
+				"colorth",
+				"src/color-thief.js"
+			],
+			[
+				"browserify",
+				"src/color-thief.browserify.js"
+			],
+			[
+				"colorthief",
+				"src/color-thief.js"
+			],
+			[
+				"prism.",
+				"src/css/prism.css"
+			],
+			[
+				"dev 202",
+				"src/posts/dev-202.md"
+			],
+			[
+				"es6",
+				"cypress/test-pages/es6-module.html"
+			],
+			[
+				"api sp",
+				"cypress/integration/api_spec.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 287.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
