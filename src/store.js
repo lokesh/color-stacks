@@ -1,5 +1,5 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
@@ -16,15 +16,16 @@ export default new Vuex.Store({
     lumaMax: 150,
 
     // Grays
+    graySteps: 12,
     grayLumaStart: 0,
     grayLumaEnd: 100,
-    graySteps: 16,
     grayCast: null, // Placeholder
 
     // Color
     colorHues: [],
-    colorLumaStart: 100,
-    colorLumaEnd: 0,
+    colorSteps: 12,
+    colorLumaStart: 0,
+    colorLumaEnd: 100,
     colorChromaStart: 30,
     colorChromaEnd: 120,
 
@@ -35,16 +36,10 @@ export default new Vuex.Store({
 
     stepsMin: 2,
     stepsMax: 20,
-    steps: 12,
+    // steps: 16,
 
     chromaMin: 0,
     chromaMax: 150,
-
-    chromaStart: 30,
-    chromaEnd: 120,
-
-    lumaStart: 100,
-    lumaEnd: 0,
 
     darkMode: false,
     showLabels: true,
@@ -53,15 +48,24 @@ export default new Vuex.Store({
     colors: [],
 
     // Deprecate
-    hues: [60, 120, 180, 240, 300],
+    hues: [40, 80, 120, 160, 200, 240, 280, 320],
   },
   mutations: {
+    
+    // Grays
+    setGraySteps: set('graySteps'),
+    setGrayLumaStart: set('grayLumaStart'),
+    setGrayLumaEnd: set('grayLumaEnd'),
 
-    setGrayLumaStart: set("grayLumaStart"),
-    setGrayLumaEnd: set("grayLumaEnd"),
+    // Color
+    setColorSteps: set('colorSteps'),
+    setColorLumaStart: set('colorLumaStart'),
+    setColorLumaEnd: set('colorLumaEnd'),
+    setColorChromaStart: set('colorChromaStart'),
+    setColorChromaEnd: set('colorChromaEnd'),
 
     addHue(state, hue) {
-      if (typeof hue === "undefined") {
+      if (typeof hue === 'undefined') {
         hue = Math.floor(Math.random() * 360);
       }
       state.hues.push(hue);
@@ -72,16 +76,11 @@ export default new Vuex.Store({
     removeHue(state, index) {
       state.hues.splice(index, 1);
     },
-    setSteps: set("steps"),
-    setChromaStart: set("chromaStart"),
-    setChromaEnd: set("chromaEnd"),
-    setLumaStart: set("lumaStart"),
-    setLumaEnd: set("lumaEnd"),
 
-    setDarkMode: set("darkMode"),
-    setShowLabels: set("showLabels"),
+    setDarkMode: set('darkMode'),
+    setShowLabels: set('showLabels'),
     
-    setColors: set("colors"),
+    setColors: set('colors'),
   },
   actions: {
     options({ state, commit }, options) {
@@ -98,11 +97,7 @@ export default new Vuex.Store({
       //  Add grays in first column always?
 
 
-      state.hues.forEach( (hue) => {
-        for (let i = 0; i < state.steps; i++) {
 
-        };
-      })
       // for (let i = 0; i < state.hues.length; i++) {
       //   console.log(state.hues[i]);
       // }
@@ -116,7 +111,7 @@ export default new Vuex.Store({
 
 
 
-      // commit("setColor")
+      // commit('setColor')
       
     }
 

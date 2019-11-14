@@ -1,64 +1,99 @@
 <template>
-  <div class="app">
-    <section class="app-controls">
+  <div class='app'>
+    <!-- <section>
       <control-panel/>
-    </section>
-    <vue-slider
-      v-model="grayLumas"
-      direction="ttb"
-      :min="lumaMin"
-      :max="lumaMax"
-      :duration="0.25"
-      :dot-size="24"
-      :height="200" 
-    ></vue-slider>
+    </section> -->
 
-    <stepper />
+    <!-- GRAYS -->
 
-    <section class="app-output">
-      <div class="palettes">
-        <palette
-          class="palette"
-          :steps="graySteps"
-          :start-chroma="0"
-          :end-chroma="0"
-          :start-luma="grayLumaStart"
-          :end-luma="grayLumaEnd"
-        ></palette>
-
-        <palette
-          v-for="(hue, index) in hues"
-          :key="index"
-          class="palette"
-          :array-index="index"
-          :hue="hue"
-          :steps="steps"
-          :start-chroma="chromaStart"
-          :end-chroma="chromaEnd"
-          :start-luma="lumaStart"
-          :end-luma="lumaEnd"
-        ></palette>
+    <section class='gray'>
+      <div class='temp'>
+        Cast
+      </div>
+      <div class='palette-row'>
+        <div class='control-col'>
+          <stepper
+            v-model='graySteps'
+          />
+          <slider
+            v-model='grayLumas'
+            :min='lumaMin'
+            :max='lumaMax'
+          ></slider>
+        </div>
+        <div class='palettes'>
+          <palette
+            class='palette'
+            :steps='graySteps'
+            :start-chroma='0'
+            :end-chroma='0'
+            :start-luma='grayLumaStart'
+            :end-luma='grayLumaEnd'
+          ></palette>
+        </div>
       </div>
     </section>
+
+    <!-- COLOR -->
+
+    <section class='color'>
+      <div class='temp'>
+        Hue selector
+      </div>
+      <div class='palette-row'>
+        <div class='control-col'>
+          <stepper
+            v-model='colorSteps'
+          />
+           <slider
+            v-model='colorLumas'
+            :min='lumaMin'
+            :max='lumaMax'
+          ></slider>
+          <slider
+            v-model='colorChromas'
+            :min='chromaMin'
+            :max='chromaMax'
+          ></slider>
+        </div>
+        <div class='palettes'>
+          <palette
+            v-for='(hue, index) in hues'
+            :key='index'
+            class='palette'
+            :array-index='index'
+            :hue='hue'
+            :steps='colorSteps'
+            :start-chroma='colorChromaStart'
+            :end-chroma='colorChromaEnd'
+            :start-luma='colorLumaStart'
+            :end-luma='colorLumaEnd'
+          ></palette>
+        </div>
+      </div>
+    </section>
+
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import ControlPanel from "./components/ControlPanel.vue";
-import Palette from "./components/Palette.vue";
-import Stepper from "./components/Stepper.vue";
+import { mapState } from 'vuex';
+import ControlPanel from './components/ControlPanel.vue';
+import Palette from './components/Palette.vue';
+import Slider from './components/Slider.vue';
+import Stepper from './components/Stepper.vue';
 
 import VueSlider from 'vue-slider-component'
 
-import 'vue-slider-component/theme/material.css'
+import 'vue-slider-component/theme/default.css'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     ControlPanel,
     Palette,
     Stepper,
+    Slider,
     VueSlider,
   },
 
@@ -70,21 +105,29 @@ export default {
 
   computed: {
     ...mapState([
-      "lumaMin",
-      "lumaMax",
+      'lumaMin',
+      'lumaMax',
+      'chromaMin',
+      'chromaMax',
 
-      "graySteps",
-      "grayLumaStart",
-      "grayLumaEnd",
+      'grayLumaStart',
+      'grayLumaEnd',
 
+      'colorLumaStart',
+      'colorLumaEnd',
+      'colorChromaStart',
+      'colorChromaEnd',
 
-      "hues",
-      "chromaStart",
-      "chromaEnd",
-      "lumaStart",
-      "lumaEnd",
-      "steps"
+      'hues',
     ]),
+    graySteps: {
+      get() {
+        return this.$store.state.graySteps;
+      },
+      set(val) {
+        this.$store.commit('setGraySteps', val);
+      },
+    },
     grayLumas: {
       get() {
         return [this.grayLumaStart, this.grayLumaEnd];
@@ -93,7 +136,33 @@ export default {
         this.$store.commit('setGrayLumaStart', val[0]);
         this.$store.commit('setGrayLumaEnd', val[1]);        
       },
-    }
+    },
+    colorSteps: {
+      get() {
+        return this.$store.state.colorSteps;
+      },
+      set(val) {
+        this.$store.commit('setColorSteps', val);
+      },
+    },
+    colorLumas: {
+      get() {
+        return [this.colorLumaStart, this.colorLumaEnd];
+      },
+      set(val) {
+        this.$store.commit('setColorLumaStart', val[0]);
+        this.$store.commit('setColorLumaEnd', val[1]);        
+      },
+    },
+    colorChromas: {
+      get() {
+        return [this.colorChromaStart, this.colorChromaEnd];
+      },
+      set(val) {
+        this.$store.commit('setColorChromaStart', val[0]);
+        this.$store.commit('setColorChromaEnd', val[1]);        
+      },
+    },
   },
 
   // methods: {
@@ -104,27 +173,17 @@ export default {
   // },
   // watch: {
   //   darkMode() {
-  //     const body = document.querySelector("body");
-  //     body.classList.toggle("dark-mode");
+  //     const body = document.querySelector('body');
+  //     body.classList.toggle('dark-mode');
   //   }
   // }
 };
 </script>
 
 <style>
-:root {
-  --color: #444;
-  --bg-color: #fff;
-
-  --border-color: #d4d4d4;
-  --border: 1px solid var(--border-color);
-  --radius: 8px;
-
-  --focus-color: #18bdff;
-
-  --palette-gap: 16px;
-  --swatch-gap: 0;
-}
+@import './styles/variables.css';
+@import './styles/base.css';
+@import './styles/vue-slider-component.css';
 
 * {
   box-sizing: border-box;
@@ -140,17 +199,17 @@ body,
 button,
 input {
   color: var(--color);  
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
-input[type="number"] {
+input[type='number'] {
   padding: 4px 8px;
   border: var(--border);
   border-radius: 3px;
 }
 
-input[type="number"]:focus {
+input[type='number']:focus {
   outline: none;
   border-color: var(--focus-color);
   box-shadow: 0 0 0 1px var(--focus-color);
@@ -160,17 +219,6 @@ input[type="number"]:focus {
 <style scoped>
 .app {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.app-controls {
-  flex: 0 0 auto;
-  padding: 16px;
-  background: white;
-  font-family: var(--monospace);
-  font-size: 13px;
-  border-bottom: var(--border);
 }
 
 .app-output {
@@ -182,10 +230,20 @@ input[type="number"]:focus {
 .palettes {
   display: flex;
   flex-wrap: nowrap;
-  padding: 16px;
+  padding: 0 16px;
 }
 
 .palette {
-  margin-right: var(--palette-gap);
+/*  margin-right: var(--palette-gap);*/
 }
+
+/* Gray section */
+.gray {
+  
+}
+
+.palette-row {
+  display: flex;
+}
+
 </style>

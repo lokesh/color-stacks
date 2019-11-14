@@ -1,0 +1,19 @@
+:root {
+  --color: #444;
+  --bg-color: #fff;
+
+  --border-color: #d4d4d4;
+  --border: 1px solid var(--border-color);
+  --radius: 6px;
+
+  --focus-color: #18bdff;
+
+  /* Forms */
+  --control-height: 24px;
+  --control-icon-size: 16px;
+  --control-hover-bg: #eee;
+
+  /* Swatches */
+  --palette-gap: 16px;
+  --swatch-gap: 0;
+}
