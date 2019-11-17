@@ -28,7 +28,7 @@ export default {
     l: { type: Number, required: true },
     hex: { type: String, required: true },
     name: { type: String, required: true },
-    
+
   },
   data() {
     return {

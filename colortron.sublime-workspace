@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"flex",
+				"flex-flow\tproperty"
+			],
+			[
 				"publ",
 				"publish-date"
 			],
@@ -28,53 +32,38 @@
 	"buffers":
 	[
 		{
-			"file": "/Users/lokesh/Projects/colortron/src/store.js",
+			"file": "src/App.vue",
 			"settings":
 			{
-				"buffer_size": 2015,
+				"buffer_size": 4239,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "\n# TODO\n- [ ] Color name and rgb in store\n\n- [ ] Updating chroma, luma, steps, etc. should regenerate all hexes in the store?s\nstore action that takes in prop and val array\n\n\nFormat for colors:\n\nCOLOR\n{\n\tname: 'GENERATED',\n\th: NUM,\n\tc: NUM,\n\tl: NUM,\n\thex: NUM\n},\n\nHUE\n[ color, color, color ]\n\nCOLORS\n[ HUE, HUE, HUE ]\n\nmutations: {\n\tgenerateColors() {\n\t\t// Loop on hue count\n\t\t\t// Loop on steps\n\t\t\t\tCalc chroma\n\t\t\t\tCalc luma\n\t\t\t\tOptional Cast\n\t\t\t\tContrast check?\n\t\t\t\tName\n\t}\n}\n\nactions: {\n\tupdateOptions({ commit },options) {\n    \t// For each option, commit\n    \tcommit(\"setName\", val);\n\n    \t// Regen color values\n\n    \tcommit(\"setColor\")\n    \t\n    }\n}\n\n",
+			"file": "src/components/Gradient/Gradient.vue",
 			"settings":
 			{
-				"buffer_size": 655,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Swatch.vue",
-			"settings":
-			{
-				"buffer_size": 2983,
+				"buffer_size": 118,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "SwatchSimple.vue",
+			"file": "src/components/Gradient/Tesxt.vue",
 			"settings":
 			{
-				"buffer_size": 1509,
+				"buffer_size": 3,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Unix",
+				"name": "sdf"
 			}
 		},
 		{
-			"file": "Palette.vue",
+			"file": "src/components/ControlPanel.vue",
 			"settings":
 			{
-				"buffer_size": 1776,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "PaletteSimple.vue",
-			"settings":
-			{
-				"buffer_size": 1520,
+				"buffer_size": 3102,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -91,6 +80,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"pre",
+				"JsPrettier: Format Code"
+			],
+			[
+				"prett",
+				"JsPrettier: Format Code"
+			],
 			[
 				"theme",
 				"UI: Select Color Scheme"
@@ -124,7 +121,7 @@
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 492.0,
 		"history":
 		[
 		]
@@ -141,15 +138,44 @@
 	"expanded_folders":
 	[
 		"/Users/lokesh/Projects/colortron",
+		"/Users/lokesh/Projects/colortron/public",
 		"/Users/lokesh/Projects/colortron/src",
 		"/Users/lokesh/Projects/colortron/src/assets",
-		"/Users/lokesh/Projects/colortron/src/components"
+		"/Users/lokesh/Projects/colortron/src/components",
+		"/Users/lokesh/Projects/colortron/src/components/Gradient",
+		"/Users/lokesh/Projects/colortron/src/styles"
 	],
 	"file_history":
 	[
-		"/Users/lokesh/Projects/colortron/src/components/ControlPanel.vue",
+		"/Users/lokesh/Projects/colortron/src/components/Gradient/index.js",
+		"/Users/lokesh/Projects/colortron/BAK.editorconfig",
+		"/Users/lokesh/Library/Application Support/Sublime Text 3/Packages/User/JsPrettier.sublime-settings",
 		"/Users/lokesh/Projects/colortron/src/utils.js",
+		"/Users/lokesh/Projects/colortron/src/components/SwatchSimple.vue",
+		"/Users/lokesh/Projects/colortron/src/components/Swatch.vue",
 		"/Users/lokesh/Projects/colortron/src/components/Palette.vue",
+		"/Users/lokesh/Projects/colortron/src/styles/base.css",
+		"/Users/lokesh/Projects/colortron/.editorconfig",
+		"/Users/lokesh/Projects/colortron/src/store.js",
+		"/Users/lokesh/Projects/colortron/src/components/Slider.vue",
+		"/Users/lokesh/Projects/colortron/src/components/ControlPanel.vue",
+		"/Users/lokesh/Projects/colortron/src/components/Stepper.vue",
+		"/Users/lokesh/Projects/colortron/src/App.vue",
+		"/Users/lokesh/Library/Application Support/Sublime Text 3/Packages/JsPrettier/JsPrettier.sublime-settings",
+		"/Users/lokesh/Projects/colortron/package.json",
+		"/Users/lokesh/Projects/colortron/package-lock.json",
+		"/Users/lokesh/Projects/colortron/colortron.sublime-project",
+		"/Users/lokesh/Projects/colortron/babel.config.js",
+		"/Users/lokesh/Projects/colortron/src/styles/vue-slider-component.css",
+		"/Users/lokesh/Projects/colortron/src/styles/variables.css",
+		"/Users/lokesh/Projects/colortron/node_modules/vue-slider-component/theme/default.css",
+		"/Users/lokesh/Projects/colortron/src/assets/x.svg",
+		"/Users/lokesh/Projects/colortron/public/index.html",
+		"/Users/lokesh/Projects/colortron/src/components/PaletteSimple.vue",
+		"/Users/lokesh/Projects/colortron/PaletteSimple.vue",
+		"/Users/lokesh/Projects/colortron/Palette.vue",
+		"/Users/lokesh/Projects/colortron/SwatchSimple.vue",
+		"/Users/lokesh/Projects/colortron/Swatch.vue",
 		"/Users/lokesh/Projects/lokesh-dhakar/src/notes.md",
 		"/Users/lokesh/Projects/lokesh-dhakar/src/css/main.css",
 		"/Users/lokesh/Projects/lokesh-dhakar/src/notes/primary.md",
@@ -248,37 +274,11 @@
 		"/Users/lokesh/Projects/lightbox2-site/css/prism.css",
 		"/Users/lokesh/Projects/lightbox2-site/index.html",
 		"/Users/lokesh/Projects/lightbox2-site/css/screen.css",
-		"/Users/lokesh/Projects/lightbox2-site/images/picture.svg",
-		"/Users/lokesh/Projects/lightbox2-site/node_modules/async/dist/async.min.js",
-		"/Users/lokesh/Projects/lightbox2-site/package.json",
-		"/Users/lokesh/Projects/color-thief/src/color-thief.js",
-		"/Users/lokesh/Projects/vue-theming/src/views/Home.vue",
-		"/Users/lokesh/Projects/vue-theming/src/router.js",
-		"/Users/lokesh/Projects/vue-theming/src/main.js",
-		"/Users/lokesh/Projects/vue-theming/src/App.vue",
-		"/Users/lokesh/Projects/vue-theming/README.md",
-		"/Users/lokesh/Projects/vue-theming/src/store.js",
-		"/Users/lokesh/Projects/vue-theming/src/elements/BaseButton.vue",
-		"/Users/lokesh/Projects/vue-theming/src/views/About.vue",
-		"/Users/lokesh/Projects/vue-theming/vue-theming.sublime-project",
-		"/Users/lokesh/Projects/vue-theming/.editorconfig",
-		"/Users/lokesh/Projects/vue-theming/babel.config.js",
-		"/Users/lokesh/Projects/vue-theming/package-lock.json",
-		"/Users/lokesh/Projects/vue-theming/package.json",
-		"/Users/lokesh/Projects/vue-theming/postcss.config.js",
-		"/Users/lokesh/Projects/vue-theming/.eslintrc.js",
-		"/Users/lokesh/Projects/vue-theming/src/elements/ThemeSwitcher.vue",
-		"/Users/lokesh/Library/Application Support/Sublime Text 3/Packages/JsPrettier/JsPrettier.sublime-settings",
-		"/Users/lokesh/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
-		"/Users/lokesh/Projects/vue-theming/src/components/Button.vue",
-		"/Users/lokesh/Projects/color-thief/cypress/integration/api_spec.js",
-		"/Users/lokesh/Projects/color-thief/dist/color-thief.mjs",
-		"/Users/lokesh/Projects/color-thief/src/color-thief-node.js",
-		"/Users/lokesh/Projects/color-thief/test/node-test.js"
+		"/Users/lokesh/Projects/lightbox2-site/images/picture.svg"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 27.0
 	},
 	"find_in_files":
 	{
@@ -294,6 +294,32 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tab",
+			"$attr",
+			"lumastart",
+			"\"",
+			"graylumastart",
+			"steps",
+			"hue",
+			"dispatch",
+			"colorsteps",
+			"width",
+			"box-sh",
+			"box-shad",
+			"height",
+			"margin",
+			"\"",
+			"logo.pn",
+			"prettier",
+			"tab",
+			"lerp",
+			"hue",
+			"set(",
+			"palettesi",
+			"simple",
+			"palettesim",
+			"palette",
+			"huemin",
 			"clipped",
 			"chromava",
 			"chromaval",
@@ -311,6 +337,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"'"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -326,29 +353,32 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/lokesh/Projects/colortron/src/store.js",
+					"file": "src/App.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2015,
+						"buffer_size": 4239,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1616,
-								1616
+								221,
+								221
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Vue Syntax Highlight/Vue Component.sublime-syntax",
 							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 885.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -356,99 +386,79 @@
 				},
 				{
 					"buffer": 1,
+					"file": "src/components/Gradient/Gradient.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 655,
+						"buffer_size": 118,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								318,
-								318
+								17,
+								17
 							]
 						],
 						"settings":
 						{
 							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Vue Syntax Highlight/Vue Component.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "Swatch.vue",
+					"file": "src/components/Gradient/Tesxt.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2983,
+						"buffer_size": 3,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								2983
+								3,
+								3
 							]
 						],
 						"settings":
 						{
+							"auto_name": "sdf",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
 							"syntax": "Packages/Vue Syntax Highlight/Vue Component.sublime-syntax",
 							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "SwatchSimple.vue",
+					"file": "src/components/ControlPanel.vue",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1509,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								234,
-								234
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Vue Syntax Highlight/Vue Component.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Palette.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1776,
+						"buffer_size": 3102,
 						"regions":
 						{
 						},
@@ -461,45 +471,18 @@
 						],
 						"settings":
 						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
 							"syntax": "Packages/Vue Syntax Highlight/Vue Component.sublime-syntax",
 							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "PaletteSimple.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1520,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								161,
-								161
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Vue Syntax Highlight/Vue Component.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -507,7 +490,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 27.0
 	},
 	"input":
 	{
@@ -544,7 +527,7 @@
 	"project": "colortron.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 50.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -554,16 +537,48 @@
 		"selected_items":
 		[
 			[
+				"app.",
+				"src/App.vue"
+			],
+			[
+				"app.v",
+				"src/App.vue"
+			],
+			[
+				"var",
+				"src/styles/variables.css"
+			],
+			[
+				"base.css",
+				"src/styles/base.css"
+			],
+			[
+				"swatch",
+				"src/components/Swatch.vue"
+			],
+			[
+				"node mod vue slider default theme",
+				"node_modules/vue-slider-component/theme/default.css"
+			],
+			[
+				"vari",
+				"src/styles/variables.css"
+			],
+			[
+				"palett",
+				"src/components/Palette.vue"
+			],
+			[
+				"store.",
+				"src/store.js"
+			],
+			[
 				"palete",
 				"src/components/Palette.vue"
 			],
 			[
 				"panel.",
 				"src/components/ControlPanel.vue"
-			],
-			[
-				"swatch",
-				"src/components/Swatch.vue"
 			],
 			[
 				"american",
@@ -946,10 +961,6 @@
 				"src/elements/BaseButton.vue"
 			],
 			[
-				"app.",
-				"src/App.vue"
-			],
-			[
 				"color-thief",
 				"src/color-thief.js"
 			],
@@ -1036,34 +1047,6 @@
 			[
 				"quanti",
 				"node_modules/quantize/quantize.js"
-			],
-			[
-				"colorth",
-				"src/color-thief.js"
-			],
-			[
-				"browserify",
-				"src/color-thief.browserify.js"
-			],
-			[
-				"colorthief",
-				"src/color-thief.js"
-			],
-			[
-				"prism.",
-				"src/css/prism.css"
-			],
-			[
-				"dev 202",
-				"src/posts/dev-202.md"
-			],
-			[
-				"es6",
-				"cypress/test-pages/es6-module.html"
-			],
-			[
-				"api sp",
-				"cypress/integration/api_spec.js"
 			]
 		],
 		"width": 0.0
@@ -1093,7 +1076,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 287.0,
 	"status_bar_visible": true,
 	"template_settings":

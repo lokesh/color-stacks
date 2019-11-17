@@ -2,25 +2,25 @@
   <vue-slider
     class="slider"
     v-bind="$attrs"
-    direction='ttb'
-    :duration='0'
-    :dot-size='[24, 12]'
-    :height='100' 
-    @change="(val) => $emit('input', val)"
+    direction="ttb"
+    :duration="0"
+    :dot-size="[24, 12]"
+    :height="100"
+    @change="val => $emit('input', val)"
   />
 </template>
 
 <script>
-import VueSlider from 'vue-slider-component';
-import 'vue-slider-component/theme/default.css'
+import VueSlider from "vue-slider-component";
+import "vue-slider-component/theme/default.css";
 
 export default {
-  name: 'Slider',
+  name: "Slider",
 
   components: {
-    VueSlider,
-  },
-}
+    VueSlider
+  }
+};
 </script>
 
 <style scoped>
