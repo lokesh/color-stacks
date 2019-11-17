@@ -46,7 +46,7 @@
         </div>
         <div class="palettes">
           <palette
-            v-for="(hue, index) in hues"
+            v-for="(hue, index) in colorHues"
             :key="index"
             class="palette"
             :array-index="index"
@@ -95,12 +95,11 @@ export default {
       "grayLumaStart",
       "grayLumaEnd",
 
+      "colorHues",
       "colorLumaStart",
       "colorLumaEnd",
       "colorChromaStart",
-      "colorChromaEnd",
-
-      "hues"
+      "colorChromaEnd"
     ]),
     graySteps: {
       get() {
@@ -146,19 +145,6 @@ export default {
       }
     }
   }
-
-  // methods: {
-  //   getHCL(n) {
-  //     // let c = chroma.hcl((n - 1) * 40, 20, 90);
-  //     return c;
-  //   }
-  // },
-  // watch: {
-  //   darkMode() {
-  //     const body = document.querySelector('body');
-  //     body.classList.toggle('dark-mode');
-  //   }
-  // }
 };
 </script>
 

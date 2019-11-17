@@ -21,7 +21,7 @@ export default new Vuex.Store({
     grayCast: null, // Placeholder
 
     // Color
-    colorHues: [],
+    colorHues: [40, 80, 120, 160, 200, 240, 280, 320],
     colorSteps: 12,
     colorLumaStart: 0,
     colorLumaEnd: 100,
@@ -30,7 +30,7 @@ export default new Vuex.Store({
 
     // Options
     hueMin: 0,
-    hueMax: 360,
+    hueMax: 359,
 
     stepsMin: 2,
     stepsMax: 20,
@@ -40,13 +40,7 @@ export default new Vuex.Store({
     chromaMax: 150,
 
     darkMode: false,
-    showLabels: true,
-
-    // Colors
-    colors: [],
-
-    // Deprecate
-    hues: [40, 80, 120, 160, 200, 240, 280, 320]
+    showLabels: true
   },
   mutations: {
     // Grays
@@ -65,46 +59,18 @@ export default new Vuex.Store({
       if (typeof hue === "undefined") {
         hue = Math.floor(Math.random() * 360);
       }
-      state.hues.push(hue);
+      state.colorHues.push(hue);
     },
     updateHue(state, { index, hue }) {
-      Vue.set(state.hues, index, hue);
+      Vue.set(state.colorHues, index, hue);
     },
     removeHue(state, index) {
-      state.hues.splice(index, 1);
+      state.colorHues.splice(index, 1);
     },
 
     setDarkMode: set("darkMode"),
     setShowLabels: set("showLabels"),
 
     setColors: set("colors")
-  },
-  actions: {
-    options({ state, commit }, options) {
-      for (let [option, val] of Object.entries(options)) {
-        const titleCasedOption =
-          option.slice(0, 1).toLocaleUpperCase() + option.slice(1);
-        const mutation = `set${titleCasedOption}`;
-        commit(mutation, val);
-      }
-
-      // Regen color values
-      // Loop on hues
-
-      //  Add grays in first column always?
-
-      // for (let i = 0; i < state.hues.length; i++) {
-      //   console.log(state.hues[i]);
-      // }
-
-      // Loop on steps
-      // Calc chroma
-      // Calc luma
-      // Optional Cast
-      // Contrast check?
-      // Name
-
-      // commit('setColor')
-    }
   }
 });
