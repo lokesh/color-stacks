@@ -31,8 +31,8 @@
     <!-- COLOR -->
 
     <section class="color">
-      <div class="temp">
-        Hue selector
+      <div class="gradient-row">
+        <gradient />
       </div>
       <div class="palette-row">
         <div class="control-col">
@@ -65,6 +65,7 @@
 
 <script>
 import { mapState } from "vuex";
+import Gradient from "./components/Gradient";
 import Palette from "./components/Palette.vue";
 import Slider from "./components/Slider.vue";
 import Stepper from "./components/Stepper.vue";
@@ -72,6 +73,7 @@ import Stepper from "./components/Stepper.vue";
 export default {
   name: "app",
   components: {
+    Gradient,
     Palette,
     Stepper,
     Slider
@@ -172,10 +174,9 @@ export default {
   padding: 24px;
 }
 
-.app-output {
-  flex: 1 1 auto;
-  width: 100vw;
-  overflow-x: scroll;
+.gradient-row {
+  width: 480px;
+  margin-bottom: 16px;
 }
 
 .palettes {
