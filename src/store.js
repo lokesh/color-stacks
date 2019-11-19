@@ -21,7 +21,7 @@ export default new Vuex.Store({
     grayCast: null, // Placeholder
 
     // Color
-    colorHues: [40, 80, 120, 160, 200, 240, 280, 320],
+    colorHues: [40, 200, 120, 200, 280, 320], //
     colorSteps: 12,
     colorLumaStart: 0,
     colorLumaEnd: 100,
@@ -72,7 +72,18 @@ export default new Vuex.Store({
       if (typeof val === "undefined") {
         val = Math.floor(Math.random() * 360);
       }
-      state.colorHues.push(val);
+      let hues = [...state.colorHues];
+      hues.push(val);
+      hues = hues.sort((a, b) => {
+        if (a < b) {
+          return -1;
+        } else if (a > b) {
+          return 0;
+        }
+        return 0;
+      });
+
+      state.colorHues = hues;
     }
   }
 });

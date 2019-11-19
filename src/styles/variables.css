@@ -2,9 +2,10 @@
   --color: #444;
   --bg-color: #fff;
 
-  --border-color: #d4d4d4;
+  --border-color: #c3c3c3;
   --border: 1px solid var(--border-color);
   --radius: 6px;
+  --radius-sm: 3px;
 
   --focus-color: #18bdff;
 

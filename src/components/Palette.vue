@@ -15,6 +15,7 @@
       :c="startChroma + (endChroma - startChroma) * ((step - 1) / (steps - 1))"
       :l="startLuma + (endLuma - startLuma) * ((step - 1) / (steps - 1))"
       :palette-size="steps"
+      class="swatch"
     ></swatch>
 
     <button class="remove-btn" type="button" @click="remove">
@@ -95,6 +96,14 @@ export default {
 </script>
 
 <style scoped>
+.swatch:first-of-type {
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.swatch:last-of-type {
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
 .remove-btn {
   width: var(--control-height);
   height: var(--control-height);

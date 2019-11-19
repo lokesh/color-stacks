@@ -20,7 +20,8 @@
 .vue-slider-mark {
   z-index: 4;
 }
-.vue-slider-mark:first-child .vue-slider-mark-step, .vue-slider-mark:last-child .vue-slider-mark-step {
+.vue-slider-mark:first-child .vue-slider-mark-step,
+.vue-slider-mark:last-child .vue-slider-mark-step {
   display: none;
 }
 .vue-slider-mark-step {
@@ -38,7 +39,7 @@
   cursor: pointer;
   width: 100%;
   height: 100%;
-  border-radius: calc(var(--radius) / 2);
+  border-radius: var(--radius-sm);
   background-color: #fff;
   box-sizing: border-box;
   border: var(--border);

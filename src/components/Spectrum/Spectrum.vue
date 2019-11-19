@@ -1,8 +1,8 @@
 <template>
-  <div class="gradient" ref="gradient">
-    <div class="spectrum" @click="onSpectrumClick"></div>
+  <div class="wrapper">
+    <div class="spectrum" ref="spectrum" @click="onSpectrumClick"></div>
     <div class="hues">
-      <div v-for="hue in hues" class="hue">
+      <div v-for="hue in hues" class="hue" :style="getHueStyles(hue)">
         <div class="hue-handle"></div>
         <div class="hue-input">
           {{ hue }}
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "Gradient",
+  name: "Spectrum",
 
   data() {
     return {
@@ -31,33 +31,45 @@ export default {
   mounted() {
     this.storeSpectrumDimensions();
 
+    // HACK
+    // this.$refs.spectrum.click();
+    // this.positionHues();
     // TODO: Update width on resize
   },
 
   methods: {
     addHue(hue) {
+      console.log(hue);
       this.$store.dispatch("addHue", hue);
+    },
+    getHueStyles(hue) {
+      if (!this.spectrumDimensions) return;
+
+      let x = (hue / 360) * this.spectrumDimensions.width;
+      return {
+        transform: `translateX(${x}px)`
+      };
     },
     onSpectrumClick(e) {
       this.addHue(Math.floor((e.layerX / this.spectrumDimensions.width) * 360));
     },
     storeSpectrumDimensions() {
-      this.spectrumDimensions = this.$refs.gradient.getBoundingClientRect();
+      this.spectrumDimensions = this.$refs.spectrum.getBoundingClientRect();
     }
   }
 };
 </script>
 
 <style scoped>
-.gradient {
-  --gradient-height: 48px;
-  --handle-overhang: 4px;
+.wrapper {
+  --spectrum-height: 48px;
+  --handle-overhang: 3px;
 
   position: relative;
 }
 
 .spectrum {
-  height: var(--gradient-height);
+  height: var(--spectrum-height);
   background: linear-gradient(
     to right,
     red 0%,
@@ -72,7 +84,7 @@ export default {
 }
 
 .hues {
-  padding-bottom: 24px;
+  padding-bottom: 36px;
 }
 
 .hue {
@@ -82,9 +94,9 @@ export default {
 
 .hue-handle {
   width: 12px;
-  height: calc(var(--gradient-height) + var(--handle-overhang) * 2);
+  height: calc(var(--spectrum-height) + var(--handle-overhang) * 2);
   background: white;
-  border: 2px solid black;
-  border-radius: var(--radius);
+  border: var(--border);
+  border-radius: var(--radius-sm);
 }
 </style>

@@ -31,8 +31,8 @@
     <!-- COLOR -->
 
     <section class="color">
-      <div class="gradient-row">
-        <gradient />
+      <div class="spectrum-row">
+        <spectrum />
       </div>
       <div class="palette-row">
         <div class="control-col">
@@ -65,7 +65,7 @@
 
 <script>
 import { mapState } from "vuex";
-import Gradient from "./components/Gradient";
+import Spectrum from "./components/Spectrum";
 import Palette from "./components/Palette.vue";
 import Slider from "./components/Slider.vue";
 import Stepper from "./components/Stepper.vue";
@@ -73,8 +73,8 @@ import Stepper from "./components/Stepper.vue";
 export default {
   name: "app",
   components: {
-    Gradient,
     Palette,
+    Spectrum,
     Stepper,
     Slider
   },
@@ -160,11 +160,6 @@ export default {
   padding: 24px;
 }
 
-.gradient-row {
-  width: 480px;
-  margin-bottom: 16px;
-}
-
 .palettes {
   display: flex;
   flex-wrap: nowrap;
@@ -177,6 +172,15 @@ export default {
 
 /* Gray section */
 .gray {
+}
+
+.color {
+  flex: 1 1 auto;
+}
+
+.spectrum-row {
+  width: 640px;
+  margin-bottom: 16px;
 }
 
 .palette-row {
