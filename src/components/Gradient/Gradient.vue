@@ -1,13 +1,12 @@
-<!--
-  We draw the gradient using <canvas>.
-  linear-gradient(to right, red 0%, #ff0 17%, lime 33%, cyan 50%, blue 66%, #f0f 83%, red 100%)
--->
 <template>
   <div class="gradient" ref="gradient">
-    <div class="bg"></div>
+    <div class="spectrum" @click="onSpectrumClick"></div>
     <div class="hues">
       <div v-for="hue in hues" class="hue">
-        {{ hue }}
+        <div class="hue-handle"></div>
+        <div class="hue-input">
+          {{ hue }}
+        </div>
       </div>
     </div>
   </div>
@@ -19,7 +18,7 @@ export default {
 
   data() {
     return {
-      width: null
+      spectrumDOMRect: null
     };
   },
 
@@ -30,26 +29,35 @@ export default {
   },
 
   mounted() {
-    this.storeWidth();
+    this.storeSpectrumDimensions();
 
-    // TODO: Update widht on resize
+    // TODO: Update width on resize
   },
 
   methods: {
-    storeWidth() {
-      this.width = this.$refs.gradient.offsetWidth;
+    addHue(hue) {
+      this.$store.dispatch("addHue", hue);
+    },
+    onSpectrumClick(e) {
+      this.addHue(Math.floor((e.layerX / this.spectrumDimensions.width) * 360));
+    },
+    storeSpectrumDimensions() {
+      this.spectrumDimensions = this.$refs.gradient.getBoundingClientRect();
     }
   }
 };
 </script>
 
 <style scoped>
-.gradient-wrapper {
+.gradient {
+  --gradient-height: 48px;
+  --handle-overhang: 4px;
+
   position: relative;
 }
 
-.bg {
-  height: 48px;
+.spectrum {
+  height: var(--gradient-height);
   background: linear-gradient(
     to right,
     red 0%,
@@ -63,10 +71,20 @@ export default {
   border-radius: var(--radius);
 }
 
+.hues {
+  padding-bottom: 24px;
+}
+
 .hue {
-  /*  position: absolute;*/
+  position: absolute;
+  top: calc(var(--handle-overhang) * -1);
+}
+
+.hue-handle {
+  width: 12px;
+  height: calc(var(--gradient-height) + var(--handle-overhang) * 2);
+  background: white;
+  border: 2px solid black;
+  border-radius: var(--radius);
 }
 </style>
-
-<!--
-linear-gradient(to right, red 0%, #ff0 17%, lime 33%, cyan var(--l), blue 66%, #f0f 83%, red 100%) -->

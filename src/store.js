@@ -55,12 +55,6 @@ export default new Vuex.Store({
     setColorChromaStart: set("colorChromaStart"),
     setColorChromaEnd: set("colorChromaEnd"),
 
-    addHue(state, hue) {
-      if (typeof hue === "undefined") {
-        hue = Math.floor(Math.random() * 360);
-      }
-      state.colorHues.push(hue);
-    },
     updateHue(state, { index, hue }) {
       Vue.set(state.colorHues, index, hue);
     },
@@ -72,5 +66,13 @@ export default new Vuex.Store({
     setShowLabels: set("showLabels"),
 
     setColors: set("colors")
+  },
+  actions: {
+    addHue({ state, commit }, val) {
+      if (typeof val === "undefined") {
+        val = Math.floor(Math.random() * 360);
+      }
+      state.colorHues.push(val);
+    }
   }
 });

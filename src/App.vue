@@ -172,7 +172,7 @@ export default {
 }
 
 .palette {
-  /*  margin-right: var(--palette-gap);*/
+  margin-right: var(--palette-gap);
 }
 
 /* Gray section */
