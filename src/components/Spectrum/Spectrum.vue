@@ -2,7 +2,16 @@
   <div class="wrapper">
     <div class="spectrum" ref="spectrum" @click="onSpectrumClick"></div>
     <div class="hues">
-      <div v-for="hue in hues" class="hue" :style="getHueStyles(hue)">
+      <div
+        v-for="(hue, index) in hues"
+        :key="`hue-${index}`"
+        class="hue"
+        :style="getHueStyles(hue)"
+        @pointerdown="onPointerDown"
+        @pointermove="onPointerMove"
+        @pointerup="onPointerUp"
+        v-dragged="onDragged"
+      >
         <div class="hue-handle"></div>
         <div class="hue-input">
           {{ hue }}
@@ -18,7 +27,9 @@ export default {
 
   data() {
     return {
-      spectrumDOMRect: null
+      isDragging: false,
+      width: 640
+      // spectrumDOMRect: null
     };
   },
 
@@ -29,8 +40,7 @@ export default {
   },
 
   mounted() {
-    this.storeSpectrumDimensions();
-
+    // this.storeSpectrumDimensions();
     // HACK
     // this.$refs.spectrum.click();
     // this.positionHues();
@@ -39,22 +49,54 @@ export default {
 
   methods: {
     addHue(hue) {
-      console.log(hue);
+      // console.log(hue);
       this.$store.dispatch("addHue", hue);
     },
     getHueStyles(hue) {
-      if (!this.spectrumDimensions) return;
-
-      let x = (hue / 360) * this.spectrumDimensions.width;
+      let x = (hue / 360) * this.width;
       return {
         transform: `translateX(${x}px)`
       };
     },
+    onPointerDown(e) {
+      console.log("down");
+    },
+    onPointerMove(e) {
+      console.log("move");
+    },
+    onPointerUp(e) {
+      console.log("up");
+    },
     onSpectrumClick(e) {
-      this.addHue(Math.floor((e.layerX / this.spectrumDimensions.width) * 360));
+      this.addHue(Math.floor((e.layerX / this.width) * 360));
     },
     storeSpectrumDimensions() {
-      this.spectrumDimensions = this.$refs.spectrum.getBoundingClientRect();
+      // this.spectrumDimensions = this.$refs.spectrum.getBoundingClientRect();
+      // this.width = this.$refs.spectrum.getBoundingClientRect().width
+    },
+    onDragged({
+      el,
+      deltaX,
+      deltaY,
+      offsetX,
+      offsetY,
+      clientX,
+      clientY,
+      first,
+      last
+    }) {
+      if (first) {
+        this.isDragging = true;
+        return;
+      }
+      if (last) {
+        this.isDragging = false;
+        return;
+      }
+      var l = +window.getComputedStyle(el)["left"].slice(0, -2) || 0;
+      var t = +window.getComputedStyle(el)["top"].slice(0, -2) || 0;
+      el.style.left = l + deltaX + "px";
+      el.style.top = t + deltaY + "px";
     }
   }
 };
