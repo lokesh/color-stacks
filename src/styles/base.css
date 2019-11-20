@@ -1,48 +1,74 @@
-.temp {
-	color: #aaa;
-	font-size: 11px;
-	font-weight: bold;
-	text-transform: uppercase;
+@import url("https://rsms.me/inter/inter.css");
+
+:root {
+  --color: #333;
+  --color-secondary: #666;
+  --color-muted: #999;
+  --bg-color: #fff;
+
+  --border-color: #b3b3b3;
+  --border: 1px solid var(--border-color);
+  --radius: 6px;
+  --radius-sm: 3px;
+
+  --selected-color: #f60;
+  --focus-color: #18bdff;
+
+  /* Forms */
+  --control-height: 24px;
+  --control-icon-size: 16px;
+  --control-hover-bg: #eee;
+
+  /* Swatches */
+  --palette-gap: 8px;
+  --swatch-gap: 0;
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
 }
 
 body,
 button,
 input {
-	color: var(--color);
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-		Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-		"Segoe UI Symbol";
+  color: var(--color);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
 }
 
 input[type="number"] {
-	padding: 4px 8px;
-	border: var(--border);
-	border-radius: 3px;
+  padding: 4px 8px;
+  border: var(--border);
+  border-radius: 3px;
 }
 
 input[type="number"]:focus {
-	outline: none;
-	border-color: var(--focus-color);
-	box-shadow: 0 0 0 1px var(--focus-color);
+  outline: none;
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 1px var(--focus-color);
 }
 
 button {
-	padding: 0;
-	border: var(--border);
-	border-radius: var(--radius);
-	cursor: pointer;
+  padding: 0;
+  border: var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
 }
 
 button:hover {
-	background: var(--control-hover-bg);
+  background: var(--control-hover-bg);
+}
+
+label {
+  color: var(--color-secondary);
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  font-weight: 500;
 }

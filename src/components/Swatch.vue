@@ -4,15 +4,19 @@
     :class="{
       'not-compliant': !aaCompliant
     }"
-    :style="`
+    :style="
+      `
       background: ${backgroundColor};
       color: ${color}
-    `"
+    `
+    "
   >
     <div class="swatch-label">
       <div class="swatch-name">{{ name }}</div>
       <div class="swatch-hex">{{ backgroundColor }}</div>
-      <div class="swatch-wcag" v-if="!aaCompliant">WCAG {{ Math.round(wcag * 100) / 100 }}</div>
+      <div class="swatch-wcag" v-if="!aaCompliant">
+        WCAG {{ Math.round(wcag * 100) / 100 }}
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +29,7 @@ export default {
   props: {
     h: { type: Number, required: true },
     c: { type: Number, required: true },
-    l: { type: Number, required: true },
+    l: { type: Number, required: true }
   },
   data() {
     return {
@@ -48,7 +52,9 @@ export default {
     name() {
       // 0 = red, 120 = green, blue = 240,
       let label;
-      if (this.c === 0) {
+      if (this.backgroundColor === "#ffffff") {
+        label = "white";
+      } else if (this.c === 0) {
         label = "gray";
       } else if (this.h < 20) {
         label = "pink";
@@ -88,7 +94,9 @@ export default {
         label = "plum";
       }
 
-      label += `-${100 - Math.ceil(((this.l / 150) * 100) / 5) * 5}`;
+      if (label !== "white") {
+        label += `-${100 - Math.ceil(((this.l / 150) * 100) / 5) * 5}`;
+      }
 
       return label;
       // return this.backgroundColor;
@@ -103,31 +111,33 @@ export default {
 };
 </script>
 
-
 <style scoped>
 .swatch {
   position: relative;
-  width: 4em;
-  height: 3em;
+  width: 10em;
+  height: 4em;
   margin-bottom: var(--swatch-gap);
   padding: 8px;
   font-size: 11px;
 }
 
 .swatch-name {
-  display: none;
+  /*display: none;*/
   font-weight: 600;
+  opacity: 0.8;
 }
 
 .swatch-hex {
-  display: none;
+  /*display: none;*/
+  opacity: 0.8;
+  font-size: 11px;
 }
 
 .swatch-wcag {
   display: none;
 }
 
-.not-compliant::after {
+/*.not-compliant::after {
   display: none;
   position: absolute;
   content: "AA";
@@ -139,5 +149,5 @@ export default {
   background: #fff;
   border-radius: 2px;
   text-decoration: line-through;
-}
+}*/
 </style>

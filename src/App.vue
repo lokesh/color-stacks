@@ -1,19 +1,33 @@
 <template>
   <div class="app">
-    <!-- <section>
-      <control-panel/>
-    </section> -->
-
-    <!-- GRAYS -->
-
     <section class="gray">
-      <div class="temp">
+      <!-- <div class="temp">
         Cast
-      </div>
+      </div> -->
       <div class="palette-row">
         <div class="control-col">
-          <stepper v-model="graySteps" />
-          <slider v-model="grayLumas" :min="lumaMin" :max="lumaMax"></slider>
+          <div class="control-col-section">
+            <slider
+              v-model="graySteps"
+              label="Steps"
+              :min="stepsMin"
+              :max="stepsMax"
+            ></slider>
+            <slider
+              v-model="grayLumaStart"
+              label="Luminance"
+              :min="lumaMin"
+              :max="lumaMax"
+            ></slider>
+          </div>
+          <div class="control-col-section">
+            <slider
+              v-model="grayLumaEnd"
+              label="Luminance"
+              :min="lumaMin"
+              :max="lumaMax"
+            ></slider>
+          </div>
         </div>
         <div class="palettes">
           <palette
@@ -36,13 +50,41 @@
       </div>
       <div class="palette-row">
         <div class="control-col">
-          <stepper v-model="colorSteps" />
-          <slider v-model="colorLumas" :min="lumaMin" :max="lumaMax"></slider>
-          <slider
-            v-model="colorChromas"
-            :min="chromaMin"
-            :max="chromaMax"
-          ></slider>
+          <div class="control-col-section">
+            <slider
+              v-model="colorSteps"
+              label="Steps"
+              :min="stepsMin"
+              :max="stepsMax"
+            ></slider>
+            <slider
+              label="Luminance"
+              v-model="colorLumaStart"
+              :min="lumaMin"
+              :max="lumaMax"
+            ></slider>
+            <slider
+              label="Chroma"
+              v-model="colorChromaStart"
+              :min="chromaMin"
+              :max="chromaMax"
+            ></slider>
+          </div>
+
+          <div class="control-col-section">
+            <slider
+              label="Luminance"
+              v-model="colorLumaEnd"
+              :min="lumaMin"
+              :max="lumaMax"
+            ></slider>
+            <slider
+              label="Chroma"
+              v-model="colorChromaEnd"
+              :min="chromaMin"
+              :max="chromaMax"
+            ></slider>
+          </div>
         </div>
         <div class="palettes">
           <palette
@@ -68,14 +110,12 @@ import { mapState } from "vuex";
 import Spectrum from "./components/Spectrum";
 import Palette from "./components/Palette.vue";
 import Slider from "./components/Slider.vue";
-import Stepper from "./components/Stepper.vue";
 
 export default {
   name: "app",
   components: {
     Palette,
     Spectrum,
-    Stepper,
     Slider
   },
 
@@ -87,19 +127,13 @@ export default {
 
   computed: {
     ...mapState([
+      "stepsMin",
+      "stepsMax",
       "lumaMin",
       "lumaMax",
       "chromaMin",
       "chromaMax",
-
-      "grayLumaStart",
-      "grayLumaEnd",
-
-      "colorHues",
-      "colorLumaStart",
-      "colorLumaEnd",
-      "colorChromaStart",
-      "colorChromaEnd"
+      "colorHues"
     ]),
     graySteps: {
       get() {
@@ -109,13 +143,20 @@ export default {
         this.$store.commit("setGraySteps", val);
       }
     },
-    grayLumas: {
+    grayLumaStart: {
       get() {
-        return [this.grayLumaStart, this.grayLumaEnd];
+        return this.$store.state.grayLumaStart;
       },
       set(val) {
-        this.$store.commit("setGrayLumaStart", val[0]);
-        this.$store.commit("setGrayLumaEnd", val[1]);
+        this.$store.commit("setGrayLumaStart", val);
+      }
+    },
+    grayLumaEnd: {
+      get() {
+        return this.$store.state.grayLumaEnd;
+      },
+      set(val) {
+        this.$store.commit("setGrayLumaEnd", val);
       }
     },
     colorSteps: {
@@ -126,22 +167,36 @@ export default {
         this.$store.commit("setColorSteps", val);
       }
     },
-    colorLumas: {
+    colorLumaStart: {
       get() {
-        return [this.colorLumaStart, this.colorLumaEnd];
+        return this.$store.state.colorLumaStart;
       },
       set(val) {
-        this.$store.commit("setColorLumaStart", val[0]);
-        this.$store.commit("setColorLumaEnd", val[1]);
+        this.$store.commit("setColorLumaStart", val);
       }
     },
-    colorChromas: {
+    colorLumaEnd: {
       get() {
-        return [this.colorChromaStart, this.colorChromaEnd];
+        return this.$store.state.colorLumaEnd;
       },
       set(val) {
-        this.$store.commit("setColorChromaStart", val[0]);
-        this.$store.commit("setColorChromaEnd", val[1]);
+        this.$store.commit("setColorLumaEnd", val);
+      }
+    },
+    colorChromaStart: {
+      get() {
+        return this.$store.state.colorChromaStart;
+      },
+      set(val) {
+        this.$store.commit("setColorChromaStart", val);
+      }
+    },
+    colorChromaEnd: {
+      get() {
+        return this.$store.state.colorChromaEnd;
+      },
+      set(val) {
+        this.$store.commit("setColorChromaEnd", val);
       }
     }
   }
@@ -149,7 +204,6 @@ export default {
 </script>
 
 <style>
-@import "./styles/variables.css";
 @import "./styles/base.css";
 @import "./styles/vue-slider-component.css";
 </style>
@@ -158,6 +212,19 @@ export default {
 .app {
   display: flex;
   padding: 24px;
+}
+
+.control-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /*align-items: flex-end;*/
+  width: 80px;
+
+  & .control-col-section {
+    /*width: 120px;
+    background: yellow;*/
+  }
 }
 
 .palettes {
@@ -172,6 +239,7 @@ export default {
 
 /* Gray section */
 .gray {
+  margin-right: 24px;
 }
 
 .color {

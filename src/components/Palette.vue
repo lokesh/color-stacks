@@ -18,7 +18,7 @@
       class="swatch"
     ></swatch>
 
-    <button class="remove-btn" type="button" @click="remove">
+    <button v-if="false" class="remove-btn" type="button" @click="remove">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

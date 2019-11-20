@@ -1,13 +1,16 @@
 <template>
-  <vue-slider
-    class="slider"
-    v-bind="$attrs"
-    direction="ttb"
-    :duration="0"
-    :dot-size="[24, 12]"
-    :height="100"
-    @change="val => $emit('input', val)"
-  />
+  <div>
+    <label v-if="label" class="label">{{ label }}</label>
+    <!-- :dot-size="[24, 12]"  -->
+    <vue-slider
+      class="slider"
+      v-bind="$attrs"
+      :direction="directionVal"
+      :duration="0"
+      :height="height"
+      @change="val => $emit('input', val)"
+    />
+  </div>
 </template>
 
 <script>
@@ -19,12 +22,33 @@ export default {
 
   components: {
     VueSlider
+  },
+
+  props: {
+    label: {
+      type: String,
+      required: false
+    },
+    direction: {
+      type: String,
+      default: "horizontal"
+    }
+  },
+
+  computed: {
+    directionVal() {
+      // return "ttb";
+      return this.direction === "horizontal" ? "ltr" : "ttb ";
+    },
+    height() {
+      return this.direction === "horizontal" ? null : "100";
+    }
   }
 };
 </script>
 
 <style scoped>
 .slider {
-  margin-bottom: 16px;
+  /*margin-bottom: 16px;*/
 }
 </style>

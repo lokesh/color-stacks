@@ -10,21 +10,17 @@ const set = key => (state, val) => {
 
 export default new Vuex.Store({
   state: {
-    // Ranges
-    lumaMin: 0,
-    lumaMax: 150,
-
     // Grays
     graySteps: 12,
-    grayLumaStart: 0,
-    grayLumaEnd: 100,
+    grayLumaStart: 105,
+    grayLumaEnd: 0,
     grayCast: null, // Placeholder
 
     // Color
-    colorHues: [40, 200, 120, 200, 280, 320], //
-    colorSteps: 12,
-    colorLumaStart: 0,
-    colorLumaEnd: 100,
+    colorHues: [], //40, 200, 120, 200, 280, 320
+    colorSteps: 10,
+    colorLumaStart: 100,
+    colorLumaEnd: 0,
     colorChromaStart: 30,
     colorChromaEnd: 120,
 
@@ -34,7 +30,9 @@ export default new Vuex.Store({
 
     stepsMin: 2,
     stepsMax: 20,
-    // steps: 16,
+
+    lumaMin: 0,
+    lumaMax: 150,
 
     chromaMin: 0,
     chromaMax: 150,
