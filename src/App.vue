@@ -4,6 +4,8 @@
       <!-- <div class="temp">
         Cast
       </div> -->
+
+      <h3>Grays</h3>
       <div class="palette-row">
         <div class="control-col">
           <div class="control-col-section">
@@ -45,6 +47,7 @@
     <!-- COLOR -->
 
     <section class="color">
+      <h3>Colors</h3>
       <div class="spectrum-row">
         <spectrum />
       </div>
@@ -248,7 +251,7 @@ export default {
 
 .spectrum-row {
   width: 640px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .palette-row {

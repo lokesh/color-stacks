@@ -17,7 +17,7 @@ export default new Vuex.Store({
     grayCast: null, // Placeholder
 
     // Color
-    colorHues: [], //40, 200, 120, 200, 280, 320
+    colorHues: [40, 200, 120, 200, 280, 320], //
     colorSteps: 10,
     colorLumaStart: 100,
     colorLumaEnd: 0,

@@ -104,7 +104,7 @@ export default {
 
 <style scoped>
 .wrapper {
-  --spectrum-height: 48px;
+  --spectrum-height: 24px;
   --handle-overhang: 3px;
 
   position: relative;
@@ -135,10 +135,15 @@ export default {
 }
 
 .hue-handle {
-  width: 12px;
+  width: 8px;
   height: calc(var(--spectrum-height) + var(--handle-overhang) * 2);
   background: white;
   border: var(--border);
   border-radius: var(--radius-sm);
+}
+
+.hue-input {
+  font-size: 12px;
+  color: var(--color-muted);
 }
 </style>
