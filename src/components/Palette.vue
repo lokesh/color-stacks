@@ -7,7 +7,7 @@
       :max="hueMax"
       v-model.number="hueInput"
       @keydown.shift="onKeydownWithShift"
-    > -->
+    /> -->
     <swatch
       v-for="(step, index) in steps"
       :key="index"

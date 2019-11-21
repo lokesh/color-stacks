@@ -52,8 +52,13 @@ export default {
     name() {
       // 0 = red, 120 = green, blue = 240,
       let label;
+      let addNumber = true;
       if (this.backgroundColor === "#ffffff") {
         label = "white";
+        addNumber = false;
+      } else if (this.backgroundColor === "#000000") {
+        label = "black";
+        addNumber = false;
       } else if (this.c === 0) {
         label = "gray";
       } else if (this.h < 20) {
@@ -94,7 +99,7 @@ export default {
         label = "plum";
       }
 
-      if (label !== "white") {
+      if (addNumber) {
         label += `-${100 - Math.ceil(((this.l / 150) * 100) / 5) * 5}`;
       }
 

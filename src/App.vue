@@ -1,10 +1,6 @@
 <template>
   <div class="app">
     <section class="gray">
-      <!-- <div class="temp">
-        Cast
-      </div> -->
-
       <h3>Grays</h3>
       <div class="palette-row">
         <div class="control-col">
@@ -14,13 +10,20 @@
               label="Steps"
               :min="stepsMin"
               :max="stepsMax"
+            />
+            <!--             <slider
+              v-model="grayCast"
+              label="Cast"
+              :min="castMin"
+              :max="castMax"
             ></slider>
+ -->
             <slider
               v-model="grayLumaStart"
               label="Luminance"
               :min="lumaMin"
               :max="lumaMax"
-            ></slider>
+            />
           </div>
           <div class="control-col-section">
             <slider
@@ -28,7 +31,7 @@
               label="Luminance"
               :min="lumaMin"
               :max="lumaMax"
-            ></slider>
+            />
           </div>
         </div>
         <div class="palettes">
@@ -39,7 +42,7 @@
             :end-chroma="0"
             :start-luma="grayLumaStart"
             :end-luma="grayLumaEnd"
-          ></palette>
+          />
         </div>
       </div>
     </section>
@@ -130,20 +133,31 @@ export default {
 
   computed: {
     ...mapState([
-      "stepsMin",
-      "stepsMax",
-      "lumaMin",
-      "lumaMax",
+      "castMin",
+      "castMax",
       "chromaMin",
       "chromaMax",
-      "colorHues"
+      "colorHues",
+      "lumaMin",
+      "lumaMax",
+      "stepsMin",
+      "stepsMax"
     ]),
+
     graySteps: {
       get() {
         return this.$store.state.graySteps;
       },
       set(val) {
         this.$store.commit("setGraySteps", val);
+      }
+    },
+    grayCast: {
+      get() {
+        return this.$store.state.grayCast;
+      },
+      set(val) {
+        this.$store.commit("setGrayCast", val);
       }
     },
     grayLumaStart: {

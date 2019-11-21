@@ -12,19 +12,22 @@ export default new Vuex.Store({
   state: {
     // Grays
     graySteps: 12,
+    grayCast: 0,
     grayLumaStart: 105,
     grayLumaEnd: 0,
-    grayCast: null, // Placeholder
 
     // Color
-    colorHues: [40, 200, 120, 200, 280, 320], //
-    colorSteps: 10,
+    colorHues: [30, 60, 90, 120], //40, 200, 120, 200, 280, 320
+    colorSteps: 8,
     colorLumaStart: 100,
     colorLumaEnd: 0,
     colorChromaStart: 30,
     colorChromaEnd: 120,
 
     // Options
+    castMin: -50,
+    castMax: 50,
+
     hueMin: 0,
     hueMax: 359,
 
@@ -43,6 +46,7 @@ export default new Vuex.Store({
   mutations: {
     // Grays
     setGraySteps: set("graySteps"),
+    setGrayCast: set("grayCast"),
     setGrayLumaStart: set("grayLumaStart"),
     setGrayLumaEnd: set("grayLumaEnd"),
 
