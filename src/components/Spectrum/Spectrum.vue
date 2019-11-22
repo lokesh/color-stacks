@@ -1,35 +1,45 @@
+<!-- @pointerdown="onPointerDown"
+@pointermove="onPointerMove"
+@pointerup="onPointerUp"
+:style="getHueStyles(hue)"-->
 <template>
   <div class="wrapper">
     <div class="spectrum" ref="spectrum" @click="onSpectrumClick"></div>
     <div class="hues">
-      <div
-        v-for="(hue, index) in hues"
-        :key="`hue-${index}`"
-        class="hue"
-        :style="getHueStyles(hue)"
-        @pointerdown="onPointerDown"
-        @pointermove="onPointerMove"
-        @pointerup="onPointerUp"
-        v-dragged="onDragged"
-      >
+      <spectrum-handle v-for="(hue, index) in hues" :key="`hue-${index}`">
         <div class="hue-handle"></div>
         <div class="hue-input">
           {{ hue }}
         </div>
-      </div>
+      </spectrum-handle>
     </div>
   </div>
 </template>
 
 <script>
+import SpectrumHandle from "./SpectrumHandle";
+
 export default {
   name: "Spectrum",
+
+  components: {
+    SpectrumHandle
+  },
+
+  provide() {
+    return {
+      spectrum: this.dimensions
+    };
+  },
 
   data() {
     return {
       isDragging: false,
-      width: 640
-      // spectrumDOMRect: null
+      dimensions: {
+        left: 0,
+        right: 0,
+        width: 0
+      }
     };
   },
 
@@ -40,7 +50,8 @@ export default {
   },
 
   mounted() {
-    // this.storeSpectrumDimensions();
+    this.storeSpectrumDimensions();
+    // debugger;
     // HACK
     // this.$refs.spectrum.click();
     // this.positionHues();
@@ -50,6 +61,7 @@ export default {
   methods: {
     addHue(hue) {
       // console.log(hue);
+      this.dimensions.width = 800;
       this.$store.dispatch("addHue", hue);
     },
     getHueStyles(hue) {
@@ -58,45 +70,23 @@ export default {
         transform: `translateX(${x}px)`
       };
     },
-    onPointerDown(e) {
-      console.log("down");
-    },
-    onPointerMove(e) {
-      console.log("move");
-    },
-    onPointerUp(e) {
-      console.log("up");
-    },
+    // onPointerDown(e) {
+    //   console.log("down");
+    // },
+    // onPointerMove(e) {
+    //   console.log("move");
+    // },
+    // onPointerUp(e) {
+    //   console.log("up");
+    // },
     onSpectrumClick(e) {
-      this.addHue(Math.floor((e.layerX / this.width) * 360));
+      this.addHue(Math.floor((e.layerX / this.dimensions.width) * 360));
     },
     storeSpectrumDimensions() {
-      // this.spectrumDimensions = this.$refs.spectrum.getBoundingClientRect();
-      // this.width = this.$refs.spectrum.getBoundingClientRect().width
-    },
-    onDragged({
-      el,
-      deltaX,
-      deltaY,
-      offsetX,
-      offsetY,
-      clientX,
-      clientY,
-      first,
-      last
-    }) {
-      if (first) {
-        this.isDragging = true;
-        return;
-      }
-      if (last) {
-        this.isDragging = false;
-        return;
-      }
-      var l = +window.getComputedStyle(el)["left"].slice(0, -2) || 0;
-      var t = +window.getComputedStyle(el)["top"].slice(0, -2) || 0;
-      el.style.left = l + deltaX + "px";
-      el.style.top = t + deltaY + "px";
+      const dimensions = this.$refs.spectrum.getBoundingClientRect();
+      this.dimensions.left = dimensions.left;
+      this.dimensions.right = dimensions.right;
+      this.dimensions.width = dimensions.width;
     }
   }
 };
@@ -104,9 +94,6 @@ export default {
 
 <style scoped>
 .wrapper {
-  --spectrum-height: 24px;
-  --handle-overhang: 3px;
-
   position: relative;
 }
 
@@ -126,20 +113,10 @@ export default {
 }
 
 .hues {
-  padding-bottom: 36px;
-}
-
-.hue {
   position: absolute;
-  top: calc(var(--handle-overhang) * -1);
-}
-
-.hue-handle {
-  width: 8px;
-  height: calc(var(--spectrum-height) + var(--handle-overhang) * 2);
-  background: white;
-  border: var(--border);
-  border-radius: var(--radius-sm);
+  top: calc(var(--spectrum-handle-overhang) * -1);
+  left: 0;
+  width: 100%;
 }
 
 .hue-input {

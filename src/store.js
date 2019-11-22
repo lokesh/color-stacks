@@ -17,10 +17,10 @@ export default new Vuex.Store({
     grayLumaEnd: 0,
 
     // Color
-    colorHues: [30, 60, 90, 120], //40, 200, 120, 200, 280, 320
-    colorSteps: 8,
+    colorHues: [30, 90, 150], //40, 200, 120, 200, 280, 320
+    colorSteps: 12,
     colorLumaStart: 100,
-    colorLumaEnd: 0,
+    colorLumaEnd: 10,
     colorChromaStart: 30,
     colorChromaEnd: 120,
 

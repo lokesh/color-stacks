@@ -133,26 +133,27 @@ export default {
 }
 
 .swatch-hex {
-  /*display: none;*/
+  display: none;
   opacity: 0.8;
-  font-size: 11px;
 }
 
 .swatch-wcag {
   display: none;
+  opacity: 0.8;
 }
 
-/*.not-compliant::after {
+.not-compliant::after {
   display: none;
   position: absolute;
   content: "AA";
   right: 8px;
-  top: calc(50% - 5px);
+  bottom: 8px;
   opacity: 0.85;
   padding: 0 2px;
-  color: black;
+  color: var(--color-secondary);
+  font-weight: 600;
   background: #fff;
-  border-radius: 2px;
-  text-decoration: line-through;
-}*/
+  border-radius: var(--radius-sm);
+  /*  text-decoration: line-through;*/
+}
 </style>

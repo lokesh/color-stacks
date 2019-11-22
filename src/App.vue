@@ -228,20 +228,15 @@ export default {
 <style scoped>
 .app {
   display: flex;
-  padding: 24px;
+  /*padding: 24px;*/
+  border-bottom: var(--border-light);
 }
 
 .control-col {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /*align-items: flex-end;*/
   width: 80px;
-
-  & .control-col-section {
-    /*width: 120px;
-    background: yellow;*/
-  }
 }
 
 .palettes {
@@ -254,18 +249,25 @@ export default {
   margin-right: var(--palette-gap);
 }
 
+.palette:last-of-type {
+  margin-right: 0;
+}
+
 /* Gray section */
 .gray {
-  margin-right: 24px;
+  padding: 36px;
+  border-right: var(--border-light);
 }
 
 .color {
   flex: 1 1 auto;
+  padding: 36px;
 }
 
 .spectrum-row {
   width: 640px;
-  margin-bottom: 8px;
+  /*  height: 64px;*/
+  margin-bottom: 24px;
 }
 
 .palette-row {
