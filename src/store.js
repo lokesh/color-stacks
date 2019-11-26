@@ -71,20 +71,11 @@ export default new Vuex.Store({
   },
   actions: {
     addHue({ state, commit }, val) {
-      console.log("action addHue");
       if (typeof val === "undefined") {
         val = Math.floor(Math.random() * 360);
       }
       let hues = [...state.colorHues];
       hues.push(val);
-      // hues = hues.sort((a, b) => {
-      //   if (a < b) {
-      //     return -1;
-      //   } else if (a > b) {
-      //     return 0;
-      //   }
-      //   return 0;
-      // });
 
       state.colorHues = hues;
     }

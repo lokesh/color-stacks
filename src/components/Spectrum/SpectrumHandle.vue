@@ -1,6 +1,6 @@
 <template>
   <div ref="handle" class="handle" v-dragged="onDragged" :style="styles">
-    <div class="val">{{ initialValue }}</div>
+    <div v-if="false" class="val">{{ value }}</div>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   inject: ["spectrum"],
 
   props: {
-    initialValue: {
+    value: {
       type: Number
     },
     min: {
@@ -25,6 +25,7 @@ export default {
   },
   data() {
     return {
+      isDragging: false,
       width: 16,
       left: 0
     };
@@ -40,19 +41,31 @@ export default {
     styles() {
       return {
         width: `${this.width}px`,
-        transform: `translateX(${this.left}px)`
+        transform: `translateX(${this.left}px)`,
+        cursor: this.isDragging ? "none" : "grab",
+        zIndex: this.isDragging ? "10" : "auto"
       };
     }
   },
 
   watch: {
     left(val, oldVal) {
-      console.log("watch left");
       let xPosOnSpectrum = val + this.width / 2;
       let percent = xPosOnSpectrum / this.spectrum.width;
-      this.$emit("change", Math.floor(percent * this.max));
+      this.$emit("input", Math.floor(percent * this.max));
     }
   },
+
+  created() {
+    // Set initial position. Wait for spectrum to be mounted so we can measure
+    // width.
+    this.$nextTick(() => {
+      this.left =
+        Math.floor((this.value / this.max) * this.spectrum.width) -
+        this.width / 2;
+    });
+  },
+
   methods: {
     onDragged({
       el,

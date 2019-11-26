@@ -177,7 +177,7 @@ export default {
       }
     },
     colorHuesSorted() {
-      return this.colorHues.sort((a, b) => {
+      return [...this.colorHues].sort((a, b) => {
         if (a < b) {
           return -1;
         } else if (a > b) {

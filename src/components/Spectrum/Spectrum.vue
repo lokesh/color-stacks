@@ -1,20 +1,20 @@
-<!-- @pointerdown="onPointerDown"
-@pointermove="onPointerMove"
-@pointerup="onPointerUp"
+<!--
+:initial-value="hue"
+
 -->
 <template>
   <div class="wrapper">
     <div class="spectrum" ref="spectrum" @click="onSpectrumClick"></div>
     <div class="hues">
-      <spectrum-handle
-        v-for="(hue, i) in hues"
-        :key="`hue-${i}`"
-        :min="0"
-        :max="360"
-        :initial-value="hue"
-        @change="val => onHandleChange(i, val)"
-      />
-      <!-- {{ hues }} -->
+      <template v-for="(hue, i) in hues">
+        <spectrum-handle
+          :key="`hue-${i}`"
+          :min="0"
+          :max="360"
+          :value="hue"
+          @input="val => onHandleChange(i, val)"
+        />
+      </template>
     </div>
   </div>
 </template>
@@ -38,7 +38,6 @@ export default {
   data() {
     return {
       left: null,
-      hues: [],
       isDragging: false,
       dimensions: {
         left: 0,
@@ -48,9 +47,10 @@ export default {
     };
   },
 
-  created() {
-    console.log("CREATED");
-    this.hues = this.$store.state.colorHues;
+  computed: {
+    hues() {
+      return this.$store.state.colorHues;
+    }
   },
 
   mounted() {
@@ -60,7 +60,6 @@ export default {
   methods: {
     addHue(hue) {
       this.$store.dispatch("addHue", hue);
-      this.hues.push(hue);
     },
     getHueStyles(hue) {
       let x = (hue / 360) * this.dimensions.width;
@@ -105,6 +104,7 @@ export default {
     red 100%
   );
   border-radius: var(--radius);
+  cursor: "copy";
 }
 
 .hues {
