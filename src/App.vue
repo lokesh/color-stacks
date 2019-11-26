@@ -94,7 +94,7 @@
         </div>
         <div class="palettes">
           <palette
-            v-for="(hue, index) in colorHues"
+            v-for="(hue, index) in colorHuesSorted"
             :key="index"
             class="palette"
             :array-index="index"
@@ -175,6 +175,16 @@ export default {
       set(val) {
         this.$store.commit("setGrayLumaEnd", val);
       }
+    },
+    colorHuesSorted() {
+      return this.colorHues.sort((a, b) => {
+        if (a < b) {
+          return -1;
+        } else if (a > b) {
+          return 0;
+        }
+        return 0;
+      });
     },
     colorSteps: {
       get() {

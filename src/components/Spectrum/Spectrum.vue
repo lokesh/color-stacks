@@ -1,17 +1,20 @@
 <!-- @pointerdown="onPointerDown"
 @pointermove="onPointerMove"
 @pointerup="onPointerUp"
-:style="getHueStyles(hue)"-->
+-->
 <template>
   <div class="wrapper">
     <div class="spectrum" ref="spectrum" @click="onSpectrumClick"></div>
     <div class="hues">
-      <spectrum-handle v-for="(hue, index) in hues" :key="`hue-${index}`">
-        <div class="hue-handle"></div>
-        <div class="hue-input">
-          {{ hue }}
-        </div>
-      </spectrum-handle>
+      <spectrum-handle
+        v-for="(hue, i) in hues"
+        :key="`hue-${i}`"
+        :min="0"
+        :max="360"
+        :initial-value="hue"
+        @change="val => onHandleChange(i, val)"
+      />
+      <!-- {{ hues }} -->
     </div>
   </div>
 </template>
@@ -34,6 +37,8 @@ export default {
 
   data() {
     return {
+      left: null,
+      hues: [],
       isDragging: false,
       dimensions: {
         left: 0,
@@ -43,42 +48,32 @@ export default {
     };
   },
 
-  computed: {
-    hues() {
-      return this.$store.state.colorHues;
-    }
+  created() {
+    console.log("CREATED");
+    this.hues = this.$store.state.colorHues;
   },
 
   mounted() {
     this.storeSpectrumDimensions();
-    // debugger;
-    // HACK
-    // this.$refs.spectrum.click();
-    // this.positionHues();
-    // TODO: Update width on resize
   },
 
   methods: {
     addHue(hue) {
-      // console.log(hue);
-      this.dimensions.width = 800;
       this.$store.dispatch("addHue", hue);
+      this.hues.push(hue);
     },
     getHueStyles(hue) {
-      let x = (hue / 360) * this.width;
+      let x = (hue / 360) * this.dimensions.width;
       return {
         transform: `translateX(${x}px)`
       };
     },
-    // onPointerDown(e) {
-    //   console.log("down");
-    // },
-    // onPointerMove(e) {
-    //   console.log("move");
-    // },
-    // onPointerUp(e) {
-    //   console.log("up");
-    // },
+    onHandleChange(i, val) {
+      this.$store.commit("updateHue", {
+        index: i,
+        hue: val
+      });
+    },
     onSpectrumClick(e) {
       this.addHue(Math.floor((e.layerX / this.dimensions.width) * 360));
     },

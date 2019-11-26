@@ -95,7 +95,7 @@ export default {
         label = "indigo";
       } else if (this.h < 340) {
         label = "purple";
-      } else if (this.h < 360) {
+      } else if (this.h <= 360) {
         label = "plum";
       }
 
