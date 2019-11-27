@@ -55,7 +55,7 @@
         <spectrum />
       </div>
       <div class="palette-row">
-        <div class="control-col">
+        <div class="control-col" v-if="colorHues.length">
           <div class="control-col-section">
             <slider
               v-model="colorSteps"
@@ -240,6 +240,7 @@ export default {
   display: flex;
   /*padding: 24px;*/
   border-bottom: var(--border-light);
+  background: white;
 }
 
 .control-col {

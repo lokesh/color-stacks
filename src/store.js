@@ -11,14 +11,14 @@ const set = key => (state, val) => {
 export default new Vuex.Store({
   state: {
     // Grays
-    graySteps: 12,
+    graySteps: 2,
     grayCast: 0,
     grayLumaStart: 105,
     grayLumaEnd: 0,
 
     // Color
-    colorHues: [30, 90, 150], //40, 200, 120, 200, 280, 320
-    colorSteps: 12,
+    colorHues: [], //40, 200, 120, 200, 280, 320
+    colorSteps: 5,
     colorLumaStart: 100,
     colorLumaEnd: 10,
     colorChromaStart: 30,

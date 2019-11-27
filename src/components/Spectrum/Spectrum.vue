@@ -104,7 +104,8 @@ export default {
     red 100%
   );
   border-radius: var(--radius);
-  cursor: "copy";
+  /*  box-shadow: inset 0 0 0 2px white;
+  */
 }
 
 .hues {

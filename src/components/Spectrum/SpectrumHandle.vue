@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       isDragging: false,
-      width: 16,
+      width: 12,
       left: 0
     };
   },
@@ -87,11 +87,6 @@ export default {
         return;
       }
 
-      //
-
-      // var l = +window.getComputedStyle(el)["left"].slice(0, -2) || 0;
-      // var t = +window.getComputedStyle(el)["top"].slice(0, -2) || 0;
-
       let clientXconstrained = Math.max(
         this.xMin,
         Math.min(clientX, this.xMax)
@@ -110,6 +105,7 @@ export default {
   background: white;
   border: var(--border);
   border-radius: var(--radius-sm);
+  /*box-shadow: inset 0 0 0 2px white, inset 0 0 0 3px #b3b3b3;*/
 }
 
 .val {

@@ -4,11 +4,12 @@
   --color: #333;
   --color-secondary: #666;
   --color-muted: #999;
-  --bg-color: #fff;
+  --bg-color: #ddd;
 
   --border-color: #b3b3b3;
   --border: 1px solid var(--border-color);
   --border-light: 1px solid #ddd;
+  --border-dark: 1px solid #888;
   --radius: 6px;
   --radius-sm: 3px;
 
@@ -26,7 +27,7 @@
 
   /* Spectrum */
   --spectrum-height: 24px;
-  --spectrum-handle-overhang: 3px;
+  --spectrum-handle-overhang: 4px;
 }
 
 * {
@@ -52,6 +53,13 @@ h1,
 h2,
 h3 {
   margin-top: 0;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+}
+
+h3 {
+  color: var(--color-muted);
+  font-size: 24px;
 }
 
 input[type="number"] {
@@ -79,7 +87,8 @@ button:hover {
 
 label {
   color: var(--color-secondary);
-  font-size: 12px;
-  letter-spacing: 0.01em;
-  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  text-transform: uppercase;
 }
