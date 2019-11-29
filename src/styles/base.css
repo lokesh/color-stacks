@@ -85,6 +85,10 @@ button:hover {
   background: var(--control-hover-bg);
 }
 
+.btn {
+  padding: 4px 8px;
+}
+
 label {
   color: var(--color-secondary);
   font-size: 11px;

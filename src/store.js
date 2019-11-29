@@ -11,13 +11,13 @@ const set = key => (state, val) => {
 export default new Vuex.Store({
   state: {
     // Grays
-    graySteps: 2,
+    graySteps: 5,
     grayCast: 0,
     grayLumaStart: 105,
     grayLumaEnd: 0,
 
     // Color
-    colorHues: [], //40, 200, 120, 200, 280, 320
+    colorHues: [90, 180, 270, 360], //40, 200, 120, 200, 280, 320
     colorSteps: 5,
     colorLumaStart: 100,
     colorLumaEnd: 10,
@@ -51,6 +51,9 @@ export default new Vuex.Store({
     setGrayLumaEnd: set("grayLumaEnd"),
 
     // Color
+    setColorHues(state, hues) {
+      state.colorHues = [...hues];
+    },
     setColorSteps: set("colorSteps"),
     setColorLumaStart: set("colorLumaStart"),
     setColorLumaEnd: set("colorLumaEnd"),
@@ -78,6 +81,9 @@ export default new Vuex.Store({
       hues.push(val);
 
       state.colorHues = hues;
+    },
+    resetHues({ state, commit }, val) {
+      commit("setColorHues", val);
     }
   }
 });

@@ -1,6 +1,6 @@
 <template>
   <div class="palette">
-    <!-- <input
+    <!--  <input
       type="number"
       class="hue-input"
       :min="hueMin"
@@ -18,7 +18,7 @@
       class="swatch"
     ></swatch>
 
-    <button v-if="false" class="remove-btn" type="button" @click="remove">
+    <button v-if="false" class="btn remove-btn" type="button" @click="remove">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -105,8 +105,8 @@ export default {
 }
 
 .remove-btn {
-  width: var(--control-height);
-  height: var(--control-height);
+  /*  width: var(--control-height);
+  height: var(--control-height);*/
 }
 .feather {
   width: var(--control-icon-size);

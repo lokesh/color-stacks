@@ -1,5 +1,12 @@
 <template>
   <div class="app">
+    <div>
+      <h4>Presets</h4>
+      <button class="btn" @click="reset0">Reset</button><br />
+      <button class="btn" @click="reset1">3 colors</button><br />
+      <button class="btn" @click="reset2">6 colors</button><br />
+      <button class="btn">Custom</button>
+    </div>
     <section class="gray">
       <h3>Grays</h3>
       <div class="palette-row">
@@ -54,6 +61,7 @@
       <div class="spectrum-row">
         <spectrum />
       </div>
+
       <div class="palette-row">
         <div class="control-col" v-if="colorHues.length">
           <div class="control-col-section">
@@ -225,6 +233,17 @@ export default {
       set(val) {
         this.$store.commit("setColorChromaEnd", val);
       }
+    }
+  },
+  methods: {
+    reset0() {
+      this.$store.dispatch("resetHues", []);
+    },
+    reset1() {
+      this.$store.dispatch("resetHues", [30, 80, 120, 220]);
+    },
+    reset2() {
+      this.$store.dispatch("resetHues", [0, 60, 120, 180, 240, 300]);
     }
   }
 };

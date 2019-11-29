@@ -49,10 +49,8 @@ export default {
   },
 
   watch: {
-    left(val, oldVal) {
-      let xPosOnSpectrum = val + this.width / 2;
-      let percent = xPosOnSpectrum / this.spectrum.width;
-      this.$emit("input", Math.floor(percent * this.max));
+    value(val) {
+      this.updatePosition();
     }
   },
 
@@ -60,9 +58,7 @@ export default {
     // Set initial position. Wait for spectrum to be mounted so we can measure
     // width.
     this.$nextTick(() => {
-      this.left =
-        Math.floor((this.value / this.max) * this.spectrum.width) -
-        this.width / 2;
+      this.updatePosition();
     });
   },
 
@@ -92,7 +88,14 @@ export default {
         Math.min(clientX, this.xMax)
       );
 
-      this.left = clientXconstrained - this.xMin - this.width / 2;
+      let xPosOnSpectrum = clientXconstrained - this.xMin;
+      let percent = xPosOnSpectrum / this.spectrum.width;
+      this.$emit("input", Math.floor(percent * this.max));
+    },
+    updatePosition() {
+      this.left =
+        Math.floor((this.value / this.max) * this.spectrum.width) -
+        this.width / 2;
     }
   }
 };
