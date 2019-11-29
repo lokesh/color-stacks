@@ -1,10 +1,25 @@
 <template>
-  <div ref="handle" class="handle" v-dragged="onDragged" :style="styles">
-    <div v-if="false" class="val">{{ value }}</div>
+  <div class="spectrum-handle" :style="styles">
+    <div
+      ref="handle"
+      class="handle"
+      v-dragged="onDragged"
+      :style="handleStyles"
+    />
+    <input
+      type="number"
+      class="handle-input"
+      :min="hueMin"
+      :max="hueMax"
+      v-model.number="hueInput"
+      @keydown.shift="onKeydownWithShift"
+    />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "SpectrumHandle",
 
@@ -23,15 +38,30 @@ export default {
       required: true
     }
   },
+
   data() {
     return {
+      // hueInput: this.value,
       isDragging: false,
-      width: 12,
+      width: this.$store.state.hueSliderWidth,
       left: 0
     };
   },
 
   computed: {
+    ...mapState(["hueMin", "hueMax"]),
+
+    hueInput: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        console.log(val);
+        if (val && Number.isInteger(val)) {
+          this.$emit("input", val);
+        }
+      }
+    },
     xMin() {
       return this.spectrum.left;
     },
@@ -40,10 +70,14 @@ export default {
     },
     styles() {
       return {
-        width: `${this.width}px`,
         transform: `translateX(${this.left}px)`,
-        cursor: this.isDragging ? "none" : "grab",
         zIndex: this.isDragging ? "10" : "auto"
+      };
+    },
+    handleStyles() {
+      return {
+        width: `${this.width}px`,
+        cursor: this.isDragging ? "none" : "grab"
       };
     }
   },
@@ -92,6 +126,21 @@ export default {
       let percent = xPosOnSpectrum / this.spectrum.width;
       this.$emit("input", Math.floor(percent * this.max));
     },
+    onKeydownWithShift(event) {
+      if (event.key === "ArrowUp") {
+        this.hueInput += 10;
+        if (this.hueInput > this.hueMax) {
+          this.hueInput = this.hueMax;
+        }
+        event.preventDefault();
+      } else if (event.key === "ArrowDown") {
+        this.hueInput -= 10;
+        if (this.hueInput < this.hueMin) {
+          this.hueInput = this.hueMin;
+        }
+        event.preventDefault();
+      }
+    },
     updatePosition() {
       this.left =
         Math.floor((this.value / this.max) * this.spectrum.width) -
@@ -102,8 +151,11 @@ export default {
 </script>
 
 <style scoped>
-.handle {
+.spectrum-handle {
   position: absolute;
+}
+
+.handle {
   height: calc(var(--spectrum-height) + var(--spectrum-handle-overhang) * 2);
   background: white;
   border: var(--border);
@@ -111,12 +163,13 @@ export default {
   /*box-shadow: inset 0 0 0 2px white, inset 0 0 0 3px #b3b3b3;*/
 }
 
-.val {
+.handle-input {
   position: absolute;
-  top: 20px;
-  width: 24px;
+  top: calc(var(--spectrum-height) + var(--spectrum-handle-overhang));
+  left: -16px;
+  width: 48px;
   height: 24px;
   background: white;
-  border: 2px solid black;
+  border: var(--border);
 }
 </style>

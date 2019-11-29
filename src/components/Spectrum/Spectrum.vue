@@ -3,8 +3,12 @@
 
 -->
 <template>
-  <div class="wrapper">
-    <div class="spectrum" ref="spectrum" @click="onSpectrumClick"></div>
+  <div class="spectrum">
+    <div
+      class="spectrum-gradient"
+      ref="spectrum"
+      @click="onSpectrumClick"
+    ></div>
     <div class="hues">
       <template v-for="(hue, i) in hues">
         <spectrum-handle
@@ -87,11 +91,11 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.spectrum {
   position: relative;
 }
 
-.spectrum {
+.spectrum-gradient {
   height: var(--spectrum-height);
   background: linear-gradient(
     to right,

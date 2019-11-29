@@ -1,13 +1,5 @@
 <template>
-  <div class="palette">
-    <!--  <input
-      type="number"
-      class="hue-input"
-      :min="hueMin"
-      :max="hueMax"
-      v-model.number="hueInput"
-      @keydown.shift="onKeydownWithShift"
-    /> -->
+  <div class="palette" :class="{ 'palette--highlight': hasHueRecentlyChanged }">
     <swatch
       v-for="(step, index) in steps"
       :key="index"
@@ -18,7 +10,7 @@
       class="swatch"
     ></swatch>
 
-    <button v-if="false" class="btn remove-btn" type="button" @click="remove">
+    <button class="btn remove-btn" type="button" @click="remove">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -42,10 +34,12 @@ import { mapState } from "vuex";
 import Swatch from "./Swatch.vue";
 
 export default {
-  name: "palette",
+  name: "Palette",
+
   components: {
     Swatch
   },
+
   props: {
     arrayIndex: Number,
     steps: Number,
@@ -55,39 +49,25 @@ export default {
     startLuma: Number,
     endLuma: Number
   },
+
   data() {
     return {
-      hueInput: this.hue
+      hasHueRecentlyChanged: false,
+      hueChangeTimeout: null
     };
   },
-  computed: {
-    ...mapState(["hueMin", "hueMax"])
-  },
+
   watch: {
-    hueInput(val) {
-      this.$store.commit("updateHue", {
-        index: this.arrayIndex,
-        hue: val
-      });
+    hue() {
+      clearTimeout(this.huseChangeTimeout);
+      this.hueChangeTimeout = setTimeout(() => {
+        this.hasHueRecentlyChanged = false;
+      }, 1500);
+      this.hasHueRecentlyChanged = true;
     }
   },
 
   methods: {
-    onKeydownWithShift(event) {
-      if (event.key === "ArrowUp") {
-        this.hueInput += 10;
-        if (this.hueInput > this.hueMax) {
-          this.hueInput = this.hueMax;
-        }
-        event.preventDefault();
-      } else if (event.key === "ArrowDown") {
-        this.hueInput -= 10;
-        if (this.hueInput < this.hueMin) {
-          this.hueInput = this.hueMin;
-        }
-        event.preventDefault();
-      }
-    },
     remove() {
       this.$store.commit("removeHue", this.arrayIndex);
     }
@@ -96,6 +76,16 @@ export default {
 </script>
 
 <style scoped>
+.palette {
+  border-radius: var(--radius);
+  transition: transform var(--transition);
+}
+
+.palette--highlight {
+  /*box-shadow: 0 0 0 4px var(--selected-color);*/
+  transform: scale(1.05);
+}
+
 .swatch:first-of-type {
   border-radius: var(--radius) var(--radius) 0 0;
 }

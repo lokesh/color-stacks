@@ -189,7 +189,7 @@ export default {
         if (a < b) {
           return -1;
         } else if (a > b) {
-          return 0;
+          return 1;
         }
         return 0;
       });
@@ -240,7 +240,7 @@ export default {
       this.$store.dispatch("resetHues", []);
     },
     reset1() {
-      this.$store.dispatch("resetHues", [30, 80, 120, 220]);
+      this.$store.dispatch("resetHues", [30, 80, 120]);
     },
     reset2() {
       this.$store.dispatch("resetHues", [0, 60, 120, 180, 240, 300]);

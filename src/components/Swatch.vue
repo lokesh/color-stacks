@@ -127,7 +127,7 @@ export default {
 }
 
 .swatch-name {
-  /*display: none;*/
+  /*  display: none;*/
   font-weight: 600;
   opacity: 0.8;
 }

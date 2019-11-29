@@ -30,6 +30,7 @@ export default new Vuex.Store({
 
     hueMin: 0,
     hueMax: 359,
+    hueSliderWidth: 12,
 
     stepsMin: 2,
     stepsMax: 20,

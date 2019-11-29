@@ -16,6 +16,9 @@
   --selected-color: #f60;
   --focus-color: #18bdff;
 
+  /* Transitions */
+  --transition: 0.3s;
+
   /* Forms */
   --control-height: 24px;
   --control-icon-size: 16px;
