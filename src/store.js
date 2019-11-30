@@ -91,7 +91,7 @@ export default new Vuex.Store({
       let hues = [...state.colorHues];
       hues.push(val);
 
-      state.colorHues = hues;
+      commit("setColorHues", hues);
     },
     initStore() {
       // in App.vue this.$store.dispatch('initStore');
