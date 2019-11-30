@@ -78,9 +78,9 @@ input[type="number"]:focus {
 }
 
 button {
-  padding: 0;
+  /*  padding: 0;*/
   border: var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   cursor: pointer;
 }
 
@@ -89,7 +89,7 @@ button:hover {
 }
 
 .btn {
-  padding: 4px 8px;
+  /*  padding: 4px 8px;*/
 }
 
 label {

@@ -56,7 +56,6 @@ export default {
         return this.value;
       },
       set(val) {
-        console.log(val);
         if (val && Number.isInteger(val)) {
           this.$emit("input", val);
         }
@@ -83,7 +82,7 @@ export default {
   },
 
   watch: {
-    value(val) {
+    value() {
       this.updatePosition();
     }
   },
@@ -97,6 +96,7 @@ export default {
   },
 
   methods: {
+    /* eslint-disable no-unused-vars */
     onDragged({
       el,
       deltaX,
@@ -108,6 +108,8 @@ export default {
       first,
       last
     }) {
+      /* eslint-enable no-unused-vars */
+
       if (first) {
         this.isDragging = true;
         return;
@@ -169,6 +171,7 @@ export default {
   left: -16px;
   width: 48px;
   height: 24px;
+  padding: 4px 6px;
   background: white;
   border: var(--border);
 }

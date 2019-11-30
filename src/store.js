@@ -9,6 +9,14 @@ const set = key => (state, val) => {
 };
 
 export default new Vuex.Store({
+  // google createNamespacedHelpers vuex
+
+  // namespaced: true,
+  // modules: {
+  //   user,
+  //   config
+  // },
+
   state: {
     // Grays
     graySteps: 5,
@@ -44,6 +52,7 @@ export default new Vuex.Store({
     darkMode: false,
     showLabels: true
   },
+
   mutations: {
     // Grays
     setGraySteps: set("graySteps"),
@@ -73,6 +82,7 @@ export default new Vuex.Store({
 
     setColors: set("colors")
   },
+
   actions: {
     addHue({ state, commit }, val) {
       if (typeof val === "undefined") {
@@ -83,8 +93,30 @@ export default new Vuex.Store({
 
       state.colorHues = hues;
     },
+    initStore() {
+      // in App.vue this.$store.dispatch('initStore');
+    },
     resetHues({ state, commit }, val) {
       commit("setColorHues", val);
     }
+  },
+
+  getters: {
+    colorHuesSorted: state => {
+      return [...state.colorHues].sort((a, b) => {
+        if (a < b) {
+          return -1;
+        } else if (a > b) {
+          return 1;
+        }
+        return 0;
+      });
+    }
   }
 });
+
+// for (const moduleName of Object.keys(modules)) {
+//   if (modules[moduleName].actions && modules[moduleName].actions.initStore) {
+//     store.dispatch(`${moduleName}/initStore`);
+//   }
+// }

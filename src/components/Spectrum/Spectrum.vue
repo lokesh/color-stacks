@@ -92,7 +92,10 @@ export default {
 
 <style scoped>
 .spectrum {
+  --spectrum-input-height: 24px;
+
   position: relative;
+  padding-bottom: var(--spectrum-input-height);
 }
 
 .spectrum-gradient {
@@ -108,8 +111,6 @@ export default {
     red 100%
   );
   border-radius: var(--radius);
-  /*  box-shadow: inset 0 0 0 2px white;
-  */
 }
 
 .hues {

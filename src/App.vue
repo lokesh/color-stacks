@@ -1,12 +1,14 @@
 <template>
   <div class="app">
-    <div>
+    <section style="flex: 0 0 200px">
       <h4>Presets</h4>
+
       <button class="btn" @click="reset0">Reset</button><br />
       <button class="btn" @click="reset1">3 colors</button><br />
       <button class="btn" @click="reset2">6 colors</button><br />
-      <button class="btn">Custom</button>
-    </div>
+
+      <button class="btn">Undo</button>
+    </section>
     <section class="gray">
       <h3>Grays</h3>
       <div class="palette-row">
@@ -185,14 +187,7 @@ export default {
       }
     },
     colorHuesSorted() {
-      return [...this.colorHues].sort((a, b) => {
-        if (a < b) {
-          return -1;
-        } else if (a > b) {
-          return 1;
-        }
-        return 0;
-      });
+      return this.$store.getters.colorHuesSorted;
     },
     colorSteps: {
       get() {
@@ -235,6 +230,7 @@ export default {
       }
     }
   },
+
   methods: {
     reset0() {
       this.$store.dispatch("resetHues", []);
