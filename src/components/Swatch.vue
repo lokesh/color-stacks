@@ -27,9 +27,22 @@ import chroma from "chroma-js";
 export default {
   name: "swatch",
   props: {
-    h: { type: Number, required: true },
-    c: { type: Number, required: true },
-    l: { type: Number, required: true }
+    h: {
+      type: Number,
+      required: true
+    },
+    c: {
+      type: Number,
+      required: true
+    },
+    l: {
+      type: Number,
+      required: true
+    },
+    label: {
+      type: String,
+      required: false
+    }
   },
   data() {
     return {
@@ -53,12 +66,15 @@ export default {
       // 0 = red, 120 = green, blue = 240,
       let label;
       let addNumber = true;
+
       if (this.backgroundColor === "#ffffff") {
         label = "white";
         addNumber = false;
       } else if (this.backgroundColor === "#000000") {
         label = "black";
         addNumber = false;
+      } else if (this.label) {
+        label = this.label;
       } else if (this.c === 0) {
         label = "gray";
       } else if (this.h < 20) {

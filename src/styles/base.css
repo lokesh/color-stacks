@@ -99,7 +99,6 @@ input::-webkit-inner-spin-button {
 }
 
 button {
-  /*  padding: 0;*/
   height: var(--control-height);
   background: white;
   border: var(--border);
@@ -122,3 +121,31 @@ label {
   font-weight: 600;
   text-transform: uppercase;
 }
+
+/* Layout */
+.palette-row {
+  display: flex;
+}
+
+.control-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80px;
+}
+
+.palettes {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0 16px;
+}
+
+.palette {
+  margin-right: var(--palette-gap);
+}
+
+.palette:last-of-type {
+  margin-right: 0;
+}
+
+

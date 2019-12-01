@@ -6,10 +6,10 @@
     <swatch
       v-for="(step, index) in steps"
       :key="index"
+      :label="label"
       :h="hue"
       :c="startChroma + (endChroma - startChroma) * ((step - 1) / (steps - 1))"
       :l="startLuma + (endLuma - startLuma) * ((step - 1) / (steps - 1))"
-      :palette-size="steps"
       class="swatch"
     ></swatch>
   </div>
@@ -29,8 +29,15 @@ export default {
   props: {
     unsortedIndex: Number,
     steps: Number,
-    hue: { type: Number, default: 0 },
-    startChroma: Number,
+    label: String,
+    hue: {
+      type: Number,
+      default: 0
+    },
+    startChroma: {
+      type: Number,
+      default: 0
+    },
     endChroma: Number,
     startLuma: Number,
     endLuma: Number
