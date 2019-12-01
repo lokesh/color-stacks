@@ -14,7 +14,7 @@
   --radius-sm: 3px;
 
   --selected-color: #f60;
-  --focus-color: #18bdff;
+  --focus-color: #f60;
 
   /* Transitions */
   --transition: 0.3s;
@@ -54,31 +54,54 @@ input {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin-top: 0;
   margin-bottom: 1em;
   text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
-h3 {
+h1 {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+h2 {
   color: var(--color-muted);
-  font-size: 24px;
+  font-size: 20px;
 }
 
-input[type="number"] {
+input {
   padding: 4px 8px;
   border: var(--border);
   border-radius: 3px;
+  text-align: center;
 }
 
-input[type="number"]:focus {
+input:focus {
   outline: none;
   border-color: var(--focus-color);
   box-shadow: 0 0 0 1px var(--focus-color);
 }
 
+/* Remove up/down arrows for incrementing numbers inside of number input. */
+input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
 button {
   /*  padding: 0;*/
+  height: var(--control-height);
+  background: white;
   border: var(--border);
   border-radius: var(--radius-sm);
   cursor: pointer;

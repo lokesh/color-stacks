@@ -1,5 +1,8 @@
 <template>
-  <div class="palette" :class="{ 'palette--highlight': hasHueRecentlyChanged }">
+  <div
+    class="palette"
+    :class="{ 'palette--highlight': unsortedIndex === highlightHue }"
+  >
     <swatch
       v-for="(step, index) in steps"
       :key="index"
@@ -9,23 +12,6 @@
       :palette-size="steps"
       class="swatch"
     ></swatch>
-
-    <button class="btn remove-btn" type="button" @click="remove">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        class="feather feather-x"
-      >
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
   </div>
 </template>
 
@@ -41,7 +27,7 @@ export default {
   },
 
   props: {
-    arrayIndex: Number,
+    unsortedIndex: Number,
     steps: Number,
     hue: { type: Number, default: 0 },
     startChroma: Number,
@@ -57,21 +43,32 @@ export default {
     };
   },
 
-  watch: {
-    hue() {
-      clearTimeout(this.huseChangeTimeout);
-      this.hueChangeTimeout = setTimeout(() => {
-        this.hasHueRecentlyChanged = false;
-      }, 1500);
-      this.hasHueRecentlyChanged = true;
-    }
+  computed: {
+    ...mapState(["highlightHue"])
   },
 
-  methods: {
-    remove() {
-      this.$store.commit("removeHue", this.arrayIndex);
-    }
+  watch: {
+    // hue() {
+    //   if (this.isSpectrumHandleBeingDragged) {
+    // clearTimeout(this.hueChangeTimeout);
+    // this.hueChangeTimeout = setTimeout(() => {
+    //   this.hasHueRecentlyChanged = false;
+    // }, 1000);
+    //     this.hasHueRecentlyChanged = true;
+    //   }
+    // },
+    // isSpectrumHandleBeingDragged(val) {
+    //   if (!val) {
+    //     this.hasHueRecentlyChanged = false;
+    //   }
+    // }
   }
+
+  // methods: {
+  //   remove() {
+  //     this.$store.commit("removeHue", this.unsortedIndex);
+  //   }
+  // }
 };
 </script>
 
@@ -82,8 +79,7 @@ export default {
 }
 
 .palette--highlight {
-  /*box-shadow: 0 0 0 4px var(--selected-color);*/
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .swatch:first-of-type {
@@ -97,8 +93,5 @@ export default {
 .remove-btn {
   /*  width: var(--control-height);
   height: var(--control-height);*/
-}
-.feather {
-  width: var(--control-icon-size);
 }
 </style>

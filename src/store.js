@@ -33,12 +33,19 @@ export default new Vuex.Store({
     colorChromaEnd: 120,
 
     // Options
+    darkMode: false,
+    showLabels: true,
+
+    // Interaction states
+    highlightHue: null, // Index of Hue
+
+    // Config
     castMin: -50,
     castMax: 50,
 
     hueMin: 0,
     hueMax: 359,
-    hueSliderWidth: 12,
+    hueSliderWidth: 16,
 
     stepsMin: 2,
     stepsMax: 20,
@@ -47,10 +54,7 @@ export default new Vuex.Store({
     lumaMax: 150,
 
     chromaMin: 0,
-    chromaMax: 150,
-
-    darkMode: false,
-    showLabels: true
+    chromaMax: 150
   },
 
   mutations: {
@@ -77,10 +81,17 @@ export default new Vuex.Store({
       state.colorHues.splice(index, 1);
     },
 
+    // Options
     setDarkMode: set("darkMode"),
     setShowLabels: set("showLabels"),
 
-    setColors: set("colors")
+    // Interaction states
+    highlightHue(state, index) {
+      state.highlightHue = index;
+    },
+    unhighlightHue(state) {
+      state.highlightHue = null;
+    }
   },
 
   actions: {
@@ -102,15 +113,30 @@ export default new Vuex.Store({
   },
 
   getters: {
+    /*
+    Takes the Hue Array, sorts it by ascending values and switches the Number
+    primities to Objects that include the unsorted position. Ex.
+    [{
+      val: 120,
+      unsortedIndex: 2
+    }]
+    */
     colorHuesSorted: state => {
-      return [...state.colorHues].sort((a, b) => {
-        if (a < b) {
-          return -1;
-        } else if (a > b) {
-          return 1;
-        }
-        return 0;
-      });
+      return state.colorHues
+        .map((hue, index) => {
+          return {
+            value: hue,
+            unsortedIndex: index
+          };
+        })
+        .sort((a, b) => {
+          if (a.value < b.value) {
+            return -1;
+          } else if (a.value > b.value) {
+            return 1;
+          }
+          return 0;
+        });
     }
   }
 });

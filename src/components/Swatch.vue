@@ -119,8 +119,8 @@ export default {
 <style scoped>
 .swatch {
   position: relative;
-  width: 8em;
-  height: 5em;
+  width: 10em;
+  height: 4em;
   margin-bottom: var(--swatch-gap);
   padding: 8px;
   font-size: 11px;

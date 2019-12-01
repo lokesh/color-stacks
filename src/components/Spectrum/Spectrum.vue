@@ -1,7 +1,3 @@
-<!--
-:initial-value="hue"
-
--->
 <template>
   <div class="spectrum">
     <div
@@ -13,6 +9,7 @@
       <template v-for="(hue, i) in hues">
         <spectrum-handle
           :key="`hue-${i}`"
+          :index="i"
           :min="0"
           :max="360"
           :value="hue"
@@ -92,10 +89,9 @@ export default {
 
 <style scoped>
 .spectrum {
-  --spectrum-input-height: 24px;
-
   position: relative;
-  padding-bottom: var(--spectrum-input-height);
+
+  padding-bottom: 28px;
 }
 
 .spectrum-gradient {
@@ -111,6 +107,7 @@ export default {
     red 100%
   );
   border-radius: var(--radius);
+  cursor: copy;
 }
 
 .hues {
