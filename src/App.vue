@@ -16,220 +16,22 @@
     </div>
 
     <div class="body">
-      <section class="gray">
-        <h2>Grays</h2>
-        <div class="palette-row">
-          <div class="control-col">
-            <div class="control-col-section">
-              <slider
-                v-model="graySteps"
-                label="Steps"
-                :min="stepsMin"
-                :max="stepsMax"
-              />
-              <!--             <slider
-              v-model="grayCast"
-              label="Cast"
-              :min="castMin"
-              :max="castMax"
-            ></slider>
- -->
-              <slider
-                v-model="grayLumaStart"
-                label="Luminance"
-                :min="lumaMin"
-                :max="lumaMax"
-              />
-            </div>
-            <div class="control-col-section">
-              <slider
-                v-model="grayLumaEnd"
-                label="Luminance"
-                :min="lumaMin"
-                :max="lumaMax"
-              />
-            </div>
-          </div>
-          <div class="palettes">
-            <palette
-              class="palette"
-              :steps="graySteps"
-              :start-chroma="0"
-              :end-chroma="0"
-              :start-luma="grayLumaStart"
-              :end-luma="grayLumaEnd"
-            />
-          </div>
-        </div>
-      </section>
-
-      <!-- COLOR -->
-
-      <section class="color">
-        <h2>Colors</h2>
-        <div class="spectrum-row">
-          <spectrum />
-        </div>
-        <div class="palette-row">
-          <div class="control-col" v-if="colorHues.length">
-            <div class="control-col-section">
-              <slider
-                v-model="colorSteps"
-                label="Steps"
-                :min="stepsMin"
-                :max="stepsMax"
-              ></slider>
-              <slider
-                label="Luminance"
-                v-model="colorLumaStart"
-                :min="lumaMin"
-                :max="lumaMax"
-              ></slider>
-              <slider
-                label="Chroma"
-                v-model="colorChromaStart"
-                :min="chromaMin"
-                :max="chromaMax"
-              ></slider>
-            </div>
-
-            <div class="control-col-section">
-              <slider
-                label="Luminance"
-                v-model="colorLumaEnd"
-                :min="lumaMin"
-                :max="lumaMax"
-              ></slider>
-              <slider
-                label="Chroma"
-                v-model="colorChromaEnd"
-                :min="chromaMin"
-                :max="chromaMax"
-              ></slider>
-            </div>
-          </div>
-          <div class="palettes">
-            <palette
-              v-for="(hue, index) in colorHuesSorted"
-              :key="index"
-              class="palette"
-              :unsorted-index="hue.unsortedIndex"
-              :hue="hue.value"
-              :steps="colorSteps"
-              :start-chroma="colorChromaStart"
-              :end-chroma="colorChromaEnd"
-              :start-luma="colorLumaStart"
-              :end-luma="colorLumaEnd"
-            ></palette>
-          </div>
-        </div>
-      </section>
+      <section-grays />
+      <section-color />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import Spectrum from "./components/Spectrum";
-import Palette from "./components/Palette.vue";
-import Slider from "./components/Slider.vue";
+import SectionColor from "./components/SectionColor";
+import SectionGrays from "./components/SectionGrays";
 
 export default {
   name: "app",
+
   components: {
-    Palette,
-    Spectrum,
-    Slider
-  },
-
-  computed: {
-    ...mapState([
-      "castMin",
-      "castMax",
-      "chromaMin",
-      "chromaMax",
-      "colorHues",
-      "lumaMin",
-      "lumaMax",
-      "stepsMin",
-      "stepsMax"
-    ]),
-
-    graySteps: {
-      get() {
-        return this.$store.state.graySteps;
-      },
-      set(val) {
-        this.$store.commit("setGraySteps", val);
-      }
-    },
-    grayCast: {
-      get() {
-        return this.$store.state.grayCast;
-      },
-      set(val) {
-        this.$store.commit("setGrayCast", val);
-      }
-    },
-    grayLumaStart: {
-      get() {
-        return this.$store.state.grayLumaStart;
-      },
-      set(val) {
-        this.$store.commit("setGrayLumaStart", val);
-      }
-    },
-    grayLumaEnd: {
-      get() {
-        return this.$store.state.grayLumaEnd;
-      },
-      set(val) {
-        this.$store.commit("setGrayLumaEnd", val);
-      }
-    },
-    colorHuesSorted() {
-      return this.$store.getters.colorHuesSorted;
-    },
-    colorSteps: {
-      get() {
-        return this.$store.state.colorSteps;
-      },
-      set(val) {
-        this.$store.commit("setColorSteps", val);
-      }
-    },
-    colorLumaStart: {
-      get() {
-        return this.$store.state.colorLumaStart;
-      },
-      set(val) {
-        this.$store.commit("setColorLumaStart", val);
-      }
-    },
-    colorLumaEnd: {
-      get() {
-        return this.$store.state.colorLumaEnd;
-      },
-      set(val) {
-        this.$store.commit("setColorLumaEnd", val);
-      }
-    },
-    colorChromaStart: {
-      get() {
-        return this.$store.state.colorChromaStart;
-      },
-      set(val) {
-        this.$store.commit("setColorChromaStart", val);
-      }
-    },
-    colorChromaEnd: {
-      get() {
-        return this.$store.state.colorChromaEnd;
-      },
-      set(val) {
-        this.$store.commit("setColorChromaEnd", val);
-      }
-    }
+    SectionColor,
+    SectionGrays
   },
 
   methods: {
@@ -278,27 +80,6 @@ export default {
   background: #ffff;
 }
 
-.control-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 80px;
-}
-
-.palettes {
-  display: flex;
-  flex-wrap: nowrap;
-  padding: 0 16px;
-}
-
-.palette {
-  margin-right: var(--palette-gap);
-}
-
-.palette:last-of-type {
-  margin-right: 0;
-}
-
 /* Gray section */
 .gray {
   padding: 16px;
@@ -307,16 +88,6 @@ export default {
 
 .color {
   flex: 1 1 auto;
-  padding: 16px;
-}
-
-.spectrum-row {
-  width: 640px;
-  /*  height: 64px;*/
-  margin-bottom: 16px;
-}
-
-.palette-row {
-  display: flex;
+  padding: 16px 32px 16px 16px;
 }
 </style>
