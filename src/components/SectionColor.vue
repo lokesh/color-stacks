@@ -1,5 +1,5 @@
 <template>
-  <section class="color">
+  <section class="section-color">
     <h2>Colors</h2>
     <div class="spectrum-row">
       <spectrum />
@@ -134,8 +134,11 @@ export default {
 </script>
 
 <style scoped>
+.section-color {
+  flex: 1 1 auto;
+  padding: 16px 32px 16px 16px;
+}
 .spectrum-row {
-  /*  width: 640px4;*/
   margin-bottom: 24px;
 }
 </style>

@@ -1,43 +1,68 @@
-export function hueToColor(hue) {
-	// 0 = red, 120 = green, blue = 240,
+/**
+ * @param
+ * @property {string} [label]
+ * @property {string} hex
+ * @property {number} h
+ * @property {number} c
+ * @property {number} l
+ */
+const generateColorLabel = function(color) {
   let label;
-  if (this.c === 0) {
+  let addNumber = true;
+
+  if (color.hex === "#ffffff") {
+    label = "white";
+    addNumber = false;
+  } else if (color.hex === "#000000") {
+    label = "black";
+    addNumber = false;
+  } else if (color.label) {
+    label = color.label;
+  } else if (color.c === 0) {
     label = "gray";
-  } else if (this.h < 20) {
+  } else if (color.h < 20) {
     label = "pink";
-  } else if (this.h < 40) {
+  } else if (color.h < 40) {
     label = "rose";
-  } else if (this.h < 60) {
+  } else if (color.h < 60) {
     label = "red";
-  } else if (this.h < 80) {
+  } else if (color.h < 80) {
     label = "orange";
-  } else if (this.h < 100) {
+  } else if (color.h < 100) {
     label = "brown";
-  } else if (this.h < 120) {
+  } else if (color.h < 120) {
     label = "olive";
-  } else if (this.h < 140) {
+  } else if (color.h < 140) {
     label = "forest";
-  } else if (this.h < 160) {
+  } else if (color.h < 160) {
     label = "green";
-  } else if (this.h < 180) {
+  } else if (color.h < 180) {
     label = "teal";
-  } else if (this.h < 200) {
+  } else if (color.h < 200) {
     label = "mint";
-  } else if (this.h < 220) {
+  } else if (color.h < 220) {
     label = "turqouise";
-  } else if (this.h < 240) {
+  } else if (color.h < 240) {
     label = "baby-blue";
-  } else if (this.h < 260) {
+  } else if (color.h < 260) {
     label = "powder-blue";
-  } else if (this.h < 280) {
+  } else if (color.h < 280) {
     label = "blue";
-  } else if (this.h < 300) {
+  } else if (color.h < 300) {
     label = "cobalt";
-  } else if (this.h < 320) {
+  } else if (color.h < 320) {
     label = "indigo";
-  } else if (this.h < 340) {
+  } else if (color.h < 340) {
     label = "purple";
-  } else if (this.h < 360) {
+  } else if (color.h <= 360) {
     label = "plum";
   }
-}
+
+  if (addNumber) {
+    label += `-${100 - Math.ceil(((color.l / 150) * 100) / 5) * 5}`;
+  }
+
+  return label;
+};
+
+export { generateColorLabel };

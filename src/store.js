@@ -19,7 +19,7 @@ export default new Vuex.Store({
 
   state: {
     // Grays
-    graySteps: 10,
+    graySteps: 4,
     grayCast: 0,
     grayLumaStart: 105,
     grayLumaEnd: 0,
@@ -137,6 +137,12 @@ export default new Vuex.Store({
           }
           return 0;
         });
+    },
+    grayChroma: state => {
+      return Math.abs(state.grayCast / 10);
+    },
+    grayHue: state => {
+      return state.grayCast >= 0 ? 75 : 270;
     }
   }
 });

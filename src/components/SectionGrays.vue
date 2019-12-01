@@ -1,5 +1,5 @@
 <template>
-  <section class="gray">
+  <section class="section-grays">
     <h2>Grays</h2>
     <div class="palette-row">
       <div class="control-col">
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 import Palette from "./Palette.vue";
 import Slider from "./Slider.vue";
@@ -64,6 +64,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters(["grayChroma", "grayHue"]),
     ...mapState([
       "castMin",
       "castMax",
@@ -104,19 +105,18 @@ export default {
       set(val) {
         this.$store.commit("setGrayLumaEnd", val);
       }
-    },
-    grayHue() {
-      /*
-      - For warm cast: Greenish-yellow hue
-      - For cool cast: Blue hue
-      */
-      return this.grayCast >= 0 ? 75 : 270;
-    },
-    grayChroma() {
-      return Math.abs(this.grayCast / 10);
     }
+  },
+
+  watch: {
+    grayCast(val) {}
   }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.section-grays {
+  padding: 16px;
+  border-right: var(--border-light);
+}
+</style>
