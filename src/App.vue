@@ -142,16 +142,8 @@ export default {
     Slider
   },
 
-  data() {
-    return {
-      // grayLumas: [0, 50],
-    };
-  },
-
   computed: {
     ...mapState([
-      "highlightHue",
-
       "castMin",
       "castMax",
       "chromaMin",

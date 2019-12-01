@@ -36,39 +36,9 @@ export default {
     endLuma: Number
   },
 
-  data() {
-    return {
-      hasHueRecentlyChanged: false,
-      hueChangeTimeout: null
-    };
-  },
-
   computed: {
     ...mapState(["highlightHue"])
-  },
-
-  watch: {
-    // hue() {
-    //   if (this.isSpectrumHandleBeingDragged) {
-    // clearTimeout(this.hueChangeTimeout);
-    // this.hueChangeTimeout = setTimeout(() => {
-    //   this.hasHueRecentlyChanged = false;
-    // }, 1000);
-    //     this.hasHueRecentlyChanged = true;
-    //   }
-    // },
-    // isSpectrumHandleBeingDragged(val) {
-    //   if (!val) {
-    //     this.hasHueRecentlyChanged = false;
-    //   }
-    // }
   }
-
-  // methods: {
-  //   remove() {
-  //     this.$store.commit("removeHue", this.unsortedIndex);
-  //   }
-  // }
 };
 </script>
 
@@ -88,10 +58,5 @@ export default {
 
 .swatch:last-of-type {
   border-radius: 0 0 var(--radius) var(--radius);
-}
-
-.remove-btn {
-  /*  width: var(--control-height);
-  height: var(--control-height);*/
 }
 </style>

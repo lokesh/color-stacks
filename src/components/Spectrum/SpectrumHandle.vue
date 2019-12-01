@@ -153,15 +153,9 @@ export default {
     onKeydownWithShift(event) {
       if (event.key === "ArrowUp") {
         this.hueInput += 10;
-        // if (this.hueInput > this.hueMax) {
-        //     this.hueInput = this.hueMax;
-        // }
         event.preventDefault();
       } else if (event.key === "ArrowDown") {
         this.hueInput -= 10;
-        // if (this.hueInput < this.hueMin) {
-        //   this.hueInput = this.hueMin;
-        // }
         event.preventDefault();
       }
     },
