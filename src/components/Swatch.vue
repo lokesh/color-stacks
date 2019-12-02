@@ -24,7 +24,7 @@
 <script>
 import chroma from "chroma-js";
 
-import { generateColorLabel } from "../utils.js";
+import { generateLabel } from "../utils.js";
 
 export default {
   name: "swatch",
@@ -65,7 +65,7 @@ export default {
       return c.hex();
     },
     name() {
-      return generateColorLabel({
+      return generateLabel({
         label: this.label,
         hex: this.backgroundColor,
         h: this.h,
@@ -100,7 +100,7 @@ export default {
 }
 
 .swatch-hex {
-  display: none;
+  /*display: none;*/
   opacity: 0.8;
 }
 

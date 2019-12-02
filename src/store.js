@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import * as utils from "./utils.js";
+
 Vue.use(Vuex);
 
 // Convenience function for mutations to reduce boilerplate
@@ -115,7 +117,7 @@ export default new Vuex.Store({
   getters: {
     /*
     Takes the Hue Array, sorts it by ascending values and switches the Number
-    primities to Objects that include the unsorted position. Ex.
+    primitives to Objects that include the unsorted position. Ex.
     [{
       val: 120,
       unsortedIndex: 2
@@ -143,6 +145,35 @@ export default new Vuex.Store({
     },
     grayHue: state => {
       return state.grayCast >= 0 ? 75 : 270;
+    },
+    stacks: (state, getters) => {
+      /* Gray stack */
+      let grays = [];
+      for (let i = 0; i < state.graySteps; i++) {
+        let h = getters.grayHue;
+        let c = getters.grayChroma;
+        let l =
+          state.grayLumaStart +
+          (state.grayLumaEnd - state.grayLumaStart) *
+            (i / (state.graySteps - 1));
+        let hex = utils.hclToHex({ h, c, l });
+
+        // WCAG contrast ratio
+        let textColor = l < 50 ? "#ffffff" : "#000000";
+
+        grays.push({
+          hex,
+          label: utils.generateLabel({ hex, h, c, l }),
+          contrastRatio: utils.getContrastRatio(textColor, hex)
+        });
+      }
+
+      /* Color stacks */
+
+      return {
+        grays: grays,
+        colors: []
+      };
     }
   }
 });
