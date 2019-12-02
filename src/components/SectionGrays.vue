@@ -1,7 +1,7 @@
 <template>
   <section class="section-grays">
     <h2>Grays</h2>
-    <div class="palette-row">
+    <div class="stack-row">
       <div class="control-col">
         <div class="control-col-section">
           <slider
@@ -33,38 +33,29 @@
           />
         </div>
       </div>
-      <div class="palettes">
-        <palette
-          class="palette"
-          label="gray"
-          :hue="grayHue"
-          :steps="graySteps"
-          :start-chroma="grayChroma"
-          :end-chroma="grayChroma"
-          :start-luma="grayLumaStart"
-          :end-luma="grayLumaEnd"
-        />
+
+      <div class="section-stacks">
+        <grays-stack />
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapState } from "vuex";
 
-import Palette from "./Palette.vue";
 import Slider from "./Slider.vue";
+import GraysStack from "./GraysStack.vue";
 
 export default {
   name: "Grays",
 
   components: {
-    Palette,
-    Slider
+    Slider,
+    GraysStack
   },
 
   computed: {
-    ...mapGetters(["grayChroma", "grayHue"]),
     ...mapState([
       "castMin",
       "castMax",
@@ -106,10 +97,6 @@ export default {
         this.$store.commit("setGrayLumaEnd", val);
       }
     }
-  },
-
-  watch: {
-    grayCast(val) {}
   }
 };
 </script>
@@ -119,4 +106,13 @@ export default {
   padding: 16px;
   border-right: var(--border-light);
 }
+
+.stack-row {
+  display: flex;
+}
+
+.section-stacks {
+  padding: 0 16px;
+}
 </style>
+

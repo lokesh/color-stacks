@@ -1,0 +1,140 @@
+<template>
+  <div
+    class="stack-block"
+    :class="{
+      'not-compliant': !aaCompliant
+    }"
+    :style="
+      `
+      background: ${hex};
+      color: ${textColor}
+    `
+    "
+  >
+    <div class="stack-block__label">{{ label }}</div>
+    <div class="stack-block__hex">{{ hex }}</div>
+    <div class="stack-block__contrast" v-if="!aaCompliant">
+      WCAG {{ Math.round(contrastRatio * 100) / 100 }}
+    </div>
+  </div>
+</template>
+
+<script>
+import chroma from "chroma-js";
+
+import { generateLabel } from "../../utils.js";
+
+export default {
+  name: "StackBlock",
+
+  props: {
+    hex: {
+      type: String,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    contrastRatio: {
+      type: Number,
+      required: true
+    },
+    isDark: {
+      type: Boolean,
+      required: true
+    }
+    // h: {
+    //   type: Number,
+    //   required: true
+    // },
+    // c: {
+    //   type: Number,
+    //   required: true
+    // },
+    // l: {
+    //   type: Number,
+    //   required: true
+    // },
+    // label: {
+    //   type: String,
+    //   required: false
+    // }
+  },
+  data() {
+    return {
+      clipped: false
+    };
+  },
+  computed: {
+    textColor() {
+      return this.isDark ? "#ffffff" : "#000000";
+    },
+    // backgroundColor() {
+    //   let c = chroma.hcl(this.h, this.c, this.l);
+    //   // this.superClipped = c._rgb._unclipped.some(
+    //   //   val => val > 500 || val < -500
+    //   // );
+    //   // this.clipped = c.clipped();
+    //   return c.hex();
+    // },
+    // name() {
+    //   return generateLabel({
+    //     label: this.label,
+    //     hex: this.backgroundColor,
+    //     h: this.h,
+    //     c: this.c,
+    //     l: this.l
+    //   });
+    // },
+    // wcag() {
+    //   return chroma.contrast(this.textColor, this.backgroundColor);
+    // },
+    aaCompliant() {
+      return this.contrastRatio >= 4.51;
+    }
+  }
+};
+</script>
+
+<style scoped>
+.stack-block {
+  position: relative;
+  width: 10em;
+  height: 4em;
+  margin-bottom: var(--swatch-gap);
+  padding: 8px;
+  font-size: 11px;
+}
+
+.stack-block__name {
+  /*  display: none;*/
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.stack-block__hex {
+  /*display: none;*/
+  opacity: 0.8;
+}
+
+.stack-block__contrast {
+  display: none;
+  opacity: 0.8;
+}
+
+.not-compliant::after {
+  display: none;
+  position: absolute;
+  content: "AA";
+  right: 8px;
+  bottom: 8px;
+  opacity: 0.85;
+  padding: 0 2px;
+  color: var(--color-secondary);
+  font-weight: 600;
+  background: #fff;
+  border-radius: var(--radius-sm);
+  /*  text-decoration: line-through;*/
+}
+</style>

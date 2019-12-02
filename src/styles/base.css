@@ -25,7 +25,7 @@
   --control-hover-bg: #eee;
 
   /* Swatches */
-  --palette-gap: 8px;
+  --stack-gap: 8px;
   --swatch-gap: 0;
 
   /* Spectrum */
@@ -123,29 +123,9 @@ label {
 }
 
 /* Layout */
-.palette-row {
-  display: flex;
-}
-
 .control-col {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 80px;
 }
-
-.palettes {
-  display: flex;
-  flex-wrap: nowrap;
-  padding: 0 16px;
-}
-
-.palette {
-  margin-right: var(--palette-gap);
-}
-
-.palette:last-of-type {
-  margin-right: 0;
-}
-
-

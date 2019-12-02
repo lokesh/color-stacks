@@ -11,14 +11,6 @@ const set = key => (state, val) => {
 };
 
 export default new Vuex.Store({
-  // google createNamespacedHelpers vuex
-
-  // namespaced: true,
-  // modules: {
-  //   user,
-  //   config
-  // },
-
   state: {
     // Grays
     graySteps: 4,
@@ -115,31 +107,6 @@ export default new Vuex.Store({
   },
 
   getters: {
-    /*
-    Takes the Hue Array, sorts it by ascending values and switches the Number
-    primitives to Objects that include the unsorted position. Ex.
-    [{
-      val: 120,
-      unsortedIndex: 2
-    }]
-    */
-    colorHuesSorted: state => {
-      return state.colorHues
-        .map((hue, index) => {
-          return {
-            value: hue,
-            unsortedIndex: index
-          };
-        })
-        .sort((a, b) => {
-          if (a.value < b.value) {
-            return -1;
-          } else if (a.value > b.value) {
-            return 1;
-          }
-          return 0;
-        });
-    },
     grayChroma: state => {
       return Math.abs(state.grayCast / 10);
     },
@@ -147,7 +114,10 @@ export default new Vuex.Store({
       return state.grayCast >= 0 ? 75 : 270;
     },
     stacks: (state, getters) => {
+      /* ---------- */
       /* Gray stack */
+      /* ---------- */
+
       let grays = [];
       for (let i = 0; i < state.graySteps; i++) {
         let h = getters.grayHue;
@@ -159,27 +129,70 @@ export default new Vuex.Store({
         let hex = utils.hclToHex({ h, c, l });
 
         // WCAG contrast ratio
-        let textColor = l < 50 ? "#ffffff" : "#000000";
+        let isDark = l < 50;
+        let textColor = isDark ? "#ffffff" : "#000000";
 
         grays.push({
           hex,
-          label: utils.generateLabel({ hex, h, c, l }),
-          contrastRatio: utils.getContrastRatio(textColor, hex)
+          label: utils.generateLabel({ label: "gray", hex, h, c, l }),
+          contrastRatio: utils.getContrastRatio(textColor, hex),
+          isDark
         });
       }
 
+      /* ------------ */
       /* Color stacks */
+      /* ------------ */
+
+      let colors = [];
+
+      state.colorHues.map((hue, index) => {
+        let hueObj = {
+          hue,
+          unsortedIndex: index,
+          colors: []
+        };
+
+        for (let i = 0; i < state.colorSteps; i++) {
+          let h = hue;
+          let c =
+            state.colorChromaStart +
+            (state.colorChromaEnd - state.colorChromaStart) *
+              (i / (state.colorSteps - 1));
+          let l =
+            state.colorLumaStart +
+            (state.colorLumaEnd - state.colorLumaStart) *
+              (i / (state.colorSteps - 1));
+          let hex = utils.hclToHex({ h, c, l });
+
+          // WCAG contrast ratio
+          let isDark = l < 50;
+          let textColor = isDark ? "#ffffff" : "#000000";
+
+          hueObj.colors.push({
+            hex,
+            label: utils.generateLabel({ hex, h, c, l }),
+            contrastRatio: utils.getContrastRatio(textColor, hex),
+            isDark
+          });
+        }
+        colors.push(hueObj);
+      });
+
+      // Sort colors
+      colors.sort((a, b) => {
+        if (a.hue < b.hue) {
+          return -1;
+        } else if (a.hue > b.hue) {
+          return 1;
+        }
+        return 0;
+      });
 
       return {
         grays: grays,
-        colors: []
+        colors: colors
       };
     }
   }
 });
-
-// for (const moduleName of Object.keys(modules)) {
-//   if (modules[moduleName].actions && modules[moduleName].actions.initStore) {
-//     store.dispatch(`${moduleName}/initStore`);
-//   }
-// }

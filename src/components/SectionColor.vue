@@ -4,8 +4,8 @@
     <div class="spectrum-row">
       <spectrum />
     </div>
-    <div class="palette-row">
-      <div class="control-col" v-if="colorHues.length">
+    <div class="stack-row">
+      <div class="control-col">
         <div class="control-col-section">
           <slider
             v-model="colorSteps"
@@ -42,20 +42,9 @@
           ></slider>
         </div>
       </div>
-      <div class="palettes">
-        <palette
-          v-for="(hue, index) in colorHuesSorted"
-          :key="index"
-          class="palette"
-          :unsorted-index="hue.unsortedIndex"
-          :hue="hue.value"
-          :steps="colorSteps"
-          :start-chroma="colorChromaStart"
-          :end-chroma="colorChromaEnd"
-          :start-luma="colorLumaStart"
-          :end-luma="colorLumaEnd"
-        ></palette>
-      </div>
+      <section class="section-stacks">
+        <color-stacks />
+      </section>
     </div>
   </section>
 </template>
@@ -63,7 +52,7 @@
 <script>
 import { mapState } from "vuex";
 
-import Palette from "./Palette.vue";
+import ColorStacks from "./ColorStacks.vue";
 import Slider from "./Slider.vue";
 import Spectrum from "./Spectrum";
 
@@ -71,7 +60,7 @@ export default {
   name: "Grays",
 
   components: {
-    Palette,
+    ColorStacks,
     Slider,
     Spectrum
   },
@@ -80,15 +69,11 @@ export default {
     ...mapState([
       "chromaMin",
       "chromaMax",
-      "colorHues",
       "lumaMin",
       "lumaMax",
       "stepsMin",
       "stepsMax"
     ]),
-    colorHuesSorted() {
-      return this.$store.getters.colorHuesSorted;
-    },
     colorSteps: {
       get() {
         return this.$store.state.colorSteps;
@@ -140,5 +125,12 @@ export default {
 }
 .spectrum-row {
   margin-bottom: 24px;
+}
+.stack-row {
+  display: flex;
+}
+
+.section-stacks {
+  padding: 0 16px;
 }
 </style>
