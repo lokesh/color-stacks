@@ -42,9 +42,9 @@
           ></slider>
         </div>
       </div>
-      <section class="section-stacks">
+      <div class="section-stacks">
         <color-stacks />
-      </section>
+      </div>
     </div>
   </section>
 </template>
@@ -124,7 +124,7 @@ export default {
   padding: 16px 32px 16px 16px;
 }
 .spectrum-row {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 .stack-row {
   display: flex;

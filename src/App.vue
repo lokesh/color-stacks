@@ -3,42 +3,43 @@
     <div class="header">
       <h1>Color Stacks</h1>
 
-      <button class="btn" @click="reset0">Reset</button><br />
-      <!-- &nbsp;&nbsp;
-      <button class="btn" @click="reset1">4 colors</button><br />
-      <button class="btn" @click="reset2">6 colors</button><br />
-      <button class="btn" @click="reset2">8 colors</button><br />
-      &nbsp;&nbsp;
-
-      <button class="btn">Undo</button> -->
-      &nbsp;&nbsp;
-      <button class="btn">Export</button>
+      <button class="btn" @click="reset0">Reset</button>
+      <!-- <button class="btn">Undo</button> -->
+      <button class="btn" @click="openExportModal">Export</button>
     </div>
-
-    <section-export />
 
     <div class="body">
       <section-grays />
       <section-color />
     </div>
+
+    <modal-export v-if="isExportModalOpen" />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+import ModalExport from "./components/ModalExport";
 import SectionColor from "./components/SectionColor";
-import SectionExport from "./components/SectionExport";
 import SectionGrays from "./components/SectionGrays";
 
 export default {
   name: "app",
 
   components: {
+    ModalExport,
     SectionColor,
-    SectionExport,
     SectionGrays
   },
 
+  computed: {
+    ...mapState(["isExportModalOpen"])
+  },
+
   methods: {
+    openExportModal() {
+      this.$store.commit("setIsExportModalOpen", true);
+    },
     reset0() {
       this.$store.dispatch("resetHues", []);
     },
@@ -63,7 +64,7 @@ export default {
   align-items: center;
   background: #fff;
   border-bottom: var(--border-light);
-  padding: 8px 16px;
+  padding: 16px;
 }
 
 .header h1,

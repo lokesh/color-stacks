@@ -19,7 +19,9 @@ export default new Vuex.Store({
     grayLumaEnd: 0,
 
     // Color
-    colorHues: [90, 180, 270, 360], //40, 200, 120, 200, 280, 320
+    // 90, 180, 270, 360
+    // 40, 200, 120, 200, 280, 320
+    colorHues: [],
     colorSteps: 5,
     colorLumaStart: 100,
     colorLumaEnd: 10,
@@ -32,6 +34,7 @@ export default new Vuex.Store({
 
     // Interaction states
     highlightHue: null, // Index of Hue
+    isExportModalOpen: false,
 
     // Config
     castMin: -50,
@@ -85,7 +88,8 @@ export default new Vuex.Store({
     },
     unhighlightHue(state) {
       state.highlightHue = null;
-    }
+    },
+    setIsExportModalOpen: set("isExportModalOpen")
   },
 
   actions: {
@@ -101,7 +105,7 @@ export default new Vuex.Store({
     initStore() {
       // in App.vue this.$store.dispatch('initStore');
     },
-    resetHues({ state, commit }, val) {
+    resetHues({ commit }, val) {
       commit("setColorHues", val);
     }
   },

@@ -107,14 +107,14 @@ export default {
   font-size: 11px;
 }
 
-.stack-block__name {
+.stack-block__label {
   /*  display: none;*/
   font-weight: 600;
   opacity: 0.8;
 }
 
 .stack-block__hex {
-  /*display: none;*/
+  display: none;
   opacity: 0.8;
 }
 

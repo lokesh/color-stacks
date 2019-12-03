@@ -18,7 +18,7 @@
 
 /* mark style */
 .vue-slider-mark {
-  z-index: 4;
+  z-index: 1;
 }
 .vue-slider-mark:first-child .vue-slider-mark-step,
 .vue-slider-mark:last-child .vue-slider-mark-step {
@@ -35,6 +35,10 @@
   white-space: nowrap;
 }*/
 /* dot style */
+.vue-slider-dot {
+  z-index: 1;
+}
+
 .vue-slider-dot-handle {
   cursor: pointer;
   width: 100%;
