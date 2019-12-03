@@ -20,10 +20,6 @@
 </template>
 
 <script>
-import chroma from "chroma-js";
-
-import { generateLabel } from "../../utils.js";
-
 export default {
   name: "StackBlock",
 
@@ -44,22 +40,6 @@ export default {
       type: Boolean,
       required: true
     }
-    // h: {
-    //   type: Number,
-    //   required: true
-    // },
-    // c: {
-    //   type: Number,
-    //   required: true
-    // },
-    // l: {
-    //   type: Number,
-    //   required: true
-    // },
-    // label: {
-    //   type: String,
-    //   required: false
-    // }
   },
   data() {
     return {
@@ -70,26 +50,6 @@ export default {
     textColor() {
       return this.isDark ? "#ffffff" : "#000000";
     },
-    // backgroundColor() {
-    //   let c = chroma.hcl(this.h, this.c, this.l);
-    //   // this.superClipped = c._rgb._unclipped.some(
-    //   //   val => val > 500 || val < -500
-    //   // );
-    //   // this.clipped = c.clipped();
-    //   return c.hex();
-    // },
-    // name() {
-    //   return generateLabel({
-    //     label: this.label,
-    //     hex: this.backgroundColor,
-    //     h: this.h,
-    //     c: this.c,
-    //     l: this.l
-    //   });
-    // },
-    // wcag() {
-    //   return chroma.contrast(this.textColor, this.backgroundColor);
-    // },
     aaCompliant() {
       return this.contrastRatio >= 4.51;
     }

@@ -56,6 +56,14 @@ export default {
 
   mounted() {
     this.storeSpectrumDimensions();
+
+    window.addEventListener("resize", this.storeSpectrumDimensions, {
+      passive: true
+    });
+  },
+
+  destroyed() {
+    window.removeEventListener("resize", this.storeSpectrumDimensions);
   },
 
   methods: {

@@ -63,8 +63,7 @@ export default {
   data() {
     return {
       isDragging: false,
-      width: this.$store.state.hueSliderWidth,
-      left: 0
+      width: this.$store.state.hueSliderWidth
     };
   },
 
@@ -88,8 +87,11 @@ export default {
       return this.spectrum.right;
     },
     styles() {
+      let left =
+        Math.floor((this.value / this.max) * this.spectrum.width) -
+        this.width / 2;
       return {
-        transform: `translateX(${this.left}px)`,
+        transform: `translateX(${left}px)`,
         zIndex: this.isDragging ? "10" : "auto"
       };
     },
@@ -99,20 +101,6 @@ export default {
         cursor: this.isDragging ? "none" : "grab"
       };
     }
-  },
-
-  watch: {
-    value() {
-      this.updatePosition();
-    }
-  },
-
-  created() {
-    // Set initial position. Wait for spectrum to be mounted so we can measure
-    // width.
-    this.$nextTick(() => {
-      this.updatePosition();
-    });
   },
 
   methods: {
@@ -161,11 +149,6 @@ export default {
     },
     remove() {
       this.$store.commit("removeHue", this.index);
-    },
-    updatePosition() {
-      this.left =
-        Math.floor((this.value / this.max) * this.spectrum.width) -
-        this.width / 2;
     }
   }
 };
