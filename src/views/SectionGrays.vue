@@ -44,7 +44,7 @@
 <script>
 import { mapState } from "vuex";
 
-import Slider from "./Slider.vue";
+import Slider from "../components/Slider.vue";
 import GraysStack from "./GraysStack.vue";
 
 export default {

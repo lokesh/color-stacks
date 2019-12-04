@@ -10,7 +10,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { Stack, StackBlock } from "./Stack";
+import { Stack, StackBlock } from "../components/Stack";
 
 export default {
   name: "StackGrays",

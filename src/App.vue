@@ -3,7 +3,9 @@
     <div class="header">
       <h1>Color Stacks</h1>
 
-      <button class="btn" @click="reset0">Reset</button>
+      <button class="btn" @click="reset0">
+        Reset
+      </button>
       <!-- <button class="btn">Undo</button> -->
       <button class="btn" @click="openExportModal">Export</button>
     </div>
@@ -13,32 +15,38 @@
       <section-color />
     </div>
 
-    <modal-export v-if="isExportModalOpen" />
+    <modal-backdrop v-if="modal">
+      <export-modal v-if="modal === 'export'">
+        EXPORT
+      </export-modal>
+    </modal-backdrop>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import ModalExport from "./components/ModalExport";
-import SectionColor from "./components/SectionColor";
-import SectionGrays from "./components/SectionGrays";
+import { ModalBackdrop } from "./components/Modal";
+import ExportModal from "./views/ExportModal";
+import SectionColor from "./views/SectionColor";
+import SectionGrays from "./views/SectionGrays";
 
 export default {
   name: "app",
 
   components: {
-    ModalExport,
+    ExportModal,
+    ModalBackdrop,
     SectionColor,
     SectionGrays
   },
 
   computed: {
-    ...mapState(["isExportModalOpen"])
+    ...mapState(["modal"])
   },
 
   methods: {
     openExportModal() {
-      this.$store.commit("setIsExportModalOpen", true);
+      this.$store.commit("openModal", "export");
     },
     reset0() {
       this.$store.dispatch("resetHues", []);

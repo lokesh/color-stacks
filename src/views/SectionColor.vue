@@ -5,7 +5,7 @@
       <spectrum />
     </div>
     <div class="stack-row">
-      <div class="control-col">
+      <div class="control-col" v-if="colorHues.length">
         <div class="control-col-section">
           <slider
             v-model="colorSteps"
@@ -53,8 +53,8 @@
 import { mapState } from "vuex";
 
 import ColorStacks from "./ColorStacks.vue";
-import Slider from "./Slider.vue";
-import Spectrum from "./Spectrum";
+import Slider from "../components/Slider.vue";
+import Spectrum from "../components/Spectrum";
 
 export default {
   name: "Grays",
@@ -67,6 +67,7 @@ export default {
 
   computed: {
     ...mapState([
+      "colorHues",
       "chromaMin",
       "chromaMax",
       "lumaMin",

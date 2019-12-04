@@ -1,19 +1,13 @@
 <template>
   <div class="backdrop" @click="closeModal">
-    <div class="modal" @click.stop>
-      <pre>{{ $store.getters.stacks }}</pre>
-    </div>
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: "ExportModal",
+  name: "ModalBackdrop",
   props: {
-    centered: {
-      default: true,
-      type: Boolean
-    },
     focusElement: {
       default: null,
       type: Object
@@ -23,7 +17,7 @@ export default {
     const close = e => {
       const ESC = 27;
       if (e.keyCode !== ESC) return;
-      this.$emit("close");
+      this.closeModal();
     };
     // Close the modal when the
     // user presses the ESC key.
@@ -55,7 +49,7 @@ export default {
       this.focusFirstDescendant();
     },
     closeModal() {
-      this.$store.commit("setIsExportModalOpen", false);
+      this.$store.commit("closeModal");
     },
     async deactivate() {
       this.enableScrolling();
