@@ -21,7 +21,7 @@ export default new Vuex.Store({
     // Color
     // 90, 180, 270, 360
     // 40, 200, 120, 200, 280, 320
-    colorHues: [],
+    colorHues: [90, 180, 270, 360],
     colorSteps: 5,
     colorLumaStart: 100,
     colorLumaEnd: 10,
@@ -34,7 +34,7 @@ export default new Vuex.Store({
 
     // Interaction states
     highlightHue: null, // Index of Hue
-    modal: null,
+    modal: "export",
 
     // Config
     castMin: -50,
@@ -93,7 +93,7 @@ export default new Vuex.Store({
       state.modal = val;
     },
     closeModal(state) {
-      state.modal = null
+      state.modal = null;
     },
     setIsExportModalOpen: set("isExportModalOpen")
   },
