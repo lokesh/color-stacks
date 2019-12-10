@@ -22,10 +22,10 @@ export default {
 
 <style>
 .modal {
-  padding: 16px;
+  padding: 16px 16px 32px 16px;
   width: 100%;
   max-width: 720px;
-  height: 90vh;
+  max-height: 90vh;
   overflow-y: auto;
   background: white;
   border-radius: var(--radius);

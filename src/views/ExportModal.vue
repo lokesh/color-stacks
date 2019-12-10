@@ -3,15 +3,15 @@
     <div class="export__row">
       <div class="export__control-col">
         <div>
-          <label class="label export__format-label">
+          <label class="label label--radio">
             <input type="radio" name="format" value="css" v-model="format" />
             CSS variables
           </label>
-          <label class="label export__format-label">
+          <label class="label label--radio">
             <input type="radio" name="format" value="scss" v-model="format" />
             SCSS
           </label>
-          <label class="label export__format-label">
+          <label class="label label--radio">
             <input type="radio" name="format" value="json" v-model="format" />
             JSON
           </label>
@@ -82,12 +82,8 @@ export default {
 <style scoped>
 .export__row {
   display: grid;
-  grid-template-columns: 120px auto;
+  grid-template-columns: 140px auto;
   grid-column-gap: 16px;
-}
-
-.export__format-label {
-  display: block;
 }
 
 .export__code {

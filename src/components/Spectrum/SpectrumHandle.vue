@@ -98,6 +98,10 @@ export default {
     handleStyles() {
       return {
         width: `${this.width}px`,
+        borderColor: this.isDragging
+          ? "var(--focus-color)"
+          : "var(--border-color)",
+        boxShadow: this.isDragging ? "0 0 0 1px var(--focus-color)" : "none",
         cursor: this.isDragging ? "none" : "grab"
       };
     }
@@ -191,6 +195,10 @@ export default {
   padding: 0;
   border: 0;
   color: var(--color-muted);
+}
+
+.handle-remove:focus {
+  box-shadow: none;
 }
 
 .feather {

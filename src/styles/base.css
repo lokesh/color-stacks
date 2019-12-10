@@ -101,10 +101,10 @@ input::-webkit-inner-spin-button {
   display: none;
 }
 
-input[type="radio"] {
+/*input[type="radio"] {
   margin-bottom: 8px;
 }
-
+*/
 button {
   height: var(--control-height);
   background: white;
@@ -133,6 +133,16 @@ label {
   letter-spacing: 0.03em;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.label--radio {
+  display: block;
+  padding: 4px 6px;
+  border-radius: var(--radius);
+}
+
+.label--radio:hover {
+  background: var(--control-hover-bg);
 }
 
 pre {
