@@ -1,5 +1,8 @@
 <template>
   <div class="modal" @click.stop>
+    <h1 v-if="title">
+      {{ title }}
+    </h1>
     <slot />
   </div>
 </template>
@@ -7,6 +10,13 @@
 <script>
 export default {
   name: "Modal",
+
+  props: {
+    title: {
+      type: String,
+      required: false
+    }
+  }
 };
 </script>
 
@@ -14,8 +24,8 @@ export default {
 .modal {
   padding: 16px;
   width: 100%;
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 720px;
+  height: 90vh;
   overflow-y: auto;
   background: white;
   border-radius: var(--radius);

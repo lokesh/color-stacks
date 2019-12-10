@@ -5,6 +5,7 @@
   --color-secondary: #666;
   --color-muted: #999;
   --bg-color: #ddd;
+  --bg-color-light: #f3f3f3;
 
   --border-color: #b3b3b3;
   --border: 1px solid var(--border-color);
@@ -72,14 +73,16 @@ h2 {
   font-size: 20px;
 }
 
-input {
+input[type="text"],
+input[type="number"] {
   padding: 4px 8px;
   border: var(--border);
   border-radius: 3px;
   text-align: center;
 }
 
-input:focus {
+input[type="text"]:focus,
+input[type="number"]:focus {
   outline: none;
   border-color: var(--focus-color);
   box-shadow: 0 0 0 1px var(--focus-color);
@@ -98,6 +101,10 @@ input::-webkit-inner-spin-button {
   display: none;
 }
 
+input[type="radio"] {
+  margin-bottom: 8px;
+}
+
 button {
   height: var(--control-height);
   background: white;
@@ -110,6 +117,12 @@ button:hover {
   background: var(--control-hover-bg);
 }
 
+button:focus {
+  outline: none;
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 1px var(--focus-color);
+}
+
 .btn {
   /*  padding: 4px 8px;*/
 }
@@ -120,6 +133,15 @@ label {
   letter-spacing: 0.03em;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+pre {
+  margin: 0;
+}
+
+pre[contenteditable="true"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-color);
 }
 
 /* Layout */
