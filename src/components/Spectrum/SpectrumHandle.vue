@@ -100,7 +100,7 @@ export default {
         width: `${this.width}px`,
         borderColor: this.isDragging
           ? "var(--focus-color)"
-          : "var(--border-color)",
+          : "var(--control-border-color)",
         boxShadow: this.isDragging ? "0 0 0 1px var(--focus-color)" : "none",
         cursor: this.isDragging ? "none" : "grab"
       };
@@ -168,7 +168,7 @@ export default {
 .handle {
   height: calc(var(--spectrum-height) + var(--spectrum-handle-overhang) * 2);
   background: white;
-  border: var(--border);
+  border: var(--control-border);
   border-radius: var(--radius-sm);
   user-select: none;
   /*box-shadow: inset 0 0 0 2px white, inset 0 0 0 3px #b3b3b3;*/

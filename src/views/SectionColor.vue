@@ -27,6 +27,12 @@
           ></slider>
         </div>
 
+
+        <div>
+          <label class="label">Curves</label>
+          <button class="control-col__btn">Ease-in-out&hellip;</button>
+        </div>
+
         <div class="control-col-section">
           <slider
             label="Luminance"

@@ -8,8 +8,9 @@
   --bg-color-light: #f3f3f3;
 
   --border-color: #b3b3b3;
+  --border-color-light: #ddd;
   --border: 1px solid var(--border-color);
-  --border-light: 1px solid #ddd;
+  --border-light: 1px solid var(--border-color-light);
   --border-dark: 1px solid #888;
   --radius: 6px;
   --radius-sm: 3px;
@@ -21,6 +22,8 @@
   --transition: 0.3s;
 
   /* Forms */
+  --control-border: var(--border);
+  --control-border-color: var(--border-color);
   --control-height: 24px;
   --control-icon-size: 16px;
   --control-hover-bg: #eee;
@@ -76,7 +79,7 @@ h2 {
 input[type="text"],
 input[type="number"] {
   padding: 4px 8px;
-  border: var(--border);
+  border: var(--control-border);
   border-radius: 3px;
   text-align: center;
 }
@@ -107,8 +110,9 @@ input::-webkit-inner-spin-button {
 */
 button {
   height: var(--control-height);
+  color: var(--color-secondary);
   background: white;
-  border: var(--border);
+  border: var(--control-border);
   border-radius: var(--radius-sm);
   cursor: pointer;
 }
@@ -121,10 +125,6 @@ button:focus {
   outline: none;
   border-color: var(--focus-color);
   box-shadow: 0 0 0 1px var(--focus-color);
-}
-
-.btn {
-  /*  padding: 4px 8px;*/
 }
 
 label {
@@ -159,5 +159,11 @@ pre[contenteditable="true"]:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 80px;
+  width: 96px;
+}
+
+.control-col__btn {
+  width: 100%;
+  margin-top: 4px;
+  text-align: left;
 }

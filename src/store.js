@@ -23,7 +23,7 @@ export default new Vuex.Store({
     // Color
     // 90, 180, 270, 360
     // 40, 200, 120, 200, 280, 320
-    colorHues: [],
+    colorHues: [40, 200, 120, 200, 280, 320],
     colorSteps: 8,
     colorLumaStart: 100,
     colorLumaEnd: 10,
@@ -134,11 +134,30 @@ export default new Vuex.Store({
       for (let i = 0; i < state.graySteps; i++) {
         let h = getters.grayHue;
         let c = getters.grayChroma;
+
+
+        let percent = (i / (state.graySteps - 1));
+        percent = easeInOutSine(percent);
+
         let l =
           state.grayLumaStart +
-          (state.grayLumaEnd - state.grayLumaStart) *
-            (i / (state.graySteps - 1));
-        let hex = utils.hclToHex({ h, c, l });
+          (state.grayLumaEnd - state.grayLumaStart) * percent;
+
+
+        // let l =
+        //   state.grayLumaStart +
+        //   (state.grayLumaEnd - state.grayLumaStart) *
+        //     (i / (state.graySteps - 1));
+
+        // TODO: FIX THIS MATH!!
+
+        // let diff = Math.abs(state.grayLumaEnd - state.grayLumaStart);
+        // l = easeInOutSine((l - state.grayLumaStart) / diff) * diff;
+        // // console.log(oldL, l);
+
+
+
+        let hex = hclToHex({ h, c, l });
 
         // WCAG contrast ratio
         let isDark = l < 50;
@@ -167,15 +186,38 @@ export default new Vuex.Store({
 
         for (let i = 0; i < state.colorSteps; i++) {
           let h = hue;
+
+          let percent = (i / (state.colorSteps - 1));
+          percent = easeInOutSine(percent);
+
           let c =
             state.colorChromaStart +
             (state.colorChromaEnd - state.colorChromaStart) *
-              (i / (state.colorSteps - 1));
+              percent;
+
+          // let c =
+          //   state.colorChromaStart +
+          //   (state.colorChromaEnd - state.colorChromaStart) *
+          //     (i / (state.colorSteps - 1));
+
+          // let percent = (i / (state.colorSteps - 1));
+          // percent = easeInOutSine(percent);
+
           let l =
             state.colorLumaStart +
             (state.colorLumaEnd - state.colorLumaStart) *
-              (i / (state.colorSteps - 1));
-          let hex = utils.hclToHex({ h, c, l });
+              percent;
+
+          // let l =
+          //   state.colorLumaStart +
+          //   (state.colorLumaEnd - state.colorLumaStart) *
+          //     (i / (state.colorSteps - 1));
+
+          // let diff = Math.abs(state.colorLumaEnd - state.colorLumaStart);
+
+          // l = linear(l / diff) * diff;
+
+          let hex = hclToHex({ h, c, l });
 
           // WCAG contrast ratio
           let isDark = l < 50;
