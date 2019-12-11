@@ -1,7 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import * as utils from "./utils.js";
+import { getContrastRatio, hclToHex } from "./utils/color.js";
+import { generateLabel } from "./utils/naming.js";
+import { easeInOutSine, linear } from "./utils/curves.js";
 
 Vue.use(Vuex);
 
@@ -13,7 +15,7 @@ const set = key => (state, val) => {
 export default new Vuex.Store({
   state: {
     // Grays
-    graySteps: 4,
+    graySteps: 10,
     grayCast: 0,
     grayLumaStart: 105,
     grayLumaEnd: 0,
@@ -22,11 +24,11 @@ export default new Vuex.Store({
     // 90, 180, 270, 360
     // 40, 200, 120, 200, 280, 320
     colorHues: [],
-    colorSteps: 5,
+    colorSteps: 8,
     colorLumaStart: 100,
     colorLumaEnd: 10,
-    colorChromaStart: 30,
-    colorChromaEnd: 120,
+    colorChromaStart: 20,
+    colorChromaEnd: 140,
 
     // Options
     darkMode: false,
@@ -144,8 +146,8 @@ export default new Vuex.Store({
 
         grays.push({
           hex,
-          label: utils.generateLabel({ label: "gray", hex, h, c, l }),
-          contrastRatio: utils.getContrastRatio(textColor, hex),
+          label: generateLabel({ label: "gray", hex, h, c, l }),
+          contrastRatio: getContrastRatio(textColor, hex),
           isDark
         });
       }
@@ -181,8 +183,8 @@ export default new Vuex.Store({
 
           hueObj.colors.push({
             hex,
-            label: utils.generateLabel({ hex, h, c, l }),
-            contrastRatio: utils.getContrastRatio(textColor, hex),
+            label: generateLabel({ hex, h, c, l }),
+            contrastRatio: getContrastRatio(textColor, hex),
             isDark
           });
         }

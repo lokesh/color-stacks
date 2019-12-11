@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "bezier-easing": "^2.1.0",
     "chroma-js": "^2.1.0",
     "undo-redo-vuex": "^1.2.0",
     "v-dragged": "0.0.5",

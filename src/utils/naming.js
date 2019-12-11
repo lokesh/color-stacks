@@ -1,18 +1,3 @@
-import chroma from "chroma-js";
-
-const getContrastRatio = function(foreground, background) {
-  return chroma.contrast(foreground, background);
-};
-
-const hclToHex = function(hcl) {
-  let color = chroma.hcl(hcl.h, hcl.c, hcl.l);
-  // this.superClipped = c._rgb._unclipped.some(
-  //   val => val > 500 || val < -500
-  // );
-  // this.clipped = c.clipped();
-  return color.hex();
-};
-
 /**
  * @param
  * @property {string} [label]
@@ -21,7 +6,7 @@ const hclToHex = function(hcl) {
  * @property {number} c
  * @property {number} l
  */
-const generateLabel = function(color) {
+export const generateLabel = function(color) {
   let label;
   let addNumber = true;
 
@@ -80,5 +65,3 @@ const generateLabel = function(color) {
 
   return label;
 };
-
-export { getContrastRatio, generateLabel, hclToHex };
