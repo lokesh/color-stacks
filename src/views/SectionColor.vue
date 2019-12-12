@@ -27,10 +27,58 @@
           ></slider>
         </div>
 
-
         <div>
           <label class="label">Curves</label>
-          <button class="control-col__btn">Ease-in-out&hellip;</button>
+          <popover>
+            <template v-slot:trigger>
+              <button class="control-col__btn">Ease-in-out&hellip;</button>
+            </template>
+            <div>
+              <h3>Luminence</h3>
+              <div class="radio-group">
+                <label class="label label--radio">
+                  <input
+                    type="radio"
+                    name="color-luma-curve"
+                    :value="CURVE_LINEAR"
+                    v-model="colorLumaCurve"
+                  />
+                  Linear
+                </label>
+                <label class="label label--radio">
+                  <input
+                    type="radio"
+                    name="color-luma-curve"
+                    :value="CURVE_EASE_IN_OUT"
+                    v-model="colorLumaCurve"
+                  />
+                  Ease-in-out
+                </label>
+              </div>
+
+              <h3>Chroma</h3>
+              <div class="radio-group">
+                <label class="label label--radio">
+                  <input
+                    type="radio"
+                    name="color-chroma-curve"
+                    :value="CURVE_LINEAR"
+                    v-model="colorChromaCurve"
+                  />
+                  Linear
+                </label>
+                <label class="label label--radio">
+                  <input
+                    type="radio"
+                    name="color-chroma-curve"
+                    :value="CURVE_EASE_IN_OUT"
+                    v-model="colorChromaCurve"
+                  />
+                  Ease-in-out
+                </label>
+              </div>
+            </div>
+          </popover>
         </div>
 
         <div class="control-col-section">
@@ -58,7 +106,10 @@
 <script>
 import { mapState } from "vuex";
 
+import { CURVE_LINEAR, CURVE_EASE_IN_OUT } from "../utils/color.js";
+
 import ColorStacks from "./ColorStacks.vue";
+import Popover from "../components/Popover.vue";
 import Slider from "../components/Slider.vue";
 import Spectrum from "../components/Spectrum";
 
@@ -67,8 +118,16 @@ export default {
 
   components: {
     ColorStacks,
+    Popover,
     Slider,
     Spectrum
+  },
+
+  data() {
+    return {
+      CURVE_LINEAR,
+      CURVE_EASE_IN_OUT
+    };
   },
 
   computed: {
@@ -105,6 +164,14 @@ export default {
         this.$store.commit("setColorLumaEnd", val);
       }
     },
+    colorLumaCurve: {
+      get() {
+        return this.$store.state.colorLumaCurve;
+      },
+      set(val) {
+        this.$store.commit("setColorLumaCurve", val);
+      }
+    },
     colorChromaStart: {
       get() {
         return this.$store.state.colorChromaStart;
@@ -119,6 +186,14 @@ export default {
       },
       set(val) {
         this.$store.commit("setColorChromaEnd", val);
+      }
+    },
+    colorChromaCurve: {
+      get() {
+        return this.$store.state.colorChromaCurve;
+      },
+      set(val) {
+        this.$store.commit("setColorChromaCurve", val);
       }
     }
   }

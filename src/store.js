@@ -1,9 +1,15 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import { getContrastRatio, hclToHex } from "./utils/color.js";
+import {
+  curves,
+  CURVE_LINEAR,
+  CURVE_EASE_IN_OUT,
+  getContrastRatio,
+  hclToHex
+} from "./utils/color.js";
+
 import { generateLabel } from "./utils/naming.js";
-import { easeInOutSine, linear } from "./utils/curves.js";
 
 Vue.use(Vuex);
 
@@ -19,6 +25,7 @@ export default new Vuex.Store({
     grayCast: 0,
     grayLumaStart: 105,
     grayLumaEnd: 0,
+    grayLumaCurve: CURVE_EASE_IN_OUT,
 
     // Color
     // 90, 180, 270, 360
@@ -27,8 +34,10 @@ export default new Vuex.Store({
     colorSteps: 8,
     colorLumaStart: 100,
     colorLumaEnd: 10,
+    colorLumaCurve: CURVE_EASE_IN_OUT,
     colorChromaStart: 20,
     colorChromaEnd: 140,
+    colorChromaCurve: CURVE_EASE_IN_OUT,
 
     // Options
     darkMode: false,
@@ -62,6 +71,7 @@ export default new Vuex.Store({
     setGrayCast: set("grayCast"),
     setGrayLumaStart: set("grayLumaStart"),
     setGrayLumaEnd: set("grayLumaEnd"),
+    setGrayLumaCurve: set("grayLumaCurve"),
 
     // Color
     setColorHues(state, hues) {
@@ -70,8 +80,10 @@ export default new Vuex.Store({
     setColorSteps: set("colorSteps"),
     setColorLumaStart: set("colorLumaStart"),
     setColorLumaEnd: set("colorLumaEnd"),
+    setColorLumaCurve: set("colorLumaCurve"),
     setColorChromaStart: set("colorChromaStart"),
     setColorChromaEnd: set("colorChromaEnd"),
+    setColorChromaCurve: set("colorChromaCurve"),
 
     updateHue(state, { index, hue }) {
       Vue.set(state.colorHues, index, hue);
@@ -135,27 +147,12 @@ export default new Vuex.Store({
         let h = getters.grayHue;
         let c = getters.grayChroma;
 
-
-        let percent = (i / (state.graySteps - 1));
-        percent = easeInOutSine(percent);
+        let percent = i / (state.graySteps - 1);
+        percent = curves[state.grayLumaCurve](percent);
 
         let l =
           state.grayLumaStart +
           (state.grayLumaEnd - state.grayLumaStart) * percent;
-
-
-        // let l =
-        //   state.grayLumaStart +
-        //   (state.grayLumaEnd - state.grayLumaStart) *
-        //     (i / (state.graySteps - 1));
-
-        // TODO: FIX THIS MATH!!
-
-        // let diff = Math.abs(state.grayLumaEnd - state.grayLumaStart);
-        // l = easeInOutSine((l - state.grayLumaStart) / diff) * diff;
-        // // console.log(oldL, l);
-
-
 
         let hex = hclToHex({ h, c, l });
 
@@ -187,35 +184,19 @@ export default new Vuex.Store({
         for (let i = 0; i < state.colorSteps; i++) {
           let h = hue;
 
-          let percent = (i / (state.colorSteps - 1));
-          percent = easeInOutSine(percent);
+          let chromaPercent = i / (state.colorSteps - 1);
+          chromaPercent = curves[state.colorChromaCurve](chromaPercent);
 
           let c =
             state.colorChromaStart +
-            (state.colorChromaEnd - state.colorChromaStart) *
-              percent;
+            (state.colorChromaEnd - state.colorChromaStart) * chromaPercent;
 
-          // let c =
-          //   state.colorChromaStart +
-          //   (state.colorChromaEnd - state.colorChromaStart) *
-          //     (i / (state.colorSteps - 1));
-
-          // let percent = (i / (state.colorSteps - 1));
-          // percent = easeInOutSine(percent);
+          let lumaPercent = i / (state.colorSteps - 1);
+          lumaPercent = curves[state.colorLumaCurve](lumaPercent);
 
           let l =
             state.colorLumaStart +
-            (state.colorLumaEnd - state.colorLumaStart) *
-              percent;
-
-          // let l =
-          //   state.colorLumaStart +
-          //   (state.colorLumaEnd - state.colorLumaStart) *
-          //     (i / (state.colorSteps - 1));
-
-          // let diff = Math.abs(state.colorLumaEnd - state.colorLumaStart);
-
-          // l = linear(l / diff) * diff;
+            (state.colorLumaEnd - state.colorLumaStart) * lumaPercent;
 
           let hex = hclToHex({ h, c, l });
 
