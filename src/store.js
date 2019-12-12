@@ -3,7 +3,6 @@ import Vuex from "vuex";
 
 import {
   curves,
-  CURVE_LINEAR,
   CURVE_EASE,
   getContrastRatio,
   hclToHex
