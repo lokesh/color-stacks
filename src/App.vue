@@ -3,11 +3,13 @@
     <div class="header">
       <h1>Color Stacks</h1>
 
-      <button class="btn" @click="reset0">
-        Reset
-      </button>
-      <!-- <button class="btn">Undo</button> -->
-      <button class="btn" @click="openExportModal">Export</button>
+      <div class="header--actions">
+        <button class="btn" @click="reset0">
+          Reset
+        </button>
+        <!-- <button class="btn">Undo</button> -->
+        <button class="btn" @click="openExportModal">Export</button>
+      </div>
     </div>
 
     <div class="body">
@@ -50,12 +52,6 @@ export default {
     },
     reset0() {
       this.$store.dispatch("resetHues", []);
-    },
-    reset1() {
-      this.$store.dispatch("resetHues", [24, 72, 148, 260]);
-    },
-    reset2() {
-      this.$store.dispatch("resetHues", [0, 60, 120, 180, 240, 300]);
     }
   }
 };
@@ -69,16 +65,14 @@ export default {
 <style scoped>
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background: #fff;
   border-bottom: var(--border-light);
   padding: 16px;
 }
 
-.header h1,
-.header h2,
-.header h3,
-.header h4 {
+.header h1 {
   margin-right: 16px;
   margin-bottom: 0;
 }

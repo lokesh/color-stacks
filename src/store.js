@@ -4,7 +4,7 @@ import Vuex from "vuex";
 import {
   curves,
   CURVE_LINEAR,
-  CURVE_EASE_IN_OUT,
+  CURVE_EASE,
   getContrastRatio,
   hclToHex
 } from "./utils/color.js";
@@ -21,23 +21,23 @@ const set = key => (state, val) => {
 export default new Vuex.Store({
   state: {
     // Grays
-    graySteps: 10,
+    graySteps: 6,
     grayCast: 0,
-    grayLumaStart: 105,
-    grayLumaEnd: 0,
-    grayLumaCurve: CURVE_EASE_IN_OUT,
+    grayLumaStart: 98,
+    grayLumaEnd: 5,
+    grayLumaCurve: CURVE_EASE,
 
     // Color
     // 90, 180, 270, 360
     // 40, 200, 120, 200, 280, 320
-    colorHues: [40, 200, 120, 200, 280, 320],
+    colorHues: [],
     colorSteps: 8,
     colorLumaStart: 100,
     colorLumaEnd: 10,
-    colorLumaCurve: CURVE_EASE_IN_OUT,
+    colorLumaCurve: CURVE_EASE,
     colorChromaStart: 20,
     colorChromaEnd: 140,
-    colorChromaCurve: CURVE_EASE_IN_OUT,
+    colorChromaCurve: CURVE_EASE,
 
     // Options
     darkMode: false,

@@ -10,7 +10,6 @@
             :min="stepsMin"
             :max="stepsMax"
           />
-
           <slider
             v-model="grayCast"
             label="Cast"
@@ -24,6 +23,14 @@
             :max="lumaMax"
           />
         </div>
+
+        <div class="control-col-section">
+          <label class="label">Curves</label>
+          <button class="control-col__btn" @click="toggleCurves">
+            {{ curveButtonLabel }}
+          </button>
+        </div>
+
         <div class="control-col-section">
           <slider
             v-model="grayLumaEnd"
@@ -44,6 +51,8 @@
 <script>
 import { mapState } from "vuex";
 
+import { CURVE_LINEAR, CURVE_EASE } from "../utils/color.js";
+
 import Slider from "../components/Slider.vue";
 import GraysStack from "./GraysStack.vue";
 
@@ -53,6 +62,13 @@ export default {
   components: {
     Slider,
     GraysStack
+  },
+
+  data() {
+    return {
+      CURVE_LINEAR,
+      CURVE_EASE
+    };
   },
 
   computed: {
@@ -96,6 +112,31 @@ export default {
       set(val) {
         this.$store.commit("setGrayLumaEnd", val);
       }
+    },
+    grayLumaCurve: {
+      get() {
+        return this.$store.state.grayLumaCurve;
+      },
+      set(val) {
+        this.$store.commit("setGrayLumaCurve", val);
+      }
+    },
+    curveButtonLabel() {
+      if (this.grayLumaCurve === CURVE_LINEAR) {
+        return "Linear";
+      } else {
+        return "Ease-in-out";
+      }
+    }
+  },
+
+  methods: {
+    toggleCurves() {
+      if (this.grayLumaCurve === CURVE_LINEAR) {
+        this.$store.commit("setGrayLumaCurve", CURVE_EASE);
+      } else {
+        this.$store.commit("setGrayLumaCurve", CURVE_LINEAR);
+      }
     }
   }
 };
@@ -115,4 +156,3 @@ export default {
   padding: 0 16px;
 }
 </style>
-

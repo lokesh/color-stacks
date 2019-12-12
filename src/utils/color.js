@@ -14,7 +14,7 @@ export const hclToHex = function(hcl) {
 
 /* Curves */
 export const CURVE_LINEAR = "linear";
-export const CURVE_EASE_IN_OUT = "easeInOut";
+export const CURVE_EASE = "easeInOut";
 
 export const curves = Object.freeze({
   linear: bezier(0.5, 0.5, 0.5, 0.5),

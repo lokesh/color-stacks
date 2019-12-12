@@ -1,9 +1,14 @@
 <template>
   <div class="popover">
-    <div class="popover__trigger" @click="toggle">
+    <div class="popover__trigger" @click.stop="toggle">
       <slot name="trigger" />
     </div>
-    <div v-if="isOpen" class="popover__bubble" :style="bubbleStyles">
+    <div
+      v-if="isOpen"
+      class="popover__bubble"
+      :style="bubbleStyles"
+      @click.stop
+    >
       <slot />
     </div>
   </div>
@@ -16,13 +21,13 @@ export default {
   props: {
     width: {
       type: Number,
-      default: 240
+      default: 160
     }
   },
 
   data() {
     return {
-      isOpen: true
+      isOpen: false
     };
   },
 
@@ -36,11 +41,24 @@ export default {
 
   watch: {
     isOpen(val) {
-      console.log(val);
+      if (val) {
+        this.addDocumentListeners();
+      } else {
+        this.removeDocumentListeners();
+      }
     }
   },
 
   methods: {
+    addDocumentListeners() {
+      document.addEventListener("click", this.close);
+    },
+    close() {
+      this.isOpen = false;
+    },
+    removeDocumentListeners() {
+      document.addEventListener("click", this.close);
+    },
     toggle() {
       this.isOpen = !this.isOpen;
     }
@@ -60,7 +78,7 @@ export default {
   top: calc(var(--control-height) + 4);
   padding: 12px;
   background: white;
-  border: var(--border-light);
+  border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   z-index: 2;
