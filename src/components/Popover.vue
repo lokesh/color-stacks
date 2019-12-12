@@ -81,6 +81,6 @@ export default {
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  z-index: 2;
+  z-index: 10;
 }
 </style>
