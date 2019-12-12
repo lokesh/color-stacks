@@ -25,7 +25,7 @@
         </div>
 
         <div class="control-col-section">
-          <label class="label">Curves</label>
+          <label class="label">Curve</label>
           <button class="control-col__btn" @click="toggleCurves">
             {{ curveButtonLabel }}
           </button>
