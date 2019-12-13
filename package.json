@@ -24,6 +24,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
+    "ftp-deploy": "^2.3.6",
     "postcss-preset-env": "^6.7.0",
     "vue-template-compiler": "^2.6.10"
   },
