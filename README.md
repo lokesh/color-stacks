@@ -1,29 +1,12 @@
-# colortron
+# Color Stacks
 
-## Project setup
-```
-npm install
-```
+## Development
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Project was created with `vue-cli`.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Shortcuts
 
-### Run your tests
 ```
-npm run test
+npm run dev // Compiles and hot-reloads for development
+npm run build // Compiles and minifies for production
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
