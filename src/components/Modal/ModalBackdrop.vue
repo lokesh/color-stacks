@@ -113,7 +113,7 @@ export default {
 }
 
 .modal {
-  padding: 16px;
+  padding: var(--content-padding);
   width: 100%;
   max-width: 90vw;
   max-height: 90vh;

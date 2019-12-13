@@ -5,7 +5,7 @@
   --color: #333;
   --color-secondary: #666;
   --color-muted: #999;
-  --bg-color: #ddd;
+  --bg-color: #fff;
   --bg-color-light: #f3f3f3;
 
   --border-color: #b3b3b3;
@@ -41,6 +41,9 @@
   --control-height: 24px;
   --control-icon-size: 16px;
   --control-hover-bg: #eee;
+
+  /* Layout */
+  --block-padding: 16px; /* Content blocks. e.g. sections, modals */
 
   /* Swatches */
   --stack-gap: 8px;
@@ -97,6 +100,12 @@ h3 {
   margin-bottom: 4px;
 }
 
+.help {
+  padding: 8px 0;
+  color: var(--color-secondary);
+  font-size: var(--control-font-size);
+}
+
 input,
 button {
   border: var(--control-border);
@@ -133,8 +142,14 @@ input::-webkit-inner-spin-button {
 }
 
 button {
-  height: var(--control-height);
+  padding: 6px 12px;
   cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  button {
+    padding: 4px 8px;
+  }
 }
 
 button:hover {
@@ -187,7 +202,7 @@ pre[contenteditable="true"]:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 96px;
+  flex: 0 0 96px;
 }
 
 .control-col__btn {

@@ -45,6 +45,6 @@ export default {
 }
 
 .color-stack:last-of-type {
-  margin-right: 0;
+  padding-right: var(--block-padding);
 }
 </style>

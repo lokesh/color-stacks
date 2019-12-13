@@ -1,21 +1,8 @@
 <template>
   <div class="app">
-    <div class="header">
-      <h1>Color Stacks</h1>
-
-      <div class="header--actions">
-        <button class="btn" @click="reset0">
-          Reset
-        </button>
-        <!-- <button class="btn">Undo</button> -->
-        <button class="btn" @click="openExportModal">Export</button>
-      </div>
-    </div>
-
-    <div class="body">
-      <section-grays />
-      <section-color />
-    </div>
+    <banner class="app__banner" />
+    <section-grays class="app__grays" />
+    <section-color class="app__color" />
 
     <modal-backdrop v-if="modal">
       <export-modal v-if="modal === 'export'">
@@ -29,6 +16,7 @@
 import { mapState } from "vuex";
 import { ModalBackdrop } from "./components/Modal";
 import ExportModal from "./views/ExportModal";
+import Banner from "./views/Banner";
 import SectionColor from "./views/SectionColor";
 import SectionGrays from "./views/SectionGrays";
 
@@ -36,6 +24,7 @@ export default {
   name: "app",
 
   components: {
+    Banner,
     ExportModal,
     ModalBackdrop,
     SectionColor,
@@ -46,12 +35,20 @@ export default {
     ...mapState(["modal"])
   },
 
+  mounted() {
+    this.checkIsMobile();
+    window.addEventListener("resize", this.checkIsMobile, {
+      passive: true
+    });
+  },
+
+  destroyed() {
+    window.removeEventListener("resize", this.checkIsMobile);
+  },
+
   methods: {
-    openExportModal() {
-      this.$store.commit("openModal", "export");
-    },
-    reset0() {
-      this.$store.dispatch("resetHues", []);
+    checkIsMobile() {
+      this.$store.commit("setIsMobile", window.innerWidth < 640);
     }
   }
 };
@@ -63,27 +60,23 @@ export default {
 </style>
 
 <style scoped>
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #fff;
+.app__banner {
   border-bottom: var(--border-light);
-  padding: 16px;
 }
 
-.header h1 {
-  margin-right: 16px;
-  margin-bottom: 0;
-}
-
-.header .btn {
-  margin-left: 4px;
-}
-
-.body {
-  display: flex;
+.app__grays {
   border-bottom: var(--border-light);
-  background: #ffff;
+}
+
+@media (min-width: 640px) {
+  .body {
+    /*    background: beige;*/
+  }
+}
+
+@media (min-width: 1240px) {
+  .body {
+    /* background: gold;*/
+  }
 }
 </style>

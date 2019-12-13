@@ -22,8 +22,8 @@ export default {
 
 <style>
 .modal {
-  padding: 16px 16px 32px 16px;
-  width: 100%;
+  padding: var(--block-padding) var(--block-padding) 32px var(--block-padding);
+  width: 90vw;
   max-width: 720px;
   max-height: 90vh;
   overflow-y: auto;

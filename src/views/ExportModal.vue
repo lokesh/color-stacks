@@ -1,11 +1,11 @@
 <template>
   <modal title="Export">
     <div class="export__row">
-      <div class="export__control-col">
+      <div class="export__controls">
         <div>
           <label class="label label--radio">
             <input type="radio" name="format" value="css" v-model="format" />
-            CSS variables
+            CSS
           </label>
           <label class="label label--radio">
             <input type="radio" name="format" value="scss" v-model="format" />
@@ -80,10 +80,8 @@ export default {
 </script>
 
 <style scoped>
-.export__row {
-  display: grid;
-  grid-template-columns: 140px auto;
-  grid-column-gap: 16px;
+.export__controls {
+  margin-bottom: var(--block-padding);
 }
 
 .export__code {
@@ -94,5 +92,13 @@ export default {
   line-height: 1.4em;
   background: var(--bg-color-light);
   border-radius: var(--radius-sm);
+}
+
+@media (min-width: 640px) {
+  .export__row {
+    display: grid;
+    grid-template-columns: 124px auto;
+    grid-column-gap: var(--block-padding);
+  }
 }
 </style>

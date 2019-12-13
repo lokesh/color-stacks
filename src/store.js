@@ -29,7 +29,7 @@ export default new Vuex.Store({
     // Color
     // 90, 180, 270, 360
     // 40, 200, 120, 200, 280, 320
-    colorHues: [],
+    colorHues: [40, 200, 120, 200, 280, 320],
     colorSteps: 8,
     colorLumaStart: 100,
     colorLumaEnd: 10,
@@ -43,6 +43,7 @@ export default new Vuex.Store({
     showLabels: true,
 
     // Interaction states
+    isMobile: null,
     highlightHue: null, // Index of Hue
     modal: null,
 
@@ -96,6 +97,7 @@ export default new Vuex.Store({
     setShowLabels: set("showLabels"),
 
     // Interaction states
+    setIsMobile: set("isMobile"),
     highlightHue(state, index) {
       state.highlightHue = index;
     },
@@ -107,8 +109,7 @@ export default new Vuex.Store({
     },
     closeModal(state) {
       state.modal = null;
-    },
-    setIsExportModalOpen: set("isExportModalOpen")
+    }
   },
 
   actions: {

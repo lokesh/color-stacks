@@ -144,7 +144,7 @@ export default {
 
 <style scoped>
 .section-grays {
-  padding: 16px;
+  padding: var(--block-padding);
   border-right: var(--border-light);
 }
 
@@ -153,6 +153,6 @@ export default {
 }
 
 .section-stacks {
-  padding: 0 16px;
+  margin-left: var(--block-padding);
 }
 </style>

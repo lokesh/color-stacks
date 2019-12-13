@@ -5,6 +5,9 @@
       ref="spectrum"
       @click="onSpectrumClick"
     ></div>
+    <div v-if="hues.length === 0" class="help">
+      Tap to add colors ^
+    </div>
     <div class="hues">
       <template v-for="(hue, i) in hues">
         <spectrum-handle

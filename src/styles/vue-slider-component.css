@@ -33,12 +33,19 @@
   cursor: pointer;
   width: 100%;
   height: 100%;
-  border-radius: var(--radius-sm);
+  border-radius: 50%;
   background-color: #fff;
   box-sizing: border-box;
   border: var(--border);
   box-shadow: none;
 }
+
+@media (min-width: 640px) {
+  .vue-slider-dot-handle {
+    border-radius: var(--radius-sm);
+  }
+}
+
 .vue-slider-dot-handle-focus {
   border: 2px solid var(--focus-color);
 }

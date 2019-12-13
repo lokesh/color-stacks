@@ -222,17 +222,22 @@ export default {
 
 <style scoped>
 .section-color {
-  flex: 1 1 auto;
-  padding: 16px 32px 16px 16px;
+  padding: var(--block-padding);
 }
+
 .spectrum-row {
   margin-bottom: 12px;
 }
+
 .stack-row {
   display: flex;
 }
 
 .section-stacks {
-  padding: 0 16px;
+  width: 100%;
+  overflow-y: visible;
+  overflow-x: auto;
+  margin-left: var(--block-padding);
+  margin-right: calc(var(--block-padding) * -1);
 }
 </style>
