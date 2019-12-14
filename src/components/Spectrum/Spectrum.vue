@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import throttle from "lodash.throttle";
 import { mapState } from "vuex";
 import SpectrumHandle from "./SpectrumHandle";
 
@@ -93,12 +94,12 @@ export default {
     onSpectrumClick(e) {
       this.addHue(Math.floor((e.layerX / this.dimensions.width) * 360));
     },
-    storeSpectrumDimensions() {
+    storeSpectrumDimensions: throttle(function() {
       const dimensions = this.$refs.spectrum.getBoundingClientRect();
       this.dimensions.left = dimensions.left;
       this.dimensions.right = dimensions.right;
       this.dimensions.width = dimensions.width;
-    }
+    }, 500)
   }
 };
 </script>

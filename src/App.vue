@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import throttle from "lodash.throttle";
 import { mapState } from "vuex";
 import { ModalBackdrop } from "./components/Modal";
 import ExportModal from "./views/ExportModal";
@@ -51,9 +52,9 @@ export default {
   },
 
   methods: {
-    checkIsMobile() {
+    checkIsMobile: throttle(function() {
       this.$store.commit("setIsMobile", window.innerWidth < 640);
-    }
+    }, 500)
   }
 };
 </script>

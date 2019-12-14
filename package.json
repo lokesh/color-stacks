@@ -12,6 +12,7 @@
   "dependencies": {
     "bezier-easing": "^2.1.0",
     "chroma-js": "^2.1.0",
+    "lodash.throttle": "^4.1.1",
     "v-dragged": "0.0.5",
     "vue": "^2.6.10",
     "vue-slider-component": "^3.0.44",
