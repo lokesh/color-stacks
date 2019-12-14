@@ -7,6 +7,7 @@
       :style="handleStyles"
     />
     <input
+      v-if="!isMobile"
       type="number"
       class="handle-input"
       :min="hueMin"
@@ -68,7 +69,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["hueMin", "hueMax"]),
+    ...mapState(["hueMin", "hueMax", "isMobile"]),
 
     hueInput: {
       get() {
