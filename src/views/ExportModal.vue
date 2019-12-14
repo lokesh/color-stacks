@@ -2,7 +2,7 @@
   <modal title="Export">
     <div class="export__row">
       <div class="export__controls">
-        <div>
+        <div class="control-group">
           <label class="label label--radio">
             <input type="radio" name="format" value="css" v-model="format" />
             CSS

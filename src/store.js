@@ -20,17 +20,19 @@ const set = key => (state, val) => {
 export default new Vuex.Store({
   state: {
     // Grays
-    graySteps: 2,
+    graySteps: 6,
     grayCast: 0,
     grayLumaStart: 110, //98
     grayLumaEnd: 0, // 5
     grayLumaCurve: CURVE_EASE,
 
     // Color
+
+    // Test values:
     // 90, 180, 270, 360
     // 40, 200, 120, 200, 280, 320
-    colorHues: [],
-    colorSteps: 2,
+    colorHues: [90, 180, 270, 360],
+    colorSteps: 6,
     colorLumaStart: 100,
     colorLumaEnd: 10,
     colorLumaCurve: CURVE_EASE,
@@ -39,8 +41,10 @@ export default new Vuex.Store({
     colorChromaCurve: CURVE_EASE,
 
     // Options
-    darkMode: false,
-    showLabels: true,
+    showLabel: true,
+    showHex: false,
+    showContrastRatio: false,
+    // darkMode: false, // Not implemented
 
     // Interaction states
     isMobile: null,
@@ -94,7 +98,9 @@ export default new Vuex.Store({
 
     // Options
     setDarkMode: set("darkMode"),
-    setShowLabels: set("showLabels"),
+    setShowLabel: set("showLabel"),
+    setShowHex: set("showHex"),
+    setShowContrastRatio: set("showContrastRatio"),
 
     // Interaction states
     setIsMobile: set("isMobile"),

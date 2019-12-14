@@ -2,19 +2,30 @@
   <div
     class="stack-block"
     :class="{
-      'not-compliant': !aaCompliant
+      'not-compliant': showContrastRatio && !aaCompliant
     }"
     :style="styles"
   >
-    <div class="stack-block__label">{{ label }}</div>
-    <div class="stack-block__hex">{{ hex }}</div>
-    <div class="stack-block__contrast" v-if="!aaCompliant">
-      WCAG {{ Math.round(contrastRatio * 100) / 100 }}
+    <div class="stack-block__content">
+      <div
+        v-if="showLabel"
+        class="stack-block__label"
+        :class="{ 'stack-block__label--bold': showingLabelPlus }"
+      >
+        {{ label }}
+      </div>
+      <div v-if="showHex" class="stack-block__hex">{{ hex }}</div>
+      <div v-if="showContrastRatio" class="stack-block__contrast">
+        <span class="stack-block__contrast-icon">◑</span>
+        {{ Math.round(contrastRatio * 100) / 100 }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "StackBlock",
 
@@ -51,14 +62,18 @@ export default {
     };
   },
   computed: {
-    textColor() {
-      return this.isDark ? "#ffffff" : "#000000";
-    },
+    ...mapState(["showLabel", "showHex", "showContrastRatio"]),
     aaCompliant() {
       return this.contrastRatio >= 4.51;
     },
+    showingLabelPlus() {
+      return this.showLabel && (this.showHex || this.showContrastRatio);
+    },
     showBorder() {
       return this.l > 90 && this.c < 30;
+    },
+    textColor() {
+      return this.isDark ? "#ffffff" : "#000000";
     },
     styles() {
       return {
@@ -77,39 +92,38 @@ export default {
 .stack-block {
   position: relative;
   width: 10em;
-  height: 4em;
   margin-bottom: var(--swatch-gap);
   padding: 8px;
   font-size: 11px;
 }
 
-.stack-block__label {
+.stack-block__content {
+  opacity: 0.8;
+}
+
+.stack-block__label--bold {
   font-weight: var(--weight-bold);
-  opacity: 0.8;
 }
 
-.stack-block__hex {
-  display: none;
-  opacity: 0.8;
-}
-
-.stack-block__contrast {
-  display: none;
-  opacity: 0.8;
+.stack-block__contrast-icon {
+  line-height: 1;
 }
 
 .not-compliant::after {
-  display: none;
   position: absolute;
-  content: "AA";
+  content: "Not AA";
   right: 8px;
   bottom: 8px;
   opacity: 0.85;
-  padding: 0 2px;
-  color: var(--color-secondary);
+  padding: 0 4px 1px 4px;
+
+  font-size: 10px;
   font-weight: var(--weight-bold);
-  background: #fff;
-  border-radius: var(--radius-sm);
+  color: #fff;
+  /*background: #fff;*/
+  border: 1px solid #fff;
+  border-radius: var(--radius);
+
   /*  text-decoration: line-through;*/
 }
 </style>

@@ -35,7 +35,7 @@
             </template>
             <div>
               <h3>Luminance</h3>
-              <div class="radio-group">
+              <div class="control-group">
                 <label class="label label--radio">
                   <input
                     type="radio"
@@ -57,7 +57,7 @@
               </div>
 
               <h3>Chroma</h3>
-              <div class="radio-group">
+              <div class="control-group">
                 <label class="label label--radio">
                   <input
                     type="radio"

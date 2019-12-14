@@ -195,7 +195,7 @@ button:focus {
   box-shadow: 0 0 0 2px var(--focus-color);
 }
 
-label {
+.label {
   color: var(--color-secondary);
   font-size: 11px;
   letter-spacing: 0.03em;
@@ -203,20 +203,23 @@ label {
   text-transform: uppercase;
 }
 
-.radio-group {
+.control-group {
   margin-bottom: 16px;
 }
-.radio-group:last-of-type {
+.control-group:last-of-type {
   margin-bottom: 0;
 }
 
-.label--radio {
+.label--radio,
+.label--checkbox {
   display: block;
   padding: 3px 6px 5px 6px;
   border-radius: var(--radius);
+  text-transform: none;
 }
 
-.label--radio:hover {
+.label--radio:hover,
+.label--checkbox:hover {
   background: var(--control-hover-bg);
   cursor: pointer;
 }
