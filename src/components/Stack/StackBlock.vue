@@ -84,7 +84,7 @@ export default {
 }
 
 .stack-block__label {
-  font-weight: var(--bold);
+  font-weight: var(--weight-bold);
   opacity: 0.8;
 }
 
@@ -107,7 +107,7 @@ export default {
   opacity: 0.85;
   padding: 0 2px;
   color: var(--color-secondary);
-  font-weight: var(--bold);
+  font-weight: var(--weight-bold);
   background: #fff;
   border-radius: var(--radius-sm);
   /*  text-decoration: line-through;*/

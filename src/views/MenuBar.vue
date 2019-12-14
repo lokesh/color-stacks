@@ -44,6 +44,12 @@ export default {
   margin-left: 4px;
 }
 
+@media (max-width: 639px) {
+  .menu-bar .btn {
+    padding: 8px 16px;
+  }
+}
+
 @media (min-width: 640px) {
   .menu-bar {
     display: block;
