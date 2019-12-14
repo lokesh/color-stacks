@@ -1,8 +1,12 @@
 <template>
   <div class="app">
-    <banner class="app__banner" />
-    <section-grays class="app__grays" />
-    <section-color class="app__color" />
+    <div class="body">
+      <menu-bar class="app__menu-bar" />
+      <div class="app__sections">
+        <section-grays class="app__grays" />
+        <section-color class="app__color" />
+      </div>
+    </div>
 
     <modal-backdrop v-if="modal">
       <export-modal v-if="modal === 'export'">
@@ -16,7 +20,7 @@
 import { mapState } from "vuex";
 import { ModalBackdrop } from "./components/Modal";
 import ExportModal from "./views/ExportModal";
-import Banner from "./views/Banner";
+import MenuBar from "./views/MenuBar";
 import SectionColor from "./views/SectionColor";
 import SectionGrays from "./views/SectionGrays";
 
@@ -24,8 +28,8 @@ export default {
   name: "app",
 
   components: {
-    Banner,
     ExportModal,
+    MenuBar,
     ModalBackdrop,
     SectionColor,
     SectionGrays
@@ -60,7 +64,11 @@ export default {
 </style>
 
 <style scoped>
-.app__banner {
+.app {
+  --app-menu-bar-width: 150px;
+  --app-grays-width: 256px;
+}
+.app__menu-bar {
   border-bottom: var(--border-light);
 }
 
@@ -69,14 +77,34 @@ export default {
 }
 
 @media (min-width: 640px) {
-  .body {
-    /*    background: beige;*/
+  .app__menu-bar {
+    position: fixed;
+    width: var(--app-menu-bar-width);
+    height: 100vh;
+    overflow-y: auto;
+    border-right: var(--border-light);
+  }
+
+  .app__sections {
+    margin-left: var(--app-menu-bar-width);
   }
 }
 
-@media (min-width: 1240px) {
-  .body {
-    /* background: gold;*/
+@media (min-width: 1120px) {
+  .app__sections {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .app__grays {
+    flex: 0 0 var(--app-grays-width);
+    border-bottom: none;
+    border-right: var(--border-light);
+  }
+
+  .app__color {
+    flex: 1 1 auto;
+    overflow-x: hidden;
   }
 }
 </style>

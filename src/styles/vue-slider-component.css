@@ -40,12 +40,6 @@
   box-shadow: none;
 }
 
-@media (min-width: 640px) {
-  .vue-slider-dot-handle {
-    border-radius: var(--radius-sm);
-  }
-}
-
 .vue-slider-dot-handle-focus {
   border: 2px solid var(--focus-color);
 }
@@ -57,7 +51,7 @@
 
 .vue-slider-dot-tooltip-inner {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: var(--weight-regular);
   white-space: nowrap;
   padding: 2px 5px;
   min-width: 20px;

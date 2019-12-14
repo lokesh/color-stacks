@@ -145,7 +145,6 @@ export default {
 <style scoped>
 .section-grays {
   padding: var(--block-padding);
-  border-right: var(--border-light);
 }
 
 .stack-row {

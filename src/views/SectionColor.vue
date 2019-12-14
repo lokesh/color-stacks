@@ -34,7 +34,7 @@
               <button class="control-col__btn">{{ curveButtonLabel }}</button>
             </template>
             <div>
-              <h3>Luminence</h3>
+              <h3>Luminance</h3>
               <div class="radio-group">
                 <label class="label label--radio">
                   <input

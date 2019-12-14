@@ -6,12 +6,12 @@
     "serve": "vue-cli-service serve",
     "dev": "npm run serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "node deploy.js"
   },
   "dependencies": {
     "bezier-easing": "^2.1.0",
     "chroma-js": "^2.1.0",
-    "undo-redo-vuex": "^1.2.0",
     "v-dragged": "0.0.5",
     "vue": "^2.6.10",
     "vue-slider-component": "^3.0.44",

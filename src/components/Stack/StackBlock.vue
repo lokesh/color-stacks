@@ -4,12 +4,7 @@
     :class="{
       'not-compliant': !aaCompliant
     }"
-    :style="
-      `
-      background: ${hex};
-      color: ${textColor}
-    `
-    "
+    :style="styles"
   >
     <div class="stack-block__label">{{ label }}</div>
     <div class="stack-block__hex">{{ hex }}</div>
@@ -27,6 +22,15 @@ export default {
     hex: {
       type: String,
       required: true
+    },
+    h: {
+      type: Number
+    },
+    c: {
+      type: Number
+    },
+    l: {
+      type: Number
     },
     label: {
       type: String,
@@ -52,6 +56,18 @@ export default {
     },
     aaCompliant() {
       return this.contrastRatio >= 4.51;
+    },
+    showBorder() {
+      return this.l > 90 && this.c < 30;
+    },
+    styles() {
+      return {
+        background: this.hex,
+        color: this.textColor,
+        boxShadow: this.showBorder
+          ? "inset 0 0 0 1px rgba(0, 0, 0, 0.05)"
+          : "none"
+      };
     }
   }
 };
@@ -68,8 +84,7 @@ export default {
 }
 
 .stack-block__label {
-  /*  display: none;*/
-  font-weight: 600;
+  font-weight: var(--bold);
   opacity: 0.8;
 }
 
@@ -92,7 +107,7 @@ export default {
   opacity: 0.85;
   padding: 0 2px;
   color: var(--color-secondary);
-  font-weight: 600;
+  font-weight: var(--bold);
   background: #fff;
   border-radius: var(--radius-sm);
   /*  text-decoration: line-through;*/

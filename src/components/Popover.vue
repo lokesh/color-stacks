@@ -75,7 +75,9 @@ export default {
   position: absolute;
 
   /* 4 = top margin for buttons in the control col. */
-  top: calc(var(--control-height) + 4);
+  /*top: calc(var(--control-height) + 4);*/
+  left: -40px;
+  bottom: 0;
   padding: 12px;
   background: white;
   border: var(--border);

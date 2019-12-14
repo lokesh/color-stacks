@@ -20,17 +20,17 @@ const set = key => (state, val) => {
 export default new Vuex.Store({
   state: {
     // Grays
-    graySteps: 6,
+    graySteps: 2,
     grayCast: 0,
-    grayLumaStart: 98,
-    grayLumaEnd: 5,
+    grayLumaStart: 110, //98
+    grayLumaEnd: 0, // 5
     grayLumaCurve: CURVE_EASE,
 
     // Color
     // 90, 180, 270, 360
     // 40, 200, 120, 200, 280, 320
-    colorHues: [40, 200, 120, 200, 280, 320],
-    colorSteps: 8,
+    colorHues: [],
+    colorSteps: 2,
     colorLumaStart: 100,
     colorLumaEnd: 10,
     colorLumaCurve: CURVE_EASE,
@@ -59,7 +59,7 @@ export default new Vuex.Store({
     stepsMax: 20,
 
     lumaMin: 0,
-    lumaMax: 150,
+    lumaMax: 110,
 
     chromaMin: 0,
     chromaMax: 150
@@ -163,6 +163,9 @@ export default new Vuex.Store({
         grays.push({
           hex,
           label: generateLabel({ label: "gray", hex, h, c, l }),
+          h,
+          c,
+          l,
           contrastRatio: getContrastRatio(textColor, hex),
           isDark
         });
@@ -206,6 +209,9 @@ export default new Vuex.Store({
 
           hueObj.colors.push({
             hex,
+            h,
+            c,
+            l,
             label: generateLabel({ hex, h, c, l }),
             contrastRatio: getContrastRatio(textColor, hex),
             isDark

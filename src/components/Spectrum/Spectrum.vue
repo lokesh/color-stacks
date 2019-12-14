@@ -6,7 +6,7 @@
       @click="onSpectrumClick"
     ></div>
     <div v-if="hues.length === 0" class="help">
-      Tap to add colors ^
+      {{ helpLabel }}
     </div>
     <div class="hues">
       <template v-for="(hue, i) in hues">
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import SpectrumHandle from "./SpectrumHandle";
 
 export default {
@@ -52,8 +53,12 @@ export default {
   },
 
   computed: {
+    ...mapState(["isMobile"]),
     hues() {
       return this.$store.state.colorHues;
+    },
+    helpLabel() {
+      return `${this.isMobile ? "Tap" : "Click"} to add colors ^`;
     }
   },
 

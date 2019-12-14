@@ -23,7 +23,7 @@
           class="export__code"
           contentEditable="true"
         >:root {<template v-for="color in flatList">
-    --{{ color.label }}: {{ color.hex }}; </template>
+    --{{ color.label }}: {{ color.hex }};</template>
 }</pre>
         <pre
           v-if="format === 'scss'"
