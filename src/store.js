@@ -3,6 +3,7 @@ import Vuex from "vuex";
 
 import {
   curves,
+  CURVE_LINEAR,
   CURVE_EASE,
   getContrastRatio,
   hclToHex
@@ -24,7 +25,7 @@ export default new Vuex.Store({
     grayCast: 0,
     grayLumaStart: 110, //98
     grayLumaEnd: 0, // 5
-    grayLumaCurve: CURVE_EASE,
+    grayLumaCurve: CURVE_LINEAR,
 
     // Color
 
@@ -35,10 +36,10 @@ export default new Vuex.Store({
     colorSteps: 6,
     colorLumaStart: 100,
     colorLumaEnd: 10,
-    colorLumaCurve: CURVE_EASE,
+    colorLumaCurve: CURVE_LINEAR,
     colorChromaStart: 20,
     colorChromaEnd: 140,
-    colorChromaCurve: CURVE_EASE,
+    colorChromaCurve: CURVE_LINEAR,
 
     // Options
     showLabel: true,
@@ -130,6 +131,20 @@ export default new Vuex.Store({
     },
     initStore() {
       // in App.vue this.$store.dispatch('initStore');
+    },
+    reset({ commit }, val) {
+      commit("setGraySteps", 2);
+      commit("setGrayLumaStart", 98);
+      commit("setGrayLumaEnd", 0);
+      commit("setGrayLumaCurve", CURVE_LINEAR);
+      commit("setColorHues", []);
+      commit("setColorSteps", 2);
+      commit("setColorLumaStart", 100);
+      commit("setColorLumaEnd", 10);
+      commit("setColorLumaCurve", CURVE_LINEAR);
+      commit("setColorChromaStart", 20);
+      commit("setColorChromaEnd", 140);
+      commit("setColorChromaCurve", CURVE_LINEAR);
     },
     resetHues({ commit }, val) {
       commit("setColorHues", val);

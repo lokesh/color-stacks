@@ -1,7 +1,9 @@
 <template>
   <div class="menu-bar">
     <h1 class="menu-bar__title">Color Stacks</h1>
-
+    <a class="menu-bar__author" href="https://lokeshdhakar.com"
+      >by Lokesh Dhakar</a
+    >
     <div class="menu-bar__actions">
       <button class="btn" @click="reset">
         Reset
@@ -13,7 +15,7 @@
     <div class="control-group menu-bar__toggles">
       <label class="label label--checkbox">
         <input type="checkbox" v-model="showLabel" />
-        Label
+        Labels
       </label>
       <label class="label label--checkbox">
         <input type="checkbox" v-model="showHex" />
@@ -63,7 +65,7 @@ export default {
       this.$store.commit("openModal", "export");
     },
     reset() {
-      this.$store.dispatch("resetHues", []);
+      this.$store.dispatch("reset");
     }
   }
 };
@@ -82,6 +84,18 @@ export default {
   margin-bottom: 0;
 }
 
+.menu-bar__author {
+  display: block;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+}
+
+.menu-bar__author:hover {
+  text-decoration: underline;
+}
+
 .menu-bar .btn {
   margin-left: 4px;
 }
@@ -92,7 +106,8 @@ export default {
   height: var(--control-icon-size);
 }
 */
-/* Media query = mobile */
+
+/* MOBILE */
 
 @media (max-width: 639px) {
   .menu-bar .btn {
@@ -104,14 +119,19 @@ export default {
   }
 }
 
-/* Media queries for tablet and desktop */
+/* TABLET & DESKTOP */
 
 @media (min-width: 640px) {
   .menu-bar {
     display: block;
   }
+
   .menu-bar__title {
-    margin-bottom: 8px;
+    margin-bottom: 2px;
+  }
+
+  .menu-bar__author {
+    margin-bottom: 12px;
   }
 
   .menu-bar .btn {

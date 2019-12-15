@@ -5,6 +5,10 @@
   /* COLOR */
   /* ----- */
 
+  /* Colors not currently in use are commented out. If needed for future use
+  cases then can be added. Similarly, colors that stop being used or fall out
+  of fashion can be commented out and retired */
+
   /* Color stacks */
   --gray-0: #f6f6f6;
   --gray-10: #e0e0e0;
@@ -12,6 +16,22 @@
   --gray-60: #5a5a5a;
   --gray-80: #292929;
   --gray-90: #191919;
+
+  /* --orange-0: #ffd23c;
+  --orange-5: #ffb904;*/
+  --orange-30: #ff7600;
+  --orange-60: #bc0000;
+  /*--orange-80: #7f0000;
+  --orange-90: #6b0000;*/
+
+  /*  --blue-0: #e3ffff;
+  --blue-5: #b8edff;
+  --blue-30: #00b5ff;
+*/
+  --blue-60: #0071ff;
+  /*  --blue-80: #004af7;
+  --blue-90: #0040f1;
+  --cobalt-90: #0029e1;*/
 
   /* Color */
   --color: var(--gray-80);
@@ -26,8 +46,9 @@
   --border-light: 1px solid var(--border-color-light);
   --border-dark: 1px solid #888;
 
-  --selected-color: #f60;
-  --focus-color: #f60;
+  --primary-color: var(--blue-60);
+  --selected-color: var(--orange-30);
+  --focus-color: var(--orange-30);
 
   /* ---------- */
   /* TYPOGRAPHY */
@@ -94,6 +115,7 @@ body {
   color: var(--color);
   background-color: var(--bg-color);
   font-size: var(--font-size);
+  overflow-x: hidden;
 }
 
 body,
@@ -192,7 +214,6 @@ button:hover {
 
 button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--focus-color);
 }
 
 .label {
@@ -204,7 +225,7 @@ button:focus {
 }
 
 .control-group {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .control-group:last-of-type {
   margin-bottom: 0;
