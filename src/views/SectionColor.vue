@@ -29,56 +29,8 @@
 
         <div class="control-col-section">
           <label class="label">Curves</label>
-          <popover>
-            <template v-slot:trigger>
-              <button class="control-col__btn">{{ curveButtonLabel }}</button>
-            </template>
-            <div>
-              <h3>Luminance</h3>
-              <div class="control-group">
-                <label class="label label--radio">
-                  <input
-                    type="radio"
-                    name="color-luma-curve"
-                    :value="CURVE_LINEAR"
-                    v-model="colorLumaCurve"
-                  />
-                  Linear
-                </label>
-                <label class="label label--radio">
-                  <input
-                    type="radio"
-                    name="color-luma-curve"
-                    :value="CURVE_EASE"
-                    v-model="colorLumaCurve"
-                  />
-                  Ease-in-out
-                </label>
-              </div>
-
-              <h3>Chroma</h3>
-              <div class="control-group">
-                <label class="label label--radio">
-                  <input
-                    type="radio"
-                    name="color-chroma-curve"
-                    :value="CURVE_LINEAR"
-                    v-model="colorChromaCurve"
-                  />
-                  Linear
-                </label>
-                <label class="label label--radio">
-                  <input
-                    type="radio"
-                    name="color-chroma-curve"
-                    :value="CURVE_EASE"
-                    v-model="colorChromaCurve"
-                  />
-                  Ease-in-out
-                </label>
-              </div>
-            </div>
-          </popover>
+          <curve-toggle label="Luminance" v-model="colorLumaCurve" />
+          <curve-toggle label="Chroma" v-model="colorChromaCurve" />
         </div>
 
         <div class="control-col-section">
@@ -106,10 +58,8 @@
 <script>
 import { mapState } from "vuex";
 
-import { CURVE_LINEAR, CURVE_EASE } from "../utils/color.js";
-
 import ColorStacks from "./ColorStacks.vue";
-import Popover from "../components/Popover.vue";
+import CurveToggle from "../components/CurveToggle.vue";
 import Slider from "../components/Slider.vue";
 import Spectrum from "../components/Spectrum";
 
@@ -118,16 +68,9 @@ export default {
 
   components: {
     ColorStacks,
-    Popover,
+    CurveToggle,
     Slider,
     Spectrum
-  },
-
-  data() {
-    return {
-      CURVE_LINEAR,
-      CURVE_EASE
-    };
   },
 
   computed: {
@@ -194,26 +137,6 @@ export default {
       },
       set(val) {
         this.$store.commit("setColorChromaCurve", val);
-      }
-    },
-    curveButtonLabel() {
-      if (
-        this.colorLumaCurve === CURVE_LINEAR &&
-        this.colorChromaCurve === CURVE_LINEAR
-      ) {
-        return "Linear";
-      } else if (
-        this.colorLumaCurve === CURVE_EASE &&
-        this.colorChromaCurve === CURVE_EASE
-      ) {
-        return "Ease-in-out";
-      } else if (
-        this.colorLumaCurve === CURVE_LINEAR &&
-        this.colorChromaCurve === CURVE_EASE
-      ) {
-        return "Linear & Ease";
-      } else {
-        return "Ease & Linear";
       }
     }
   }

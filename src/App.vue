@@ -67,7 +67,7 @@ export default {
 <style scoped>
 .app {
   --app-menu-bar-width: 150px;
-  --app-grays-width: 256px;
+  --app-grays-width: 272px;
 }
 .app__menu-bar {
   border-bottom: var(--border-light);

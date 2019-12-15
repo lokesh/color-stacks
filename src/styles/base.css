@@ -139,6 +139,7 @@ h4 {
 h1 {
   font-size: 20px;
   text-transform: uppercase;
+  font-weight: 900;
 }
 
 h2 {
@@ -163,12 +164,12 @@ input,
 button {
   border-radius: var(--radius-sm);
   color: var(--control-color);
-  background: white;
   font-size: var(--control-font-size);
 }
 
 input[type="text"],
 input[type="number"] {
+  background: white;
   border: var(--control-border);
   padding: 4px 8px;
   text-align: center;
@@ -259,7 +260,15 @@ pre[contenteditable="true"]:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 0 0 96px;
+  flex: 0 0 112px;
+}
+
+.control-col-section {
+  margin-bottom: 16px;
+}
+
+.control-col-section:last-of-type {
+  margin-bottom: 0;
 }
 
 .control-col__btn {

@@ -26,9 +26,7 @@
 
         <div class="control-col-section">
           <label class="label">Curve</label>
-          <button class="control-col__btn" @click="toggleCurves">
-            {{ curveButtonLabel }}
-          </button>
+          <curve-toggle label="Luminance" v-model="grayLumaCurve" />
         </div>
 
         <div class="control-col-section">
@@ -51,24 +49,17 @@
 <script>
 import { mapState } from "vuex";
 
-import { CURVE_LINEAR, CURVE_EASE } from "../utils/color.js";
-
-import Slider from "../components/Slider.vue";
 import GraysStack from "./GraysStack.vue";
+import CurveToggle from "../components/CurveToggle.vue";
+import Slider from "../components/Slider.vue";
 
 export default {
   name: "Grays",
 
   components: {
-    Slider,
-    GraysStack
-  },
-
-  data() {
-    return {
-      CURVE_LINEAR,
-      CURVE_EASE
-    };
+    CurveToggle,
+    GraysStack,
+    Slider
   },
 
   computed: {
@@ -119,13 +110,6 @@ export default {
       },
       set(val) {
         this.$store.commit("setGrayLumaCurve", val);
-      }
-    },
-    curveButtonLabel() {
-      if (this.grayLumaCurve === CURVE_LINEAR) {
-        return "Linear";
-      } else {
-        return "Ease-in-out";
       }
     }
   },
