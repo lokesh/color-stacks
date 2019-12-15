@@ -112,16 +112,6 @@ export default {
         this.$store.commit("setGrayLumaCurve", val);
       }
     }
-  },
-
-  methods: {
-    toggleCurves() {
-      if (this.grayLumaCurve === CURVE_LINEAR) {
-        this.$store.commit("setGrayLumaCurve", CURVE_EASE);
-      } else {
-        this.$store.commit("setGrayLumaCurve", CURVE_LINEAR);
-      }
-    }
   }
 };
 </script>

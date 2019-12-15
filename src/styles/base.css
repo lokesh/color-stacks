@@ -24,15 +24,6 @@
   /*--orange-80: #7f0000;
   --orange-90: #6b0000;*/
 
-  /*  --blue-0: #e3ffff;
-  --blue-5: #b8edff;
-  --blue-30: #00b5ff;
-*/
-  --blue-60: #0071ff;
-  /*  --blue-80: #004af7;
-  --blue-90: #0040f1;
-  --cobalt-90: #0029e1;*/
-
   /* Color */
   --color: var(--gray-80);
   --color-secondary: var(--gray-60);
@@ -46,7 +37,8 @@
   --border-light: 1px solid var(--border-color-light);
   --border-dark: 1px solid #888;
 
-  --primary-color: var(--blue-60);
+  /* Use browser blue to match unstyled checkboxes and radios. */
+  --primary-color: #368df6;
   --selected-color: var(--orange-30);
   --focus-color: var(--orange-30);
 
@@ -139,7 +131,6 @@ h4 {
 h1 {
   font-size: 20px;
   text-transform: uppercase;
-  font-weight: 900;
 }
 
 h2 {
@@ -206,6 +197,10 @@ button {
 @media (min-width: 640px) {
   button {
     padding: 4px 8px;
+  }
+
+  .button--muted {
+    background-color: white;
   }
 }
 
