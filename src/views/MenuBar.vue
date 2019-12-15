@@ -125,10 +125,6 @@ export default {
     display: block;
   }
 
-  .menu-bar__title {
-    /*margin-bottom: 2px;*/
-  }
-
   .menu-bar__logo {
     width: 100%;
   }
