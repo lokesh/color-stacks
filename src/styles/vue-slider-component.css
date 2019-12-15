@@ -1,3 +1,7 @@
+.vue-slider {
+  z-index: 0;
+}
+
 /* component style */
 .vue-slider-disabled {
   opacity: 0.5;
