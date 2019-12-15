@@ -1,7 +1,7 @@
 <template>
   <div class="curve-toggle">
     <label class="label curve-toggle__label">{{ label }}</label>
-    <button class="curve-toggle__button" @click="toggle">
+    <button class="curve-toggle__button button--muted" @click="toggle">
       <svg
         v-if="value === CURVE_LINEAR"
         class="curve-toggle__icon"

@@ -17,7 +17,7 @@
       @focus="$store.commit('highlightHue', index)"
       @blur="$store.commit('unhighlightHue')"
     />
-    <button class="handle-remove" @click="remove">
+    <button class="handle-remove button--muted" @click="remove">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -172,7 +172,6 @@ export default {
   border: var(--control-border);
   border-radius: var(--radius-sm);
   user-select: none;
-  /*box-shadow: inset 0 0 0 2px white, inset 0 0 0 3px #b3b3b3;*/
 }
 
 .handle-input {
@@ -195,7 +194,11 @@ export default {
   height: 20px;
   padding: 0;
   border: 0;
-  color: var(--color-muted);
+  color: var(--gray-30);
+}
+
+.handle-remove:hover {
+  color: var(--gray-60);
 }
 
 .handle-remove:focus {

@@ -1,3 +1,4 @@
+/* CURRENTLY UNUSED */
 <template>
   <div class="stepper">
     <button class="button button-subtract" @click="subtract">

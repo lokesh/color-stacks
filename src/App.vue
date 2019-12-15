@@ -77,6 +77,10 @@ export default {
   border-bottom: var(--border-light);
 }
 
+.app__color {
+  padding-bottom: 48px;
+}
+
 @media (min-width: 640px) {
   .app__menu-bar {
     position: fixed;
@@ -88,6 +92,10 @@ export default {
 
   .app__sections {
     margin-left: var(--app-menu-bar-width);
+  }
+
+  .app__color {
+    padding-bottom: var(--block-padding);
   }
 }
 

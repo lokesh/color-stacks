@@ -1,3 +1,5 @@
+/* CURRENTLY UNUSED */
+
 <template>
   <div class="popover">
     <div class="popover__trigger" @click.stop="toggle">

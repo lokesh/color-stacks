@@ -134,7 +134,7 @@ export default new Vuex.Store({
     reset({ commit }) {
       commit("setGraySteps", 2);
       commit("setGrayLumaStart", 98);
-      commit("setGrayLumaEnd", 0);
+      commit("setGrayLumaEnd", 5);
       commit("setGrayLumaCurve", CURVE_LINEAR);
       commit("setColorHues", []);
       commit("setColorSteps", 2);
