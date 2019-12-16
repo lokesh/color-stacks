@@ -19,6 +19,8 @@
 <script>
 import throttle from "lodash.throttle";
 import { mapState } from "vuex";
+import { paramsList } from "./utils/routing.js";
+import { capitalize } from "./utils/strings.js";
 import { ModalBackdrop } from "./components/Modal";
 import ExportModal from "./views/ExportModal";
 import MenuBar from "./views/MenuBar";
@@ -41,6 +43,7 @@ export default {
   },
 
   mounted() {
+    this.readURLParamsAndUpdateStore();
     this.checkIsMobile();
     window.addEventListener("resize", this.checkIsMobile, {
       passive: true
@@ -54,7 +57,28 @@ export default {
   methods: {
     checkIsMobile: throttle(function() {
       this.$store.commit("setIsMobile", window.innerWidth < 640);
-    }, 500)
+    }, 500),
+
+    readURLParamsAndUpdateStore() {
+      let url = new URL(document.URL);
+      let params = new URLSearchParams(url.search);
+
+      for (const [paramName, paramType] of paramsList) {
+        if (params.has(paramName)) {
+          let val = params.get(paramName);
+          if (paramType === "number") {
+            val = parseInt(val, 10);
+          } else if (paramType === "array") {
+            // We assume the array values need to be Numbers
+            val = val.split(",").map(str => parseInt(str, 10));
+          } else if (paramType === "boolean") {
+            val = val === "true" ? true : false;
+          }
+
+          this.$store.commit(`set${capitalize(paramName)}`, val);
+        }
+      }
+    }
   }
 };
 </script>

@@ -1,8 +1,6 @@
 <template>
     <div class="credits">
-      <a class="credits__author" href="https://lokeshdhakar.com"
-        >by Lokesh Dhakar</a
-      >
+      <div class="credits__author">by Lokesh Dhakar</div>
       <a href="https://twitter.com/lokesh" class="credits__link">Twitter</a> -
       <a href="https://lokeshdhakar.com" class="credits__link">Website</a>
     </div>
@@ -27,6 +25,7 @@ export default {
   text-decoration: none;
 
   &:hover {
+    color: var(--color-secondary);
     text-decoration: underline;
   }
 }
