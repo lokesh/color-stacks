@@ -94,7 +94,7 @@ export default {
   width: 10em;
   margin-bottom: var(--swatch-gap);
   padding: 8px;
-  font-size: 11px;
+  font-size: var(--font-size-sm);
 }
 
 .stack-block__content {
@@ -116,14 +116,10 @@ export default {
   bottom: 8px;
   opacity: 0.85;
   padding: 0 4px 1px 4px;
-
   font-size: 10px;
   font-weight: var(--weight-bold);
   color: #fff;
-  /*background: #fff;*/
   border: 1px solid #fff;
   border-radius: var(--radius);
-
-  /*  text-decoration: line-through;*/
 }
 </style>

@@ -20,7 +20,7 @@ const set = key => (state, val) => {
 export default new Vuex.Store({
   state: {
     // Grays
-    graySteps: 2,
+    graySteps: 5,
     grayCast: 0,
     grayLumaStart: 98, //98
     grayLumaEnd: 5, // 5
@@ -32,7 +32,7 @@ export default new Vuex.Store({
     // 90, 180, 270, 360
     // 40, 200, 120, 200, 280, 320
     colorHues: [],
-    colorSteps: 2,
+    colorSteps: 5,
     colorLumaStart: 100,
     colorLumaEnd: 10,
     colorLumaCurve: CURVE_LINEAR,
@@ -132,12 +132,12 @@ export default new Vuex.Store({
       // in App.vue this.$store.dispatch('initStore');
     },
     reset({ commit }) {
-      commit("setGraySteps", 2);
+      commit("setGraySteps", 5);
       commit("setGrayLumaStart", 98);
       commit("setGrayLumaEnd", 5);
       commit("setGrayLumaCurve", CURVE_LINEAR);
       commit("setColorHues", []);
-      commit("setColorSteps", 2);
+      commit("setColorSteps", 5);
       commit("setColorLumaStart", 100);
       commit("setColorLumaEnd", 10);
       commit("setColorLumaCurve", CURVE_LINEAR);

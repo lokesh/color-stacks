@@ -1,39 +1,56 @@
 <template>
   <div class="menu-bar">
-    <h1 class="menu-bar__title">
-      <img class="menu-bar__logo" src="../assets/logo.svg" alt="Color Stacks" />
-    </h1>
-    <a class="menu-bar__author" href="https://lokeshdhakar.com"
-      >by Lokesh Dhakar</a
-    >
-    <div class="menu-bar__actions">
-      <button class="button button--primary" @click="openExportModal">
-        Export
-      </button>
-      <button class="button button" @click="reset">
-        Reset
-      </button>
+    <div>
+      <h1 class="menu-bar__title">
+        <img
+          class="menu-bar__logo"
+          src="../assets/logo.svg"
+          alt="Color Stacks"
+        />
+      </h1>
+      <h2 class="menu-bar__subtitle">
+        A color palette generator for design systems.
+      </h2>
+
+      <credits class="menu-bar__credits-mobile" />
+
+      <div class="menu-bar__actions">
+        <button class="button button--primary" @click="openExportModal">
+          Export
+        </button>
+        <button class="button button--primary" @click="reset">
+          Reset
+        </button>
+      </div>
+
+      <div class="control-group menu-bar__toggles">
+        <label class="label label--checkbox">
+          <input type="checkbox" v-model="showLabel" />
+          Labels
+        </label>
+        <label class="label label--checkbox">
+          <input type="checkbox" v-model="showHex" />
+          Hex
+        </label>
+        <label class="label label--checkbox">
+          <input type="checkbox" v-model="showContrastRatio" />
+          Contrast ratio
+        </label>
+      </div>
     </div>
-    <div class="control-group menu-bar__toggles">
-      <label class="label label--checkbox">
-        <input type="checkbox" v-model="showLabel" />
-        Labels
-      </label>
-      <label class="label label--checkbox">
-        <input type="checkbox" v-model="showHex" />
-        Hex
-      </label>
-      <label class="label label--checkbox">
-        <input type="checkbox" v-model="showContrastRatio" />
-        Contrast ratio
-      </label>
-    </div>
+    <credits class="menu-bar__credits-desktop" />
   </div>
 </template>
 
 <script>
+import Credits from "./Credits";
+
 export default {
   name: "MenuBar",
+
+  components: {
+    Credits
+  },
 
   computed: {
     showLabel: {
@@ -76,8 +93,8 @@ export default {
 <style scoped>
 .menu-bar {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   background: #fff;
   padding: var(--block-padding);
 }
@@ -87,23 +104,34 @@ export default {
 }
 
 .menu-bar__title {
-  margin-bottom: 0;
+  margin-bottom: 4px;
 }
 
-.menu-bar__author {
-  display: none;
+.menu-bar__subtitle {
+  font-size: var(--font-size);
+  margin-bottom: 8px;
+  font-weight: var(--weight-normal);
   color: var(--color-muted);
-  font-size: 13px;
-  font-weight: var(--weight-bold);
-  text-decoration: none;
 }
 
-.menu-bar__author:hover {
-  text-decoration: underline;
+.menu-bar__toggles {
+  display: none;
+}
+
+.menu-bar__credits-desktop {
+  display: none;
+}
+
+.menu-bar__credits-mobile {
+  margin-bottom: 8px;
 }
 
 .menu-bar .button {
   margin-left: 4px;
+}
+
+.menu-bar .button:first-of-type {
+  margin-left: 0;
 }
 
 /* MOBILE */
@@ -112,26 +140,33 @@ export default {
   .menu-bar .button {
     padding: 8px 16px;
   }
-
-  .menu-bar__toggles {
-    display: none;
-  }
 }
 
 /* TABLET & DESKTOP */
 
 @media (min-width: 640px) {
   .menu-bar {
-    display: block;
+    align-items: center;
   }
 
   .menu-bar__logo {
     width: 100%;
   }
 
-  .menu-bar__author {
+  .menu-bar__subtitle {
+    margin-bottom: 48px;
+  }
+
+  .menu-bar__toggles {
     display: block;
-    margin-bottom: 12px;
+  }
+
+  .menu-bar__credits-mobile {
+    display: none;
+  }
+
+  .menu-bar__credits-desktop {
+    display: block;
   }
 
   .menu-bar .button {

@@ -119,12 +119,12 @@ export default {
 
   &:hover .curve-toggle__icon {
     & path {
-      stroke: var(--gray-60);
+      stroke: var(--gray-65);
     }
 
     & circle {
-      fill: var(--gray-10);
-      stroke: var(--gray-60);
+      fill: var(--gray-5);
+      stroke: var(--gray-65);
     }
   }
 }
@@ -134,12 +134,12 @@ export default {
   top: 1px;
 
   & path {
-    stroke: var(--gray-30);
+    stroke: var(--gray-20);
   }
 
   & circle {
-    fill: var(--gray-10);
-    stroke: var(--gray-30);
+    fill: var(--gray-5);
+    stroke: var(--gray-20);
   }
 }
 </style>

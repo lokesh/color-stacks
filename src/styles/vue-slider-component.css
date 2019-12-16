@@ -54,7 +54,7 @@
 }
 
 .vue-slider-dot-tooltip-inner {
-  font-size: 12px;
+  font-size: var(--font-size);
   font-weight: var(--weight-regular);
   white-space: nowrap;
   padding: 2px 5px;

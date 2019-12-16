@@ -194,11 +194,11 @@ export default {
   height: 20px;
   padding: 0;
   border: 0;
-  color: var(--gray-30);
+  color: var(--gray-20);
 }
 
 .handle-remove:hover {
-  color: var(--gray-60);
+  color: var(--gray-65);
 }
 
 .handle-remove:focus {

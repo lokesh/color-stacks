@@ -87,7 +87,6 @@ export default {
 .export__code {
   height: 100%;
   padding: 8px;
-  font-size: 12px;
   font-family: Menlo, monospace;
   line-height: 1.4em;
   background: var(--bg-color-light);

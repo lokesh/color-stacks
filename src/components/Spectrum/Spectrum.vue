@@ -133,9 +133,4 @@ export default {
   left: 0;
   width: 100%;
 }
-
-.hue-input {
-  font-size: 12px;
-  color: var(--color-muted);
-}
 </style>
