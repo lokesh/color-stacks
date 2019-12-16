@@ -100,7 +100,7 @@ export default {
 }
 
 .menu-bar__logo {
-  height: 48px;
+  height: 64px;
 }
 
 .menu-bar__title {
@@ -108,7 +108,7 @@ export default {
 }
 
 .menu-bar__subtitle {
-  font-size: var(--font-size);
+  font-size: var(--font-size-lg);
   margin-bottom: 8px;
   font-weight: var(--weight-normal);
   color: var(--color-muted);
@@ -124,6 +124,7 @@ export default {
 
 .menu-bar__credits-mobile {
   margin-bottom: 8px;
+  font-size: var(--font-size-lg);
 }
 
 .menu-bar .button {
@@ -151,9 +152,11 @@ export default {
 
   .menu-bar__logo {
     width: 100%;
+    height: auto;
   }
 
   .menu-bar__subtitle {
+    font-size: var(--font-size);
     margin-bottom: 24px;
   }
 
