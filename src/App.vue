@@ -70,13 +70,7 @@ export default {
             val = parseInt(val, 10);
           } else if (paramType === "array") {
             // We assume the array values need to be Numbers
-            val = val
-              .split(",")
-              .filter(str => {
-                return str.toString() !== "NaN";
-              })
-              .map(str => parseInt(str, 10));
-            console.log(val);
+            val = val.split(",").map(str => parseInt(str, 10));
           } else if (paramType === "boolean") {
             val = val === "true" ? true : false;
           }
