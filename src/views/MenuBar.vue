@@ -154,7 +154,7 @@ export default {
   }
 
   .menu-bar__subtitle {
-    margin-bottom: 48px;
+    margin-bottom: 24px;
   }
 
   .menu-bar__toggles {

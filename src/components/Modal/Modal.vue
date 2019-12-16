@@ -25,7 +25,7 @@ export default {
   padding: var(--block-padding) var(--block-padding) 32px var(--block-padding);
   width: 90vw;
   max-width: 720px;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
   background: white;
   border-radius: var(--radius);

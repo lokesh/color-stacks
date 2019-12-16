@@ -91,7 +91,7 @@ export default {
 <style scoped>
 .stack-block {
   position: relative;
-  width: 10em;
+  width: 10.5em;
   margin-bottom: var(--swatch-gap);
   padding: 8px;
   font-size: var(--font-size-sm);
