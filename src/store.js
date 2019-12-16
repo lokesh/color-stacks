@@ -144,9 +144,6 @@ export default new Vuex.Store({
       commit("setColorChromaStart", 20);
       commit("setColorChromaEnd", 140);
       commit("setColorChromaCurve", CURVE_LINEAR);
-    },
-    resetHues({ commit }, val) {
-      commit("setColorHues", val);
     }
   },
 
