@@ -12,7 +12,7 @@
           />
           <slider
             v-model="grayCast"
-            label="Cast"
+            label="Temperature"
             :min="castMin"
             :max="castMax"
           ></slider>
