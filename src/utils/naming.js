@@ -41,7 +41,7 @@ export const generateLabel = function(color) {
   } else if (color.h < 200) {
     label = "mint";
   } else if (color.h < 220) {
-    label = "turqouise";
+    label = "turquoise";
   } else if (color.h < 240) {
     label = "baby-blue";
   } else if (color.h < 260) {
