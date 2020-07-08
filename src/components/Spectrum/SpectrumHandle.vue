@@ -102,7 +102,7 @@ export default {
         borderColor: this.isDragging
           ? "var(--focus-color)"
           : "var(--control-border-color)",
-        boxShadow: this.isDragging ? "0 0 0 1px var(--focus-color)" : "none",
+        boxShadow: this.isDragging ? "0 0 0 1px var(--focus-color)" : "var(--control-box-shadow)",
         cursor: this.isDragging ? "none" : "grab"
       };
     }
@@ -166,6 +166,7 @@ export default {
   position: absolute;
 }
 
+/* NOTE: some styles are set and overridden in JS above. */
 .handle {
   height: calc(var(--spectrum-height) + var(--spectrum-handle-overhang) * 2);
   background: white;
@@ -184,6 +185,7 @@ export default {
   width: var(--spectrum-handle-input-width);
   height: 24px;
   padding: 4px 6px;
+  font-weight: var(--weight-bold);
 }
 
 .handle-remove {
@@ -194,6 +196,7 @@ export default {
   height: 20px;
   padding: 0;
   border: 0;
+  border-radius: 50%;
   color: var(--gray-20);
 }
 

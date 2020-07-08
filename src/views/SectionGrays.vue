@@ -69,7 +69,7 @@ export default {
       "lumaMin",
       "lumaMax",
       "stepsMin",
-      "stepsMax"
+      "stepsMax",
     ]),
 
     graySteps: {

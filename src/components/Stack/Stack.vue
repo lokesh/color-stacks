@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 .stack {
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   transition: transform var(--transition);
 }
 
@@ -34,10 +34,10 @@ export default {
 }
 
 .stack-block:first-of-type {
-  border-radius: var(--radius) var(--radius) 0 0;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
 .stack-block:last-of-type {
-  border-radius: 0 0 var(--radius) var(--radius);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 }
 </style>

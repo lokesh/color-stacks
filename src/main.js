@@ -1,10 +1,13 @@
 import Vue from "vue";
 import VDragged from "v-dragged";
+import ToggleButton from 'vue-js-toggle-button'
 import throttle from "lodash.throttle";
 import App from "./App";
 import store from "./store";
 import { paramsList } from "./utils/routing.js";
 
+
+Vue.use(ToggleButton);
 Vue.use(VDragged);
 Vue.config.productionTip = false;
 

@@ -41,7 +41,7 @@
   background-color: #fff;
   box-sizing: border-box;
   border: var(--border);
-  box-shadow: none;
+  box-shadow: var(--control-box-shadow);
 }
 
 .vue-slider-dot-handle-focus {

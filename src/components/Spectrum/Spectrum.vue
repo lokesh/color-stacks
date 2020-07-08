@@ -123,7 +123,7 @@ export default {
     #f0f 83%,
     red 100%
   );
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   cursor: copy;
 }
 

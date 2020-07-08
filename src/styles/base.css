@@ -10,36 +10,37 @@
   of fashion can be commented out and retired. */
 
   /* Color stacks */
-  --gray-0: #f6f6f6;
-  --gray-5: #e6e6e6;
-  --gray-20: #bcbcbc;
-  --gray-45: #7f7f7f;
-  --gray-65: #474747;
-  --gray-80: #272727;
-  --gray-90: #1b1b1b;
+  --gray-0: #f8f9fc;
+  --gray-5: #edeff2;
+  --gray-10: #d4d5d8;
+  --gray-25: #abacaf;
+  --gray-45: #797a7d;
+  --gray-65: #4a4c4e;
+  --gray-80: #2a2b2d;
+  --gray-90: #18191b;
+  --gray-95: #101113;
 
-  /* --orange-0: #ffd23c;
-  --orange-5: #ffb904;*/
-  --orange-30: #ff7600;
-  --orange-60: #bc0000;
-  /*--orange-80: #7f0000;
-  --orange-90: #6b0000;*/
+  --powder-blue-20: #74d1ff;
+  --powder-blue-35: #00a9f9;
+  --powder-blue-55: #0082f1;
+  --powder-blue-70: #005ee8;
+  --powder-blue-90: #0041dd;
 
   /* Color application*/
   --color: var(--gray-80);
   --color-secondary: var(--gray-65);
   --color-muted: var(--gray-45);
-  --bg-color: white;
-  --bg-color-light: var(--gray-0);
+  --bg-color: var(--gray-0);
+  --bg-color-light: var(--gray-5);
 
-  --border-color: var(--gray-20);
+  --border-color: var(--gray-10);
   --border-color-light: var(--gray-5);
   --border: 1px solid var(--border-color);
   --border-light: 1px solid var(--border-color-light);
   --border-dark: 1px solid #888;
 
-  --selected-color: var(--orange-30);
-  --focus-color: var(--orange-30);
+  --selected-color: var(--powder-blue-55);
+  --focus-color: var(--powder-blue-35);
 
   /* ---------- */
   /* TYPOGRAPHY */
@@ -61,7 +62,7 @@
 
   /* Radii */
   --radius: 12px;
-  --radius-sm: 4px;
+  --radius-sm: 6px;
 
   /* Shadows */
   --shadow: 0 12.5px 10px rgba(0, 0, 0, 0.035), 0 100px 80px rgba(0, 0, 0, 0.07);
@@ -78,6 +79,7 @@
   --control-color: var(--color);
   --control-border: var(--border);
   --control-border-color: var(--border-color);
+  --control-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   --control-height: 24px;
   --control-icon-size: 16px;
   --control-hover-bg: var(--gray-5);
@@ -189,9 +191,10 @@ input::-webkit-inner-spin-button {
 button {
   padding: 6px 12px;
   cursor: pointer;
-  background-color: var(--gray-5);
-  border: 0;
-  border-radius: 26px;
+  background: white;
+  border: 1px solid var(--gray-10);
+  box-shadow: var(--control-box-shadow);
+  border-radius: var(--radius-sm);
 }
 
 @media (min-width: 640px) {
@@ -211,11 +214,16 @@ button:hover {
 
   Post-launch, I'm going to expand the initial gray palette 7 to 8 or 9 colors.
   */
-  background: #d6d6d6;
+  background: var(--gray-5);
 }
 
 button:focus {
   outline: none;
+}
+
+button:active {
+  position: relative;
+  top: 2px;
 }
 
 .label {
@@ -235,16 +243,24 @@ button:focus {
 
 .label--radio,
 .label--checkbox {
-  display: block;
-  padding: 3px 6px 5px 6px;
-  border-radius: var(--radius);
-  text-transform: none;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: var(--radius-sm);
 }
+
+/*.label-radio {
+    margin-bottom: 4px;
+}*/
 
 .label--radio:hover,
 .label--checkbox:hover {
   background: var(--control-hover-bg);
   cursor: pointer;
+}
+
+.toggle-button {
+  margin-right: 6px;
 }
 
 pre {

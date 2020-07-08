@@ -8,9 +8,6 @@
           alt="Color Stacks"
         />
       </h1>
-      <h2 class="menu-bar__subtitle">
-        A color palette generator for design systems.
-      </h2>
 
       <credits class="menu-bar__credits-mobile" />
 
@@ -25,15 +22,15 @@
 
       <div class="control-group menu-bar__toggles">
         <label class="label label--checkbox">
-          <input type="checkbox" v-model="showLabel" />
+          <toggle v-model="showLabel" />
           Labels
         </label>
         <label class="label label--checkbox">
-          <input type="checkbox" v-model="showHex" />
+          <toggle v-model="showHex" />
           Hex
         </label>
         <label class="label label--checkbox">
-          <input type="checkbox" v-model="showContrastRatio" />
+          <toggle v-model="showContrastRatio" />
           Contrast ratio
         </label>
       </div>
@@ -44,12 +41,14 @@
 
 <script>
 import Credits from "./Credits";
+import Toggle from "../components/Toggle";
 
 export default {
   name: "MenuBar",
 
   components: {
-    Credits
+    Credits,
+    Toggle,
   },
 
   computed: {
@@ -104,14 +103,7 @@ export default {
 }
 
 .menu-bar__title {
-  margin-bottom: 4px;
-}
-
-.menu-bar__subtitle {
-  font-size: var(--font-size-lg);
-  margin-bottom: 8px;
-  font-weight: var(--weight-normal);
-  color: var(--color-muted);
+  margin-bottom: 20px;
 }
 
 .menu-bar__toggles {
@@ -127,8 +119,14 @@ export default {
   font-size: var(--font-size-lg);
 }
 
+.menu-bar__actions {
+  margin-bottom: 8px;
+}
+
 .menu-bar .button {
   margin-left: 4px;
+  text-align: left;
+  padding: 8px 12px;
 }
 
 .menu-bar .button:first-of-type {

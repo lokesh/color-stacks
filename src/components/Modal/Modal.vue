@@ -29,5 +29,6 @@ export default {
   overflow-y: auto;
   background: white;
   border-radius: var(--radius);
+  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.1);
 }
 </style>

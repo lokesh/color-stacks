@@ -117,6 +117,8 @@ export default {
   height: 21px;
   padding: 0;
 
+  stroke: var(--gray-25);
+
   &:hover .curve-toggle__icon {
     & path {
       stroke: var(--gray-65);

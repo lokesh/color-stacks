@@ -2,12 +2,11 @@
   <div class="app">
     <div class="body">
       <menu-bar class="app__menu-bar" />
-      <div class="app__sections">
-        <section-grays class="app__grays" />
-        <section-color class="app__color" />
-      </div>
     </div>
-
+    <div class="app__sections">
+      <section-grays class="app__grays" />
+      <section-color class="app__color" />
+    </div>
     <modal-backdrop v-if="modal">
       <export-modal v-if="modal === 'export'">
         EXPORT
