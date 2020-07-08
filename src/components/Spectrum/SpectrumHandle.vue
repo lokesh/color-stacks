@@ -77,6 +77,8 @@ export default {
       },
       set(val) {
         if (val && Number.isInteger(val)) {
+          val = Math.max(0, val);
+          val = Math.min(360, val);
           this.$emit("input", val);
         }
       }
@@ -162,7 +164,7 @@ export default {
 <style scoped>
 .spectrum-handle {
   --spectrum-handle-width: 16px;
-  --spectrum-handle-input-width: 36px;
+  --spectrum-handle-input-width: 38px;
   position: absolute;
 }
 
@@ -177,7 +179,7 @@ export default {
 
 .handle-input {
   position: absolute;
-  top: calc((var(--control-height) + 8px) * -1);
+  top: calc((var(--control-height) + 4px) * -1);
   left: calc(
     var(--spectrum-handle-input-width) * -0.5 + var(--spectrum-handle-width) *
       0.5
@@ -185,6 +187,7 @@ export default {
   width: var(--spectrum-handle-input-width);
   height: 24px;
   padding: 4px 6px;
+  text-align: center;
   font-weight: var(--weight-bold);
 }
 

@@ -1,6 +1,11 @@
 <template>
   <section class="section-color">
-    <h2>Colors</h2>
+
+    <div class="title-row">
+      <h2>Colors</h2>
+      <hex-input class="hex-input" />
+    </div>
+
     <div class="spectrum-row">
       <spectrum />
     </div>
@@ -60,6 +65,7 @@ import { mapState } from "vuex";
 
 import ColorStacks from "./ColorStacks.vue";
 import CurveToggle from "../components/CurveToggle.vue";
+import HexInput from "../components/HexInput.vue";
 import Slider from "../components/Slider.vue";
 import Spectrum from "../components/Spectrum";
 
@@ -69,6 +75,7 @@ export default {
   components: {
     ColorStacks,
     CurveToggle,
+    HexInput,
     Slider,
     Spectrum
   },
@@ -144,6 +151,14 @@ export default {
 </script>
 
 <style scoped>
+.title-row {
+  display: flex;
+}
+
+.hex-input {
+  margin-left: 8px;
+}
+
 .section-color {
   padding: var(--block-padding);
 }

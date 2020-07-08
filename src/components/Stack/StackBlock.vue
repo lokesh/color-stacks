@@ -10,12 +10,22 @@
       <div
         v-if="showLabel"
         class="stack-block__label"
-        :class="{ 'stack-block__label--bold': showingLabelPlus }"
+        :class="{ 'bold': showingLabelPlus }"
       >
         {{ label }}
       </div>
-      <div v-if="showHex" class="stack-block__hex">{{ hex }}</div>
-      <div v-if="showContrastRatio" class="stack-block__contrast">
+      <div
+        v-if="showHex"
+        class="stack-block__hex"
+        :class="{ 'muted': showingLabelPlus }"
+      >
+        {{ hex }}
+      </div>
+      <div
+        v-if="showContrastRatio"
+        class="stack-block__contrast"
+        :class="{ 'muted': showingLabelPlus }"
+      >
         <span class="stack-block__contrast-icon">◑</span>
         {{ Math.round(contrastRatio * 100) / 100 }}
       </div>
@@ -101,8 +111,12 @@ export default {
   opacity: 0.8;
 }
 
-.stack-block__label--bold {
+.bold {
   font-weight: var(--weight-bold);
+}
+
+.muted {
+  opacity: 0.8;
 }
 
 .stack-block__contrast-icon {

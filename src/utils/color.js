@@ -6,11 +6,12 @@ export const getContrastRatio = function(foreground, background) {
   return chroma.contrast(foreground, background);
 };
 
+/* Validation */
+export const validateHex = (hex) => chroma.valid(hex);
+
 /* Conversion */
-export const hclToHex = function(hcl) {
-  let color = chroma.hcl(hcl.h, hcl.c, hcl.l);
-  return color.hex();
-};
+export const hclToHex = (hcl) => chroma.hcl(hcl.h, hcl.c, hcl.l).hex();
+export const hexToHCL = (hex) => chroma(hex).hcl();
 
 /* Curves */
 export const CURVE_LINEAR = "linear";

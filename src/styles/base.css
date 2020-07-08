@@ -119,6 +119,10 @@ input {
   font-family: var(--font-family);
 }
 
+::placeholder {
+  color: var(--gray-25);
+}
+
 h1,
 h2,
 h3,
@@ -137,8 +141,10 @@ h1 {
 }
 
 h2 {
-  /*color: var(--color-muted);*/
+  margin-bottom: 36px;
+/*  color: var(--color-muted);*/
   font-size: 20px;
+  /*text-transform: uppercase;*/
 }
 
 h3 {
@@ -162,10 +168,10 @@ button {
 
 input[type="text"],
 input[type="number"] {
+  height: var(--control-height);
   background: white;
   border: var(--control-border);
   padding: 4px 8px;
-  text-align: center;
 }
 
 input[type="text"]:focus,
