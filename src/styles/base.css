@@ -37,13 +37,14 @@
   --color-secondary: var(--gray-65);
   --color-muted: var(--gray-45);
   --bg-color: var(--gray-0);
+
+  --bg-color-menu-bar: white;
   --bg-color-light: var(--gray-5);
 
   --border-color: var(--gray-10);
   --border-color-light: var(--gray-5);
   --border: 1px solid var(--border-color);
   --border-light: 1px solid var(--border-color-light);
-  --border-dark: 1px solid #888;
 
   --selected-color: var(--powder-blue-55);
   --focus-color: var(--powder-blue-35);
@@ -84,12 +85,14 @@
   /* Form controls */
   --control-font-size: var(--font-size);
   --control-color: var(--color);
+  --control-bg-color: white;
+  --control-bg-hover: var(--gray-5);
   --control-border: var(--border);
   --control-border-color: var(--border-color);
   --control-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   --control-height: 24px;
   --control-icon-size: 16px;
-  --control-hover-bg: var(--gray-5);
+  --control-bg-hover: var(--gray-5);
 
   /* ---------------- */
   /* SPACING & LAYOUT */
@@ -104,6 +107,31 @@
   /* Spectrum */
   --spectrum-height: 24px;
   --spectrum-handle-overhang: 4px;
+}
+
+/* --------- */
+/* DARK MODE */
+/* --------- */
+
+.dark-mode {
+  --color: var(--gray-10);
+  --color-secondary: var(--gray-25);
+  --color-muted: var(--gray-45);
+
+  --bg-color: var(--gray-90);
+  --bg-color-light: var(--gray-80);
+  --bg-color-menu-bar: var(--gray-80);
+
+  --border-color: var(--gray-65);
+  --border-color-light: var(--gray-80);
+
+  --border: 1px solid var(--border-color);
+  --border-light: 1px solid var(--border-color-light);
+
+  --control-color: var(--color);
+  --control-bg-color: var(--gray-65);
+  --control-bg-hover: var(--gray-45);
+  --control-border: var(--border);
 }
 
 * {
@@ -170,13 +198,13 @@ input,
 button {
   border-radius: var(--radius-sm);
   color: var(--control-color);
+  background: var(--control-bg-color);
   font-size: var(--control-font-size);
 }
 
 input[type="text"],
 input[type="number"] {
   height: var(--control-height);
-  background: white;
   border: var(--control-border);
   padding: 4px 8px;
 }
@@ -212,8 +240,7 @@ input::-webkit-inner-spin-button {
 button {
   padding: 6px 12px;
   cursor: pointer;
-  background: white;
-  border: 1px solid var(--gray-10);
+  border: var(--control-border);
   box-shadow: var(--control-box-shadow);
   border-radius: var(--radius-sm);
 }
@@ -236,7 +263,7 @@ button:hover {
 
   Post-launch, I'm going to expand the initial gray palette 7 to 8 or 9 colors.
   */
-  background: var(--gray-5);
+  background: var(--control-bg-hover);
 }
 
 button:focus {
@@ -277,7 +304,7 @@ button:active {
 
 .label--radio:hover,
 .label--checkbox:hover {
-  background: var(--control-hover-bg);
+  background: var(--control-bg-hover);
   cursor: pointer;
 }
 

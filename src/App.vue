@@ -1,5 +1,8 @@
 <template>
-  <div class="app">
+  <div
+    class="app"
+    :class="{ 'dark-mode': darkMode}"
+  >
     <div class="body">
       <menu-bar class="app__menu-bar" />
     </div>
@@ -38,7 +41,10 @@ export default {
   },
 
   computed: {
-    ...mapState(["modal"])
+    ...mapState([
+      "modal",
+      "darkMode",
+    ])
   },
 
   mounted() {

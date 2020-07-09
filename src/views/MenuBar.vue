@@ -33,6 +33,11 @@
           <toggle v-model="showContrastRatio" />
           Contrast ratio
         </label>
+        <label class="label label--checkbox">
+          <toggle v-model="darkMode" />
+          Dark mode
+        </label>
+
       </div>
     </div>
     <credits class="menu-bar__credits-desktop" />
@@ -52,6 +57,14 @@ export default {
   },
 
   computed: {
+    darkMode: {
+      get() {
+        return this.$store.state.darkMode;
+      },
+      set(val) {
+        this.$store.commit("setDarkMode", val);
+      }
+    },
     showLabel: {
       get() {
         return this.$store.state.showLabel;
@@ -78,6 +91,15 @@ export default {
     }
   },
 
+  watch: {
+    darkMode: {
+      immediate: true,
+      handler: (val) => {
+        document.getElementsByTagName('body')[0].classList.toggle('dark-mode', val);
+      },
+    },
+  },
+
   methods: {
     openExportModal() {
       this.$store.commit("openModal", "export");
@@ -94,7 +116,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #fff;
+  background: var(--bg-color-menu-bar);
   padding: var(--block-padding);
 }
 

@@ -102,6 +102,7 @@ export default {
 .stack-block {
   position: relative;
   width: 10.5em;
+  min-height: 2em;
   margin-bottom: var(--swatch-gap);
   padding: 8px;
   font-size: var(--font-size-sm);
