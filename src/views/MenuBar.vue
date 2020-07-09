@@ -12,10 +12,10 @@
       <credits class="menu-bar__credits-mobile" />
 
       <div class="menu-bar__actions">
-        <button class="button button--primary" @click="openExportModal">
+        <button class="button" @click="openExportModal">
           Export
         </button>
-        <button class="button button--primary" @click="reset">
+        <button class="button" @click="reset">
           Reset
         </button>
       </div>

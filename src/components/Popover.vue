@@ -1,5 +1,3 @@
-/* CURRENTLY UNUSED */
-
 <template>
   <div class="popover">
     <div class="popover__trigger" @click.stop="toggle">
@@ -23,7 +21,7 @@ export default {
   props: {
     width: {
       type: Number,
-      default: 160
+      default: null,
     }
   },
 
@@ -36,7 +34,7 @@ export default {
   computed: {
     bubbleStyles() {
       return {
-        width: `${this.width}px`
+        width: this.width ? `${this.width}px` : 'auto',
       };
     }
   },
@@ -78,11 +76,11 @@ export default {
 
   /* 4 = top margin for buttons in the control col. */
   /*top: calc(var(--control-height) + 4);*/
-  left: -40px;
-  bottom: 0;
+  top: 0;
+  left: 0;
   padding: 12px;
   background: white;
-  border: var(--border);
+  border: var(--border-light);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   z-index: 1;

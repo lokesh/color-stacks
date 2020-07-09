@@ -1,47 +1,57 @@
 <template>
-  <div>
-    <a
-      v-if="!inputVisible"
-      class="add-button"
-      @click="inputVisible = !inputVisible"
-    >
-      Add from hex&hellip;
-    </a>
-
-    <div
-      v-else
-      class="control"
-    >
-      <input
-        ref="input"
-        v-model="hex"
-        placeholder="#663399"
-        class="input"
-        type="text"
-        maxlength="6"
-        @keyup.enter="onEnter"
-      />
-      <br /><br />
-    </div>
+  <div class="wrapper">
+    <popover :width="144">
+      <template v-slot:trigger>
+        <a
+          v-if="!isPopoverVisible"
+          class="trigger"
+          @click="focusInput"
+        >
+          Add from hex&hellip;
+        </a>
+      </template>
+      <div class="content">
+        <input
+          ref="input"
+          v-model="hex"
+          placeholder="#663399"
+          class="input"
+          type="text"
+          maxlength="7"
+          @keyup.enter="addHue"
+        />
+        <button
+          class="button"
+          @click="addHue"
+        >
+          Add
+        </button>
+      </div>
+    </popover>
 
   </div>
 </template>
 
 <script>
+import Popover from './Popover';
 import { hexToHCL, validateHex } from "../utils/color.js";
 
 export default {
   name: "HexInput",
 
+  components: {
+    Popover,
+  },
+
   data() {
     return {
       hex: '',
-      inputVisible: false,
+      isPopoverVisible: false,
     };
   },
 
   watch: {
-    async inputVisible(val) {
+    async isPopoverVisible(val) {
       if (val) {
         await this.$nextTick();
         this.$refs.input.focus();
@@ -50,23 +60,32 @@ export default {
   },
 
   methods: {
-    onEnter(e) {
-      const val = e.target.value;
+    addHue() {
+      const val = this.$refs.input.value;
       if (validateHex(val)) {
         const hue = Math.floor(hexToHCL(val)[0]);
         // Chroma sometimes returns NaN
         // This happens with pure grays
         if (hue) {
           this.$store.dispatch("addHue", hue);
+          this.hex = '';
         }
       }
+    },
+    focusInput() {
+      setTimeout(() => {
+        this.$refs.input.focus();
+      }, 10)
+    },
+    togglePopover() {
+      this.isPopoverVisible = !this.isPopoverVisible;
     },
   },
 };
 </script>
 
 <style scoped>
-.add-button {
+.trigger {
   position: relative;
   top: 6px;
   color: var(--color-muted);
@@ -77,23 +96,20 @@ export default {
   }
 }
 
-.control {
-  display: flex;
+.content {
+  position: relative;
 }
 
-/*.prefix {
-  text-align: center;
-  width: 24px;
-  height: var(--control-height);
-  border: var(--control-border);
-  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-  border-right: none;
-  line-height: var(--control-height);
-}
-*/
 .input {
-/*  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;*/
+  position: relative;
   width: 6em;
+  height: 25px;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.button {
+  border-left: none;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 </style>

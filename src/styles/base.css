@@ -203,13 +203,14 @@ button {
   border-radius: var(--radius-sm);
 }
 
+.button--primary {
+  color: white;
+  background: var(--selected-color);
+}
+
 @media (min-width: 640px) {
   button {
     padding: 4px 8px;
-  }
-
-  .button--muted {
-    background-color: white;
   }
 }
 
