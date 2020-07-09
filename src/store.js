@@ -44,7 +44,7 @@ export default new Vuex.Store({
     showLabel: true,
     showHex: false,
     showContrastRatio: false,
-    darkMode: true,
+    darkMode: false,
 
     // Interaction states
     isMobile: null,
