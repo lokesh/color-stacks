@@ -1,11 +1,14 @@
 <template>
   <div class="wrapper">
-    <popover :width="144">
+    <popover
+      ref="popover"
+      :width="144"
+    >
       <template v-slot:trigger>
         <a
           v-if="!isPopoverVisible"
           class="trigger"
-          @click="focusInput"
+          @click="reset"
         >
           Add from hex&hellip;
         </a>
@@ -16,6 +19,7 @@
           v-model="hex"
           placeholder="#663399"
           class="input"
+          :class="{'invalid': !isHexValid}"
           type="text"
           maxlength="7"
           @keyup.enter="addHue"
@@ -46,6 +50,7 @@ export default {
   data() {
     return {
       hex: '',
+      isHexValid: false,
       isPopoverVisible: false,
     };
   },
@@ -62,7 +67,8 @@ export default {
   methods: {
     addHue() {
       const val = this.$refs.input.value;
-      if (validateHex(val)) {
+      this.isHexValid = validateHex(val);
+      if (this.isHexValid) {
         const hue = Math.floor(hexToHCL(val)[0]);
         // Chroma sometimes returns NaN
         // This happens with pure grays
@@ -72,7 +78,10 @@ export default {
         }
       }
     },
-    focusInput() {
+    reset() {
+      this.hex = '';
+      this.isHexValid = true;
+
       setTimeout(() => {
         this.$refs.input.focus();
       }, 10)

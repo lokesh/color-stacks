@@ -26,6 +26,12 @@
   --powder-blue-70: #005ee8;
   --powder-blue-90: #0041dd;
 
+  --rose-20: #e4b2ac;
+  --rose-35: #e07066;
+  --rose-55: #cf0527;
+  --rose-70: #b50000;
+  --rose-90: #970000;
+
   /* Color application*/
   --color: var(--gray-80);
   --color-secondary: var(--gray-65);
@@ -41,6 +47,7 @@
 
   --selected-color: var(--powder-blue-55);
   --focus-color: var(--powder-blue-35);
+  --invalid-color: var(--rose-55);
 
   /* ---------- */
   /* TYPOGRAPHY */
@@ -180,6 +187,14 @@ input[type="number"]:focus {
   border-color: var(--focus-color);
   box-shadow: 0 0 0 1px var(--focus-color);
 }
+
+input[type="text"].invalid,
+input[type="number"].invalid {
+  outline: none;
+  border-color: var(--invalid-color);
+  box-shadow: 0 0 0 1px var(--invalid-color);
+}
+
 
 /* Remove up/down arrows for incrementing numbers inside of number input. */
 input[type="number"] {
