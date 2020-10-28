@@ -22,3 +22,5 @@ yarn-error.log*
 .sublime-*
 *.sublime-*
 .private
+.host.json
+.env

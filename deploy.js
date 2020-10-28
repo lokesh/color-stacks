@@ -1,29 +1,38 @@
-const fs = require("fs");
-const { resolve } = require("path");
-const FtpDeploy = require("ftp-deploy");
+const path = require("path");
+const SftpClient = require('ssh2-sftp-client');
 
-const ftpDeploy = new FtpDeploy();
+require('dotenv').config()
 
-const { host, remoteRoot, user, password } = JSON.parse(
-  fs.readFileSync(resolve(process.cwd(), ".private"), "utf-8")
-);
-
-var config = {
-  user,
-  password,
-  host,
-  port: 21,
-  localRoot: __dirname + "/dist",
-  remoteRoot,
-  include: ["*", "**/*"],
-  exclude: [".*"],
-  deleteRemote: false
+const config = {
+  host: process.env.HOST,
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  port: process.env.PORT || 22,
 };
 
-ftpDeploy.deploy(config, function(err) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("finished");
+async function main() {
+  const client = new SftpClient();
+
+  const localPath = path.join(__dirname, 'dist');
+  const remotePath = process.env.REMOTE_PATH;
+
+  try {
+    client.on('upload', info => {
+      console.log(`Uploaded ${info.source}`);
+    });
+
+    await client.connect(config);
+    await client.rmdir(remotePath, true);
+    await client.uploadDir(localPath, remotePath);
+  } finally {
+    return client.end();
   }
-});
+}
+
+main()
+  .then(msg => {
+    console.log(msg);
+  })
+  .catch(err => {
+    console.log(`main error: ${err.message}`);
+  });
